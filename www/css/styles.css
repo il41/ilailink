@@ -1,0 +1,28 @@
+body{
+
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 38px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    line-height: 42px;
+    color: #222222;
+    font-family: sans-serif;
+}
+
+#cat-pic {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+}
