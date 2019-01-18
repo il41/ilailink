@@ -2,11 +2,49 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>•••••••••••••••••••••••••••••••••••••••••••••••••••••••</title>
+    <title>••••••••••••••••••••••••••••••••••••••••</title>
+    <style>
+      body
+      {
+        background-color: grey;
+        background-image: url(images/mother.jpg);
+        background-size: 1%;
+        color: #00fff6;
+        position: absolute;
+      }
+      audio
+      {
+      transition:all 0.5s linear;
+      box-shadow: 2px 2px 4px 0px #006773;
+      border-radius:0px
+      }
+      audio:hover, audio:focus, audio:active
+      {
+      box-shadow: 150px 10px 2px rgba(0,0, 0, 40);
+      transform: scale(1.05);
+      }
+      video{
+        opacity:1;
+      }
+      video:hover{
+        animation: rave2 0.01s infinite;
+        opacity:0;
+      }
+      @keyframes rave2
+      {
+        from{opacity: 0;}
+          to{opacity: 1;}
+      }
+    </style>
   </head>
   <body>
-    <a href="www/index3.html">
-      <img src="images/smiley.png" width=80px></img>
-    </a>
+    <video autoplay loop>
+ <source src="fish.mov">
+   no video for you :(
+</video>
+<br>
+<audio class="sound" controls autoplay>
+  <source src= "audio/hammerhead.mp3">
+</audio>
   </body>
 </html>
