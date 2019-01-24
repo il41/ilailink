@@ -10,7 +10,7 @@ const app = express()
 // here we create a variable that will contain our port number, this is set
 // either in the terminal when we launch the app like: node server.js 3000
 // otherwise  defaults to port 80, which requires sudo, ex: sudo node server.js
-const port = process.argv[2] || 80
+const port = process.argv[2] || 8000
 
 // we can serve up an entire directory of static files using express.static()
 // instead of having to define all the app.get() paths individually
