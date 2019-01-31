@@ -1,5 +1,7 @@
 body{
-
+ margin: 0;
+ padding: 0;
+ background-image: url(images/tb3032.png);
 }
 
 section {
@@ -20,9 +22,22 @@ p {
     font-family: sans-serif;
 }
 
-#cat-pic {
-    display: block;
-    width: 200px;
+#blend-pic {
+    display: inline ;
     margin: 0 auto;
     cursor: pointer;
+    z-index: -50;
+    width:100%;
+
+}
+#b-pic{
+  z-index: -1;
+  display: inline;
+  position: absolute;
+}
+#a-pic{
+  z-index: -1;
+  display: inline;
+  position: relative;
+  width: 100%;
 }

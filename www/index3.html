@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      #vid
+      {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          z-index: -100;
+          -ms-transform: translateX(-50%) translateY(-50%);
+          -moz-transform: translateX(-50%) translateY(-50%);
+          -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+          background: url(liquid.png) no-repeat;
+          background-size: cover;
+      }
+
+      @media screen and (max-device-width: 800px)
+      {
+        html
+        {
+             background: url(images/liquid.png) #000 no-repeat center center fixed;
+        }
+        #vid
+        {
+            display: none;
+      }
+}
+    </style>
+
+  </head>
+  <body>
+
+    <video playsinline autoplay muted loop id="vid">
+        <source src="liquidvox2.mov">
+    </video>
+    <audio autoplay loop>
+      <source src= "audio/terraforming.mp3">
+    </audio>
+  <script>
+    setInterval(function() {
+    document.title=Math.random().toString().substr(2, 100)
+  }, 50);
+  </script>
+  </body>
+</html>
