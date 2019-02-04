@@ -4,20 +4,102 @@
         <meta charset="utf-8">
         <title> Ilai's HP </title>
         <link rel="stylesheet" href="css/styles.css">
+        <style>
+          body{
+           margin: 0;
+           padding: 0;
+           background-image: repeating-radial-gradient(#aaf465, #9198e5 20%);;
+           background-size: 115%;
+          }
+          audio{
+            display: block;
+            transition:all 0.5s linear;
+            box-shadow: 2px 2px 4px 10px #006773;
+            border-radius:0px;
+            z-index: 1;
+          }
+          audio:hover, audio:focus, audio:active
+          {
+            box-shadow: 150px 10px 2px rgba(0,0, 0, 40);
+            transform: scale(1.15);
+
+          }
+          video{
+            opacity:1;
+            margin-top: 10px;
+            transform: scale(0.4);
+          }
+          video:hover{
+            animation: rave2 1s infinite;
+            opacity:0;
+          }
+          @keyframes rave2
+          {
+            from{opacity: 0;}
+              to{opacity: 1;}
+          }
+          #portal{
+            font-size: 20px;
+            position:static:
+          }
+          #portal:hover{
+            animation: rave2 0.4s infinite;
+          }
+          canvas{
+
+            position: absolute; z-index: -1;
+        		left:0px; top:0px;
+        		image-rendering: crisp-edges;
+        		image-rendering: -moz-crisp-edges;
+        		image-rendering: -webkit-optimize-contrast;
+        		image-rendering: optimize-contrast;
+        		-ms-interpolation-mode: nearest-neighbor;
+          }
+          canvas:hover{
+            cursor: cell;
+          }
+        </style>
     </head>
     <body>
-
+      <script src="js/three.min.js"></script>
+      <script src="js/tone.min.js"></script>
+      <div id="3dcont">
+        <script id="threejs" src="js/main.js"></script>
+      </div>
         <section>
-          <img src="images/c00.jpg" id="b-pic">
-          <a href="index2.html">
-            <img src="images/netbody.png" id="blend-pic">
-          </a>
-            <audio controls autoplay>
+          <img src="" id="b-pic">
+
+            <audio controls>
+              <source src= "audio/artist_statement.mp3">
+            </audio>
+            <audio controls>
+              <source src= "audio/look-d-mix.mp3">
+            </audio>
+            <audio controls>
+              <source src= "audio/ptLand.mp3">
+            </audio>
+            <!-- <audio controls>
               <source src= "audio/midnighteqn.mp3">
             </audio>
+            <audio controls>
+              <source src= "audio/amoz-d667.mp3">
+            </audio>
+            <audio controls>
+              <source src= "audio/4thstage.mp3">
+            </audio> -->
+            <audio controls>
+              <source src= "audio/1692.mp3">
+            </audio>
+            <audio controls>
+              <source src= "audio/none.mp3">
+            </audio>
+            <audio autoplay controls>
+              <source src= "audio/illegalsubpassracing.mp3">
+            </audio>
         </section>
-
-        <script src="js/main.js"></script>
+        <a id="portal" href="index2.html">
+          ->
+        </a>
 
     </body>
 </html>

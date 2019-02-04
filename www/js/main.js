@@ -1,37 +1,57 @@
-// this is an array of cat names which match the names of the images inside the
-// images directory of this project, we'll use it inside the newCatImg function
-const catNames = [
-    'grumpy-cat',
-    'lil-bub',
-    'surprise-cat',
-    'unicorn-cat'
-]
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, (innerWidth/2)/(innerHeight/2), 10.1, 1000 );
+camera.position.set( 0, 0, 20 );
 
-// this is a reference to the cat-pic img in our index page
-const mainCat = document.querySelector('#cat-pic')
+var renderer = new THREE.WebGLRenderer({
+  antialias:false,alpha: true
+  // preserveDrawingBuffer:false
+});
+renderer.autoClear=true;
 
-function newCatImg(){
-    // this line creates a new image tag, ex: <img>
-    let cat = document.createElement('img')
-    // this creates a random number between 0 and 4, which is the length of the
-    // catNames array, we floor the random number (round down) to make sure that
-    // it's an integer (whole number) so we can use it as an array index value
-    let ran = Math.floor( Math.random()*catNames.length )
-    // this changes it's src to a random cat, ex: <img src="images/lil-bub.png">
-    cat.src = 'images/'+catNames[ran]+'.png'
-    // the setAttribute method can be used to set the value of any HTML element
-    // attribute, here we use it to set the image's alt value to match the cat
-    // name, for ex: <img src="images/lil-bub.png" alt="lil-bub">
-    cat.setAttribute( 'alt', catNames[ran] )
-    // now we'll change it's style (css) so that it is absolutely positioned
-    // somewhere random on our page, with a random size
-    cat.style.position = 'absolute'
-    cat.style.left = Math.random()*innerWidth + 'px'
-    cat.style.top = Math.random()*innerHeight + 'px'
-    cat.style.width = Math.random()*200 + 'px'
-    // lastly we'll add this new cat image element to our body element
-    document.body.appendChild( cat )
-}
+renderer.setSize( innerWidth, innerHeight );
+document.body.appendChild( renderer.domElement );
 
-// each time we click the mainCat img, we'll call the newCatImg() function
-mainCat.addEventListener( 'click', newCatImg )
+var directionalLight = new THREE.HemisphereLight( 0x0000ff, 0x00ff00, 0.6 );
+scene.add( directionalLight );
+var mat1 = new THREE.MeshLambertMaterial ( { color: 0x0000ff } );
+var cubeCluster
+ function makeCubes(){
+   var Cgeometry = new THREE.BoxGeometry(  1, 1, 1, );
+
+   cubeCluster = new THREE.Object3D();
+
+  for( var i=0; i < 15; i+= 1){
+    var cube = new THREE.Mesh( Cgeometry, mat1 );
+    cube.position.x = Math.random() * 10 -5
+    cube.position.y = Math.random() * 10 -5
+    cube.position.z = Math.random() * 10 -5
+    cubeCluster.add( cube );
+
+    //makeCubes();
+    console.log('hey',i)
+    }
+
+   scene.add( cubeCluster );
+  }
+  function newCubes(){
+    cubeCluster = 0;
+  }
+// makeCubes();
+
+
+
+ // setTimeout( draw, 1000 );
+makeCubes();
+ function draw(){
+//console.log(level);
+   cubeCluster.rotation.y += 4.001;
+  // cubeCluster.rotation.z += 2;
+  // cubeCluster.rotation.x += 0.001;
+  //cubeCluster.rotation.x += (Math.sin( Date.now()*0.02)*0.01 );
+
+
+  renderer.render(scene, camera);
+
+ }
+ //draw()
+setInterval(draw, 1 );
