@@ -59,7 +59,7 @@ var look = new THREE.Audio( listener );
 
 // load a sound and set it as the Audio object's buffer
 var audioLoader = new THREE.AudioLoader();
-audioLoader.load( 'audio/aqua trance.mp3',
+audioLoader.load( 'audio/aqua trance v2.mp3',
 	// onLoad callback
 	function ( audioBuffer ) {
 		// set the audio object buffer to the loaded object
