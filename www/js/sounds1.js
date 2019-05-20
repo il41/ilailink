@@ -37,13 +37,15 @@ function setup() {
   text('click me', 10, 30);
 }
 
-addEventListener("click", () => {
-  displayDiv.innerHTML = mySound.getPlaybackRate();
+
+document.body.addEventListener("click", () => {
+  mySound.rate(Math.random()+0.4);
 });
 
 
-
-
+document.body.addEventListener("click", () => {
+  displayDiv.innerHTML = mySound.getPlaybackRate();
+});
 
 
 function draw(){
@@ -62,7 +64,4 @@ function draw(){
   }
   background(waveform.length/2);
   endShape();
-  document.body.addEventListener("click", () => {
-    mySound.rate(Math.random()+0.4);
-  });
 }
