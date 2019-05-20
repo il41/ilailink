@@ -4,6 +4,7 @@ function preload() {
 }
 
 function setup() {
+  mySound.rate(0.7);
   mySound.setVolume(1);
   mySound.play();
   fft = new p5.FFT();
@@ -14,8 +15,9 @@ function setup() {
 
 function draw(){
   let theDiv = document.getElementById('yo');
+
   var waveform = fft.waveform();
-  console.log(waveform);
+  //console.log(waveform);
   noFill();
   beginShape();
   stroke(255,0,0); // waveform is red
@@ -24,8 +26,10 @@ function draw(){
     var x = map(i, 0, waveform.length/2, 0, width);
     var y = map( waveform[i], -0.9, 0.9, 0, height);
     vertex(x,y);
-
   }
   background(waveform.length/2);
   endShape();
+  document.body.addEventListener("click", () => {
+    mySound.rate(Math.random()+0.4);
+  });
 }
