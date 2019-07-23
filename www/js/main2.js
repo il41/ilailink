@@ -102,7 +102,7 @@ let s = 0;
 // }
 
 
-
+let speed = 0.00001;
  function draw(){
 //console.log(level);
    cubeCluster.rotation.y += 0.001;
@@ -113,7 +113,8 @@ let s = 0;
   // cubeCluster.rotation.x += 0.001;
   var data1 = analyser.getAverageFrequency();
   var data =(Math.sin(s))*200;
-  s+= 0.00001;
+  //s+= 0.00001;
+  s+= speed;
   cubeCluster.rotation.x +=analyser.getAverageFrequency()/100000;
   cubeCluster.rotation.x += 0.00002;
   cubeCluster.rotation.z -= 0.00001;
@@ -126,7 +127,8 @@ let s = 0;
 
   renderer.render(scene, camera);
 camera.position.set( 0, 0, 50+data/2 );
-camera.rotation.z += 0.00001;
+//camera.rotation.z += 0.00001;
+camera.rotation.z += speed/3;
 //document.body.style.background = "#f3f3f3 url('img_tree.png') no-repeat right top";
 //console.log(data)
 let d = new Date();
@@ -145,3 +147,20 @@ document.body.style.backgroundColor = colorString;
  }
  //draw()
 setInterval(draw, 1 );
+
+
+function speedChange(){
+
+  if (speed == 0.00001){
+    speed = 0.0001
+  }
+  else if (speed == 0.0001) {
+    speed = 0.001
+  }
+  else if (speed == 0.001) {
+    speed = 0.00001
+  }
+
+  console.log(speed);
+
+}

@@ -60,7 +60,30 @@
           #info:hover{
             animation: rave2 0.4s infinite;
           }
+          #plus{
+            font-size: 300%;
+            position:static;
+            color:blue;
+            padding-left: 20px;
+            display: inline;
+          }
+          #time{
+            font-size: 200%;
+            position:static;
+            color:blue;
+            padding-left: 20px;
+            display: inline;
+          }
 
+          .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+          }
           canvas{
 
             position: absolute; z-index: -1;
@@ -131,6 +154,14 @@
         <a id="portal" href="index2.html">
           ⚙
         </a>
+        <br>
+        <div id="plus" class="noselect">
+          +
+        </div>
+        <br>
+        <div id="time" class="noselect" onclick="speedChange()">
+          \|/
+        </div>
 
     </body>
 </html>
