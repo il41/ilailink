@@ -35,17 +35,23 @@ function setup() {
   background(255, 0, 200);
   textSize(32);
   text('click me', 10, 30);
+
+  document.body.addEventListener("click", () => {
+    mySound.rate(Math.random()+0.4);
+  });
+
+  document.body.addEventListener("resize", () => {
+    mySound.rate(mySound.playbackRate() + windowWidth/2);
+  })
+
+
+  document.body.addEventListener("click", () => {
+    displayDiv.innerHTML = mySound.getPlaybackRate();
+  });
 }
 
 
-document.body.addEventListener("click", () => {
-  mySound.rate(Math.random()+0.4);
-});
 
-
-document.body.addEventListener("click", () => {
-  displayDiv.innerHTML = mySound.getPlaybackRate();
-});
 
 
 function draw(){

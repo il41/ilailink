@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Ilai's HP </title>
+        <link rel="stylesheet" href="css/styles.css">
+        <style>
+          body{
+           margin: 0;
+           padding: 0;
+           background-image: url(images/ii.jpg);
+           background-size: 115%;
+          }
+          audio{
+            display: block;
+            transition:all 0.5s linear;
+            box-shadow: 2px 2px 4px 10px #006773;
+            border-radius:0px;
+            z-index: 1;
+          }
+          audio:hover, audio:focus, audio:active
+          {
+            box-shadow: 150px 10px 2px rgba(0,0, 0, 40);
+            transform: scale(1.15);
+
+          }
+          video{
+            opacity:1;
+            margin-top: 10px;
+            transform: scale(0.4);
+          }
+          video:hover{
+            animation: rave2 1s infinite;
+            opacity:0;
+          }
+          @keyframes rave2
+          {
+            from{opacity: 0;}
+              to{opacity: 1;}
+          }
+          #portal{
+            font-size: 26px;
+            position:static:
+          }
+          #portal:hover{
+            animation: rave2 0.4s infinite;
+          }
+          canvas{
+
+            position: absolute; z-index: -1;
+        		left:0px; top:0px;
+        		image-rendering: crisp-edges;
+        		image-rendering: -moz-crisp-edges;
+        		image-rendering: -webkit-optimize-contrast;
+        		image-rendering: optimize-contrast;
+        		-ms-interpolation-mode: nearest-neighbor;
+          }
+          canvas:hover{
+            cursor: cell;
+          }
+
+          #playButton{
+            font-size: 50px;
+            text-shadow: 10px, 20px;
+            color: blue;
+          }
+          #speedometer{
+            font-style: italic;
+
+          }
+        </style>
+    </head>
+    <body>
+      <script src="js/three.min.js"></script>
+      <script src="js/tone.min.js"></script>
+      <script src="js/p5.min.js"></script>
+      <script src="js/p5.sound.min.js"></script>
+        <section>
+          <img src="" id="b-pic">
+        </section>
+        <a id="portal" href="index1.html">
+          ->
+        </a>
+        <div id="yo"></div>
+        <script src=js/sounds1.js></script>
+
+    </body>
+</html>
