@@ -97,11 +97,10 @@ onmousemove = function(e){
 }
 let s = 0;
 
-for(let i=0; i<60; i++){
-  makeCubes();
-}
+// for(let i=0; i<60; i++){
+//   makeCubes();
+// }
 
-let pulseSpeed = 0.0002;
 
 
  function draw(){
@@ -114,7 +113,7 @@ let pulseSpeed = 0.0002;
   // cubeCluster.rotation.x += 0.001;
   var data1 = analyser.getAverageFrequency();
   var data =(Math.sin(s))*200;
-  s+= 0.001;
+  s+= 0.00001;
   cubeCluster.rotation.x +=analyser.getAverageFrequency()/100000;
   cubeCluster.rotation.x += 0.00002;
   cubeCluster.rotation.z -= 0.00001;
@@ -127,7 +126,7 @@ let pulseSpeed = 0.0002;
 
   renderer.render(scene, camera);
 camera.position.set( 0, 0, 50+data/2 );
-camera.rotation.z += 0.0002;
+camera.rotation.z += 0.00001;
 //document.body.style.background = "#f3f3f3 url('img_tree.png') no-repeat right top";
 //console.log(data)
 let d = new Date();
