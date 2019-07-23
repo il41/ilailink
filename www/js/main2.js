@@ -7,7 +7,7 @@ var renderer = new THREE.WebGLRenderer({
   antialias:false,alpha: true
   // preserveDrawingBuffer:false
 });
-renderer.autoClear=false;
+renderer.preserveDrawingBuffer=false;
 
 renderer.setSize( innerWidth, innerHeight );
 document.body.appendChild( renderer.domElement );
@@ -87,7 +87,7 @@ let mouseX, mouseY, clickX, clickY;
 onclick = function(c){
   clickX = c.clientX;
   clickY = c.clientY;
-  console.log({clickX,clickY});
+  //console.log({clickX,clickY});
   makeCubes();
 }
 onmousemove = function(e){
@@ -96,6 +96,14 @@ onmousemove = function(e){
   //console.log("mouse location:", e.clientX, e.clientY)
 }
 let s = 0;
+
+for(let i=0; i<60; i++){
+  makeCubes();
+}
+
+let pulseSpeed = 0.0002;
+
+
  function draw(){
 //console.log(level);
    cubeCluster.rotation.y += 0.001;
@@ -105,8 +113,8 @@ let s = 0;
   // cubeCluster.rotation.z += 2;
   // cubeCluster.rotation.x += 0.001;
   var data1 = analyser.getAverageFrequency();
-  var data =(Math.sin(s))*20;
-  s+= 0.0001;
+  var data =(Math.sin(s))*200;
+  s+= 0.001;
   cubeCluster.rotation.x +=analyser.getAverageFrequency()/100000;
   cubeCluster.rotation.x += 0.00002;
   cubeCluster.rotation.z -= 0.00001;
@@ -116,10 +124,10 @@ let s = 0;
 // hexString = data.toString(16);
 //console.log(hexString);
 //mat1.color.set(hexString);
-renderer.autoClear=false;
-  renderer.render(scene, camera);
 
+  renderer.render(scene, camera);
 camera.position.set( 0, 0, 50+data/2 );
+camera.rotation.z += 0.0002;
 //document.body.style.background = "#f3f3f3 url('img_tree.png') no-repeat right top";
 //console.log(data)
 let d = new Date();
