@@ -32,7 +32,7 @@ var cubeCluster
     cubeCluster.add( cube );
 
     //makeCubes();
-    console.log('hey',i)
+    //console.log('hey',i)
     }
 
    scene.add( cubeCluster );
@@ -83,7 +83,19 @@ var analyser = new THREE.AudioAnalyser( look, 32 );
 // function pauseClick(){
 //   sound.pause();
 // }
-
+let mouseX, mouseY, clickX, clickY;
+onclick = function(c){
+  clickX = c.clientX;
+  clickY = c.clientY;
+  console.log({clickX,clickY});
+  makeCubes();
+}
+onmousemove = function(e){
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  //console.log("mouse location:", e.clientX, e.clientY)
+}
+let s = 0;
  function draw(){
 //console.log(level);
    cubeCluster.rotation.y += 0.001;
@@ -92,17 +104,21 @@ var analyser = new THREE.AudioAnalyser( look, 32 );
   // console.log(bass);
   // cubeCluster.rotation.z += 2;
   // cubeCluster.rotation.x += 0.001;
-  var data = analyser.getAverageFrequency();
-
+  var data1 = analyser.getAverageFrequency();
+  var data =(Math.sin(s))*20;
+  s+= 0.0001;
   cubeCluster.rotation.x +=analyser.getAverageFrequency()/100000;
+  cubeCluster.rotation.x += 0.00002;
+  cubeCluster.rotation.z -= 0.00001;
   //cubeCluster.rotation.x += (Math.sin( Date.now()*0.02)*0.01 );
 
 // let colorString = "rgb(" + data*100/data + ", 0, 0)";
 // hexString = data.toString(16);
 //console.log(hexString);
 //mat1.color.set(hexString);
-
+renderer.autoClear=false;
   renderer.render(scene, camera);
+
 camera.position.set( 0, 0, 50+data/2 );
 //document.body.style.background = "#f3f3f3 url('img_tree.png') no-repeat right top";
 //console.log(data)
