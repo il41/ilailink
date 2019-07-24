@@ -103,6 +103,7 @@ let s = 0;
 
 
 let speed = 0.00001;
+
  function draw(){
 //console.log(level);
    cubeCluster.rotation.y += 0.001;
@@ -160,7 +161,18 @@ function speedChange(){
   else if (speed == 0.001) {
     speed = 0.00001
   }
-
   console.log(speed);
+}
 
+function colorChange(){
+  let sMeter = document.getElementById('time');
+  if (speed == 0.00001){
+    sMeter.style.color="green";
+  }
+  else if (speed == 0.0001) {
+    sMeter.style.color="blue";
+  }
+  else if (speed == 0.001) {
+    sMeter.style.color="red";
+  }
 }

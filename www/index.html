@@ -27,7 +27,9 @@
 
           a{
             font-size: 20px;
-            padding-left: 20px;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
             display: inline;
           }
 
@@ -56,6 +58,7 @@
           #info{
             font-size: 500%;
             position:static;
+            background: rgba(255, 255, 255, 0);
           }
           #info:hover{
             animation: rave2 0.4s infinite;
@@ -64,14 +67,23 @@
             font-size: 300%;
             position:static;
             color:blue;
-            padding-left: 20px;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
             display: inline;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+          }
+          #plus:active{
+            color:red;
           }
           #time{
             font-size: 200%;
             position:static;
-            color:blue;
-            padding-left: 20px;
+            color:green;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
             display: inline;
           }
 
@@ -159,7 +171,7 @@
           +
         </div>
         <br>
-        <div id="time" class="noselect" onclick="speedChange()">
+        <div id="time" class="noselect" onclick="speedChange();colorChange()">
           \|/
         </div>
 
