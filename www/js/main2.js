@@ -18,7 +18,11 @@ scene.add( directionalLight );
 var mat1 = new THREE.MeshToonMaterial ( { color: 0x0000ff } );
 var mat2 = new THREE.MeshLambertMaterial ( { color: 0xff00ff } );
 var mat3 = new THREE.MeshLambertMaterial ( { color: 0x00ff00 } );
+
+var mat4 = new THREE.MeshNormalMaterial();
+
 var cubeCluster
+
  function makeCubes(material){
    var Cgeometry = new THREE.SphereGeometry(  1, 10, );
 
@@ -102,7 +106,7 @@ let s = 0;
 // }
 
 
-let speed = 0.00001;
+let speed = 0.00002;
 
  function draw(){
 //console.log(level);
@@ -152,21 +156,21 @@ setInterval(draw, 1 );
 
 function speedChange(){
 
-  if (speed == 0.00001){
+  if (speed == 0.00002){
     speed = 0.0001
   }
   else if (speed == 0.0001) {
     speed = 0.001
   }
   else if (speed == 0.001) {
-    speed = 0.00001
+    speed = 0.00002
   }
   console.log(speed);
 }
 
 function colorChange(){
   let sMeter = document.getElementById('time');
-  if (speed == 0.00001){
+  if (speed == 0.00002){
     sMeter.style.color="green";
   }
   else if (speed == 0.0001) {
@@ -175,4 +179,26 @@ function colorChange(){
   else if (speed == 0.001) {
     sMeter.style.color="red";
   }
+}
+
+
+
+function coolFunction(){
+  var Cgeometry = new THREE.TorusKnotGeometry(20, 12 , 40, 20, 2 , 3);
+
+  cubeCluster = new THREE.Object3D();
+
+ for( let i=0; i < 500; i+= 1){
+   var cube = new THREE.Mesh( Cgeometry, mat3 );
+   //cube.position.x = Math.random() * 100 -50
+   //cube.position.y = Math.random() * 100 -50
+   //cube.position.z = Math.random() * 100 -50
+   cube.position.z = (-i+20)*20;
+   cubeCluster.add( cube );
+
+   //makeCubes();
+   //console.log('hey',i)
+   }
+
+  scene.add( cubeCluster );
 }
