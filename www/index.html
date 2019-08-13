@@ -8,8 +8,8 @@
           body{
            margin: 0;
            padding: 0;
-           background-image: none;
-           background-size: 115%;
+           background-image: url("images/alien maelstrom.JPG");
+           background-size: 100%;
           }
           audio{
             display: inline;
@@ -48,17 +48,23 @@
               to{opacity: 1;}
           }
           #portal{
+            background-color: black;
             font-size: 300%;
-            position:static:
+            position:static;
+            border-radius: 10px;
+            padding: 10px;
+
           }
           #portal:hover{
             animation: rave2 0.2s infinite;
           }
 
           #info{
+
             font-size: 500%;
             position:static;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, 20);
+            border-radius: 15px;
           }
           #info:hover{
             animation: rave2 0.4s infinite;
@@ -73,18 +79,30 @@
             display: inline;
             background: rgba(255, 255, 255, 0);
             border-radius: 50%;
+            display: none;
           }
           #plus:active{
             color:red;
           }
+          #clock{
+            font-size: 200%;
+            position:static;
+            color:white;
+            font-style: normal;
+            font-family: monospace;
+            margin-left: 2px;
+            padding-left: 1px;
+            padding-right: 10px;
+            display: inline-block;
+          }
           #time{
             font-size: 400%;
             position:static;
-            color:green;
+            color:red;
             margin-left: 20px;
             padding-left: 10px;
             padding-right: 10px;
-            display: inline;
+            display: none;
           }
 
           .noselect {
@@ -113,64 +131,38 @@
     </head>
     <body>
       <script src="js/three.min.js"></script>
-      <script src="js/tone.min.js"></script>
       <div id="3dcont">
-        <script id="threejs" src="js/main2.js"></script>
+      <script id="threejs" src="js/aquatic.js"></script>
       </div>
+
+      <br>
+      <a id="info" href="info.txt" target="blank">✆</a>
+      <br>
+      <div id="time" class="noselect" onclick="speedChange();colorChange()">
+        ⚙
+      </div>
+      <br>
+      <a id="portal" href="index07232019.html" target="_blank">
+        ->
+      </a>
+      <br>
+      <div id="plus" class="noselect" onclick="rotateToggle()">
+        +
+      </div>
+      <br>
+      <div id="clock"><div></div></div>
+      <br>
+      <br>
+
         <section>
-          <img src="" id="b-pic">
 
-            <audio controls>
-              <source src= "audio/july19/slawdog.mp3">
-            </audio> <a href= "audio/july19/slawdog.wav" download>⬇︎</a>
+            <audio controls autoplay>
+              <source src= "audio/august19/volta.mp3">
+            </audio> <a href= "audio/august19/volta.wav" download>⬇︎</a>
             <br>
 
-            <audio controls>
-              <source src= "audio/july19/proxy.mp3">
-            </audio> <a href= "audio/july19/proxy.wav" download>⬇︎</a>
-            <br>
-
-            <audio controls>
-              <source src= "audio/july19/cleaning.mp3">
-            </audio> <a href= "audio/july19/cleaning.wav" download>⬇︎</a>
-            <br>
-
-            <audio controls loop>
-              <source src= "audio/july19/k1.mp3">
-            </audio> <a href= "audio/july19/k1.wav" download>⬇︎</a>
-            <br>
-
-            <audio controls>
-              <source src= "audio/july19/iphone beach.mp3">
-            </audio> <a href= "audio/july19/iphone beach.wav" download>⬇︎</a>
-            <br>
-
-            <audio controls>
-              <source src= "audio/july19/ctf2.mp3">
-            </audio> <a href= "audio/july19/ctf2.wav" download>⬇︎</a>
-            <br>
-
-            <audio controls>
-              <source src= "audio/july19/section 4.mp3">
-            </audio> <a href= "audio/july19/section 4.wav" download>⬇︎</a>
-            <br>
 
         </section>
-        <br>
-        <a id="info" href="info.txt" target="blank">✆</a>
-        <br>
-        <div id="time" class="noselect" onclick="speedChange();colorChange()">
-          ⚙
-        </div>
-        <br>
-        <a id="portal" href="index1.html">
-          ->
-        </a>
-        <br>
-        <div id="plus" class="noselect" >
-          +
-        </div>
-        <br>
 
     </body>
 </html>

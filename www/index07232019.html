@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> ilai's HP </title>
+        <link rel="stylesheet" href="css/styles.css">
+        <style>
+          body{
+           margin: 0;
+           padding: 0;
+           background-image: none;
+           background-size: 115%;
+          }
+          audio{
+            display: inline;
+            /* transition:all 0.5s linear; */
+            box-shadow: 2px 2px 4px 10px #006773;
+            border-radius:0px;
+            z-index: 1;
+          }
+          /* audio:hover, audio:focus, audio:active
+          {
+            box-shadow: 150px 10px 2px rgba(0,0, 0, 40);
+            transform: scale(1.15);
+
+          } */
+
+          a{
+            font-size: 20px;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline;
+          }
+
+          video{
+            opacity:1;
+            margin-top: 10px;
+            transform: scale(0.4);
+          }
+          video:hover{
+            animation: rave2 1s infinite;
+            opacity:0;
+          }
+          @keyframes rave2
+          {
+            from{opacity: 0;}
+              to{opacity: 1;}
+          }
+          #portal{
+            font-size: 300%;
+            position:static:
+          }
+          #portal:hover{
+            animation: rave2 0.2s infinite;
+          }
+
+          #info{
+            font-size: 500%;
+            position:static;
+            background: rgba(255, 255, 255, 0);
+          }
+          #info:hover{
+            animation: rave2 0.4s infinite;
+          }
+          #plus{
+            font-size: 300%;
+            position:static;
+            color:blue;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+          }
+          #plus:active{
+            color:red;
+          }
+          #time{
+            font-size: 400%;
+            position:static;
+            color:green;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline;
+          }
+
+          .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+          }
+          canvas{
+
+            position: absolute; z-index: -1;
+        		left:0px; top:0px;
+        		image-rendering: crisp-edges;
+        		image-rendering: -moz-crisp-edges;
+        		image-rendering: -webkit-optimize-contrast;
+        		image-rendering: optimize-contrast;
+        		-ms-interpolation-mode: nearest-neighbor;
+          }
+          canvas:hover{
+            cursor: cell;
+          }
+        </style>
+    </head>
+    <body>
+      <script src="js/three.min.js"></script>
+      <script src="js/tone.min.js"></script>
+      <div id="3dcont">
+        <script id="threejs" src="js/main2.js"></script>
+      </div>
+        <section>
+          <img src="" id="b-pic">
+
+            <audio controls>
+              <source src= "audio/july19/slawdog.mp3">
+            </audio> <a href= "audio/july19/slawdog.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls>
+              <source src= "audio/july19/proxy.mp3">
+            </audio> <a href= "audio/july19/proxy.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls>
+              <source src= "audio/july19/cleaning.mp3">
+            </audio> <a href= "audio/july19/cleaning.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls loop>
+              <source src= "audio/july19/k1.mp3">
+            </audio> <a href= "audio/july19/k1.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls>
+              <source src= "audio/july19/iphone beach.mp3">
+            </audio> <a href= "audio/july19/iphone beach.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls>
+              <source src= "audio/july19/ctf2.mp3">
+            </audio> <a href= "audio/july19/ctf2.wav" download>⬇︎</a>
+            <br>
+
+            <audio controls>
+              <source src= "audio/july19/section 4.mp3">
+            </audio> <a href= "audio/july19/section 4.wav" download>⬇︎</a>
+            <br>
+
+        </section>
+        <br>
+        <a id="info" href="info.txt" target="blank">✆</a>
+        <br>
+        <div id="time" class="noselect" onclick="speedChange();colorChange()">
+          ⚙
+        </div>
+        <br>
+        <a id="portal" href="index1.html">
+          ->
+        </a>
+        <br>
+        <div id="plus" class="noselect" >
+          +
+        </div>
+        <br>
+
+    </body>
+</html>
