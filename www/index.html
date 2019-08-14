@@ -13,10 +13,10 @@
            background-size: cover;
           }
           audio{
-            display: inline;
-            box-shadow: 2px 2px 4px 10px #006773;
-            border-radius:0px;
-            z-index: 1;
+            /* display: inline; */
+            /* box-shadow: 2px 2px 4px 10px #006773; */
+            /* border-radius:0px; */
+            /* z-index: 1; */
             /* transition:all 0.5s linear; */
           }
           /* audio:hover, audio:focus, audio:active
@@ -155,7 +155,7 @@
             cursor:pointer;
           }
           #buttons{
-            position: fixed;
+            position: absolute;
             top: 85%;
             right: 40%;
             border-width: medium;
@@ -171,11 +171,14 @@
             padding-bottom: 5px;
             padding-top: 1px;
             border-radius: 20px;
-            position: fixed;
+            position: absolute;
             top: 85%;
-            right: 85%;
-
           }
+
+          .img-wrapper {
+    display: inline-block; /* change the default display type to inline-block */
+    overflow: hidden;      /* hide the overflow */
+}
 
           .noselect {
             -webkit-touch-callout: none; /* iOS Safari */
@@ -233,8 +236,8 @@
 
       <br>
       <br>
+          <div id="speedSelector">⚙<input type="range" min="1" max="150" value="50" class="slider" id="speedSlider"></input></div>
 
-      <div id="speedSelector">⚙<input type="range" min="1" max="150" value="50" class="slider" id="speedSlider"></input></div>
       <br>
       <br>
         <section>
