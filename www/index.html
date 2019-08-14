@@ -105,6 +105,64 @@
             display: none;
           }
 
+          #playButtonZ{
+            font-size: 200%;
+            position:static;
+            color:blue;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+          }
+          #playButtonY{
+            font-size: 200%;
+            position:static;
+            color:green;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+          }
+          #playButtonX{
+            font-size: 200%;
+            position:static;
+            color:red;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+          }
+          #speedSelector{
+            background-color: white;
+            color: blue;
+
+            display: inline-block;
+            font-size: 300%;
+            padding: 10px;
+            padding-bottom: 5px;
+            padding-top: 1px;
+            border-radius: 20px;
+
+          }
+
           .noselect {
             -webkit-touch-callout: none; /* iOS Safari */
             -webkit-user-select: none; /* Safari */
@@ -132,7 +190,7 @@
     <body>
       <script src="js/three.min.js"></script>
       <div id="3dcont">
-      <script id="threejs" src="js/aquatic.js"></script>
+
       </div>
 
       <br>
@@ -153,16 +211,24 @@
       <div id="clock"><div></div></div>
       <br>
       <br>
+      <div id="playButtonZ">▶</div>
+      <div id="playButtonX">⬇︎</div>
+      <div id="playButtonY">⬅︎</div>
 
+      <br>
+      <br>
+
+      <div id="speedSelector">⚙<input type="range" min="1" max="150" value="50" class="slider" id="speedSlider"></input></div>
+      <br>
+      <br>
         <section>
-
-            <audio controls autoplay>
+            <audio id="my-audio" controls>
               <source src= "audio/august19/volta.mp3">
             </audio> <a href= "audio/august19/volta.wav" download>⬇︎</a>
             <br>
-
-
         </section>
+
+        <script id="threejs" src="js/aquatic.js"></script>
 
     </body>
 </html>

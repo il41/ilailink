@@ -22,6 +22,7 @@ var cubeCluster
 
 
    cubeCluster = new THREE.Object3D();
+   scene.add( cubeCluster );
 
   for( var i=0; i < 2000; i+= 1){
     var Cgeometry = new THREE.BoxGeometry(  Math.random(), Math.random(), Math.random());
@@ -31,12 +32,11 @@ var cubeCluster
     cube.position.y = Math.random() * 50 -25
     cube.position.z = Math.random() * 50 -25
     cubeCluster.add( cube );
+    setTimeout(function() {}, 1000);
 
     //makeCubes();
     //console.log('hey',i)
     }
-
-   scene.add( cubeCluster );
   }
 
   function cubePaint(e){
@@ -57,16 +57,49 @@ var cubeCluster
  // setTimeout( draw, 1000 );
 makeCubes();
 
+let slider = document.getElementById("speedSlider");
 
+let speed = 1;
+slider.oninput = function() {
+  speed = this.value/50;
+  myAudio.play
+}
 let z = 0;
+let y = 0;
+let x = 0;
 cubeCluster.rotation.x += 10;
+
+let playDivZ = document.getElementById('playButtonZ');
+let playDivY = document.getElementById('playButtonY');
+let playDivX = document.getElementById('playButtonX');
+
+let myAudio = document.getElementById('my-audio');
+playDivZ.addEventListener("click", () => {
+  myAudio.play();
+  z = 0.001;
+  y = 0;
+  x = 0;
+});
+playDivY.addEventListener("click", () => {
+  z = 0.;
+  y = 0.001;
+  x = 0;
+});
+playDivX.addEventListener("click", () => {
+  z = 0.;
+  y = 0;
+  x = 0.001;
+});
+
+
 
  function draw(){
 	 updateClock();
 //console.log(level);
 
-	cubeCluster.rotation.z += z;
-   cubeCluster.rotation.y += 0.000;
+	 cubeCluster.rotation.z += z*speed;
+   cubeCluster.rotation.y += y*speed;
+   cubeCluster.rotation.x += x*speed;
 	 let date1 = new Date
 	 let color = new THREE.Color( date1.getMilliseconds()/1000, 0, date1.getSeconds()/60 );
 	 mat1.color.set(color);
