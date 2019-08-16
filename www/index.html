@@ -9,15 +9,25 @@
           body{
            margin: 0;
            padding: 0;
-           background-image: url("images/alien maelstrom.JPG");
-           background-size: cover;
+           /* background-image: url("images/alien maelstrom.JPG"); */
+            background-image: linear-gradient(to bottom right, aqua, blue);
+           /* background-size: cover; */
           }
           audio{
+            position: absolute;
+            top: 95%;
+            left:40%;
             /* display: inline; */
             /* box-shadow: 2px 2px 4px 10px #006773; */
             /* border-radius:0px; */
             /* z-index: 1; */
             /* transition:all 0.5s linear; */
+          }
+          #audi{
+            position: absolute;
+            top: 95%;
+            right:4%;
+            color: red;
           }
           /* audio:hover, audio:focus, audio:active
           {
@@ -243,7 +253,7 @@
         <section>
             <audio id="my-audio" controls>
               <source src= "audio/august19/volta.mp3">
-            </audio> <a href= "audio/august19/volta.wav" download>⬇︎</a>
+            </audio> <a id="audi" href= "audio/august19/volta.wav" download>⬇︎</a>
             <br>
         </section>
 

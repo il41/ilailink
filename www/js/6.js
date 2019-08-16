@@ -58,9 +58,41 @@ audioLoader.load( 'audio/8000/4Djet 8000hz.mp3', function( buffer ) {
 	sound.setBuffer( buffer );
 	sound.setLoop(true);
 	sound.setVolume(1);
-	sound.play();
+	// sound.play();
 });
 
+let play = document.createElement("div")
+play.id = "play";
+play.innerHTML = "play";
+play.addEventListener('click',()=>{
+  sound.play();
+})
+
+let pause = document.createElement("div")
+pause.id = "pause";
+pause.innerHTML = "pause";
+pause.addEventListener('click',()=>{
+  sound.pause();
+})
+
+let toggle = document.createElement("div")
+toggle.id = "toggle";
+toggle.innerHTML = "toggle";
+toggle.addEventListener('click',()=>{
+  toggleDraw();
+})
+
+function toggleDraw(){
+  if (renderer.autoClear==true) {
+    renderer.autoClear=false;
+  } else{
+    renderer.autoClear = true;
+  }
+}
+
+document.body.appendChild(play);
+document.body.appendChild(pause);
+document.body.appendChild(toggle);
 // create an AudioAnalyser, passing in the sound and desired fftSize
 var analyser = new THREE.AudioAnalyser( sound, 32 );
 
