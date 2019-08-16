@@ -66,7 +66,7 @@ play.id = "play";
 play.class = "button";
 play.innerHTML = "play";
 play.addEventListener('click',()=>{
-  sound.play();
+  if(sound.buffer.sampleRate==44100){sound.play();}
 })
 
 let pause = document.getElementById("pause")
