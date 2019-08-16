@@ -8,15 +8,28 @@
         margin: 0;
         padding: 0;
         background-image: url(images/netbody.png);
-
-
-
       }
       img{
         height:100;
         position: fixed;
 
       }
+      #play{
+        position: absolute;
+        top: 0px;
+        background-color: rgb(20,20,240,1);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      #pause{
+        position: absolute;
+        top: 0px;
+        left: 50px;
+        background-color: rgb(20,200,20,1);
+        border-radius: 100px;
+        padding: 10px;
+      }
+
       .button {
         display: inline-block;
         padding: 3px 5px;
@@ -26,7 +39,7 @@
     </style>
   </head>
   <body>
-
+    <div id="play"></div><div id="pause"></div>
     <!-- <div class="button" id='play'>play</div>      <div class="button" id='pause'>pause</div> -->
     <!-- <audio id="audi" src="audio/4thstage.mp3" controls></audio> -->
     <script src="js/three.min.js"></script>

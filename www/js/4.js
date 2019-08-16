@@ -3,8 +3,8 @@ var camera = new THREE.PerspectiveCamera( 75, (innerWidth/2)/(innerHeight/2), 10
 camera.position.set( 0, 0, 200 );
 
 var renderer = new THREE.WebGLRenderer({
-  antialias:false,alpha: true
-  // preserveDrawingBuffer:false
+  antialias:false,alpha: true,
+   preserveDrawingBuffer:false
 });
 renderer.autoClear=false;
 
@@ -58,8 +58,43 @@ audioLoader.load( 'audio/ptLand.mp3', function( buffer ) {
 	sound.setBuffer( buffer );
 	sound.setLoop(true);
 	sound.setVolume(1);
-	sound.play();
+	// sound.play();
 });
+
+let play = document.getElementById("play")
+play.id = "play";
+play.class = "button";
+play.innerHTML = "play";
+play.addEventListener('click',()=>{
+  sound.play();
+})
+
+let pause = document.getElementById("pause")
+pause.id = "pause";
+pause.class = "button";
+pause.innerHTML = "pause";
+pause.addEventListener('click',()=>{
+  sound.pause();
+})
+
+let toggle = document.getElementById("toggle")
+toggle.id = "toggle";
+toggle.class = "button";
+toggle.innerHTML = "toggle";
+toggle.addEventListener('click',()=>{
+  toggleDraw();
+})
+
+function toggleDraw(){
+  if (y==0.001) {
+    y=0;
+  } else{
+    y = 0.001;
+  }
+}
+document.body.appendChild(play);
+document.body.appendChild(pause);
+// document.body.appendChild(toggle);
 
 // create an AudioAnalyser, passing in the sound and desired fftSize
 var analyser = new THREE.AudioAnalyser( sound, 32 );
@@ -70,11 +105,11 @@ var analyser = new THREE.AudioAnalyser( sound, 32 );
 
 
 
-
+let y = 0.001;
 
  function draw(){
 //console.log(level);
-   cubeCluster.rotation.y += 0.001;
+   cubeCluster.rotation.y += y;
   // cubeCluster.rotation.z += 2;
   // cubeCluster.rotation.x += 0.001;
   var data = analyser.getAverageFrequency();
@@ -82,10 +117,10 @@ var analyser = new THREE.AudioAnalyser( sound, 32 );
   cubeCluster.rotation.x +=analyser.getAverageFrequency()/10000;
   //cubeCluster.rotation.x += (Math.sin( Date.now()*0.02)*0.01 );
 
-let colorString = "rgb(" + data*100/data + ", 0, 0)";
-hexString = data.toString(16);
-//console.log(hexString);
-mat1.color.set(hexString);
+// let colorString = "rgb(" + data*100/data + ", 0, 0)";
+// hexString = data.toString(16);
+// //console.log(hexString);
+// mat1.color.set(hexString);
 
   renderer.render(scene, camera);
 camera.position.set( 0, 0, data/2 );

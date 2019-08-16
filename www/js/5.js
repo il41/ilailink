@@ -59,16 +59,35 @@ var look = new THREE.Audio( listener );
 
 // load a sound and set it as the Audio object's buffer
 var audioLoader = new THREE.AudioLoader();
-audioLoader.load( 'audio/aqua trance v2.mp3',
-	// onLoad callback
-	function ( audioBuffer ) {
-		// set the audio object buffer to the loaded object
+audioLoader.load( 'audio/aqua trance v2.mp3',function ( audioBuffer ) {
 		look.setBuffer( audioBuffer );
-
-		// play the audio
-		look.play();
 	}
 );
+
+
+let play = document.getElementById("play")
+play.id = "play";
+play.class = "button";
+play.innerHTML = "play";
+play.addEventListener('click',()=>{
+  if(look.buffer.sampleRate==44100){look.play();}
+})
+
+let pause = document.getElementById("pause")
+pause.id = "pause";
+pause.class = "button";
+pause.innerHTML = "pause";
+pause.addEventListener('click',()=>{
+  look.pause();
+})
+
+
+document.body.appendChild(play);
+document.body.appendChild(pause);
+// document.body.appendChild(toggle);
+
+
+
 // create an AudioAnalyser, passing in the sound and desired fftSize
 var analyser = new THREE.AudioAnalyser( look, 32 );
 

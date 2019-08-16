@@ -1,9 +1,9 @@
+<!-- //13 august 2019 -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
         <title> ilai's HP </title>
-        //13 august 2019
         <link rel="stylesheet" href="css/styles.css">
         <style>
           body{
@@ -12,6 +12,9 @@
            /* background-image: url("images/alien maelstrom.JPG"); */
             background-image: linear-gradient(to bottom right, aqua, blue);
            /* background-size: cover; */
+           height: 100%;
+           background-repeat: no-repeat;
+           background-attachment: fixed;
           }
           audio{
             position: absolute;
@@ -28,6 +31,8 @@
             top: 95%;
             right:4%;
             color: red;
+            background-color: white;
+            border-radius: 100px;
           }
           /* audio:hover, audio:focus, audio:active
           {
@@ -64,6 +69,7 @@
             position:static;
             border-radius: 10px;
             padding: 10px;
+            color:white;
 
           }
           #portal:hover{
@@ -76,6 +82,7 @@
             position:static;
             background: rgba(255, 255, 255, 20);
             border-radius: 15px;
+            color:blue;
           }
           #info:hover{
             animation: rave2 0.4s infinite;
@@ -184,6 +191,58 @@
             position: absolute;
             top: 85%;
           }
+          #link1{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:50px;
+            right:120px;
+            height: 20px;
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+            font-size: 20px;
+          }
+          #link2{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:100px;
+            right:120px;
+
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+            font-size: 20px;
+          }
+          #shortcut6{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:0;
+            right:120px;
+            width: 30px;
+            height: 20px;
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+          }
+          #nostyle{
+          color: inherit;
+          font: inherit;
+          margin: inherit;
+          text-align: inherit;
+          text-decoration: inherit;
+          }
 
           .img-wrapper {
     display: inline-block; /* change the default display type to inline-block */
@@ -223,6 +282,9 @@
       <br>
       <a id="info" href="info.txt" target="blank">✆</a>
       <br>
+      <div id="shortcut6"><a id="nostyle" href="index6.html">shortcut</a></div>
+      <a id="link1"href="https://ilai.bandcamp.com/" target="_blank">re-simulate</a>
+      <a id="link2" href="https://vimeo.com/351678382" target="_blank">carlas video</a>
       <div id="time" class="noselect" onclick="speedChange();colorChange()">
         ⚙
       </div>
@@ -246,7 +308,7 @@
 
       <br>
       <br>
-          <div id="speedSelector">⚙<input type="range" min="1" max="150" value="50" class="slider" id="speedSlider"></input></div>
+          <div id="speedSelector">⚙<input type="range" min="10" max="200" value="50" class="slider" id="speedSlider"></input></div>
 
       <br>
       <br>
