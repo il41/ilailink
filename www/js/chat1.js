@@ -38,7 +38,25 @@ function newChat(msg){
   chatDiv.className='chat-frame';
   chatUser.textContent=msg.username;
   chatMsg.textContent+=": "+msg.message;
+  chatUser.style.color=nameToColor(msg.username);
+  // chatUser.style.backgroundColor=nameToColor2(msg.username);
+  // chatUser.style.color="rgba(20,140,255)";
   chatDiv.appendChild(chatUser);
   chatDiv.appendChild(chatMsg);
   chat.appendChild(chatDiv);
 }
+
+
+function nameToColor(name){
+  let r = Math.abs(name.charCodeAt(0)-94);
+  let g = Math.abs(name.charCodeAt(1)-94);
+  let b = Math.abs(name.charCodeAt(name.length-1)-94);
+  return "rgb("+r*10+","+g*10+","+b*10+")";
+}
+
+// function nameToColor2(name){
+//   let r = Math.abs(name.charCodeAt(0)-94);
+//   let g = Math.abs(name.charCodeAt(1)-94);
+//   let b = Math.abs(name.charCodeAt(name.length-1)-94);
+//   return "rgb("+r*g*b*r+","+g*g*b*r+","+b*g*b*r+")";
+// }

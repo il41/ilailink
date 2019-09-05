@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
-    <link rel="shortcut icon" href="ilai.ico">
+    <link rel="icon" href="favicon.ico">
     <style>
     body{
       background-image: url("images/dude.png");
@@ -34,12 +34,20 @@
       #chat{
         background-color: white;
         width: 40vw;
+        padding: 5px;
+        border-radius: 10px;
       }
       .chat-frame{
         padding:2px;
         margin:2px;
         border-radius: 10px;
         background-color: aqua;
+      }
+      .chat-user{
+        padding:2px;
+        background-color: white;
+        font-family: sans-serif;
+        text-shadow: 1px 1px #000000;
       }
 
       .box{
@@ -60,9 +68,11 @@
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=index.html>main page</a></li>
-    <li> • <a href=audio/august19/>main page</a></li>
+    <li> • <a href=audio/be2v3.mp3 target="_blank">main page</a></li>
+
     <br><br>
-    <div id='chat'></div>
+
+    <div id='chat'><br></div>
     <div id='input'>
       <input id='user' type='text' placeholder="username">
       <input id='message' type='text' placeholder="type your message here">
