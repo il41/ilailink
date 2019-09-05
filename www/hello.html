@@ -31,6 +31,16 @@
         padding: 10px;
         cursor:pointer;
       }
+      #chat{
+        background-color: white;
+        width: 40vw;
+      }
+      .chat-frame{
+        padding:2px;
+        margin:2px;
+        border-radius: 10px;
+        background-color: aqua;
+      }
 
       .box{
         display:inline-block;
@@ -51,6 +61,14 @@
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=audio/august19/>main page</a></li>
+    <br><br>
+    <div id='chat'></div>
+    <div id='input'>
+      <input id='user' type='text' placeholder="username">
+      <input id='message' type='text' placeholder="type your message here">
+      <button id='enterbutton'>enter</button>
+    </div>
+    <br><br>
     <br><br>
       <div id="colorButton">color</div>
     <div id="hidden">♫ click to stream audio ♫</div>
@@ -130,6 +148,8 @@
       };
 
     </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat1.js"></script>
 
   </body>
 </html>
