@@ -13,7 +13,7 @@ app.use( express.static(__dirname+'/www') )
 let recentMessages = [];
 function recordMessage(msg){
   recentMessages.push(msg);
-  if(recentMessages.length>10){
+  if(recentMessages.length>20){
     recentMessages.shift();
   }
 }
