@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ilai.link</title>
+    <link rel="shortcut icon" href="ilai.ico">
+    <style>
+    body{
+      background-image: url("images/dude.png");
+    }
+      audi{
+        display:inline;
+        margin:auto;
+      }
+      #hidden{
+        background-color: black;
+        color:aqua;
+        display:inline;
+        margin: auto;
+        text-align: center;
+        padding:10px;
+      }
+      #hide{
+        display:none;
+      }
+
+      #colorButton{
+        display:inline;
+        background-color: aqua;
+        margin: 10px;
+        padding: 10px;
+        cursor:pointer;
+      }
+
+      .box{
+        display:inline-block;
+        margin:1px;
+        padding:10px;
+        text-decoration-color: white;
+      }
+
+    </style>
+  </head>
+  <body>
+    <i>index of ilai.link</i>
+    <br>
+    <br>
+    <li> • <a href=index.html>main page</a></li>
+    <li> • <a href=index.html>main page</a></li>
+    <li> • <a href=index.html>main page</a></li>
+    <li> • <a href=index.html>main page</a></li>
+    <li> • <a href=index.html>main page</a></li>
+    <li> • <a href=audio/august19/>main page</a></li>
+    <br><br>
+      <div id="colorButton">color</div>
+    <div id="hidden">♫ click to stream audio ♫</div>
+    <div id="audi"> <audio id="hide" src="audio/august19/08282019pairedreturn.mp3" controls></audio></div>
+
+    <script>
+      let b = document.getElementById("hide");
+      let a = document.getElementById("hidden").addEventListener('click',()=>{
+        b.style.display = "inline";
+      });
+
+      // let cb = document.getElementById("colorButton");
+      // cb.addEventListener("mouseover",()=>{
+      //   function change(item){
+      //     item.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16)
+      //   }
+      //   let boxes = document.querySelectorAll(".box");
+      //   boxes.forEach(change);
+      //
+      // })
+
+
+    </script>
+
+    <script>
+    let amount = 1001;
+    let divs = [];
+      function squares(amt){
+        for(let i = 0; i<amt; i++){
+          let a = document.createElement("a");
+          a.setAttribute("id", "div"+i);
+          a.setAttribute("class","box");
+          a.textContent = i;
+          document.body.appendChild(a);
+
+        }
+      }
+      function populate(amt){
+        for(let i = 0; i<amt; i++){
+          let a = document.getElementById("div"+i);
+          divs.push(a);
+
+        }
+      }
+      divs.forEach(cycle);
+
+      function cycle(item,index){
+        let a = document.querySelectorAll(".box");
+          a.forEach(color);
+      }
+
+      function color(item){
+
+
+        item.style.color='#'+Math.random().toString(16).slice(-6)
+        if(item.innerHTML){
+        //  item.style.backgroundColor="aqua";
+          item.style.backgroundColor="#"+item.innerHTML;
+          item.style.backgroundColor="rgba(item.innerHTML,item.innerHTML/2,item.innerHTML/3),1";
+          // item.setAttribute("href","audio/august19/08282019pairedreturn.mp3");
+          item.setAttribute("href","http://ilai.link/hello2.html");
+          item.target="_blank";
+          //item.href="http://ilai.link";
+        }
+      }
+
+      squares(amount);
+      populate(amount);
+      cycle();
+
+      let cb = document.querySelectorAll(".box");
+      for (let i =0;i<cb.length;i++){
+        cb[i].addEventListener("mouseover",()=>{
+          cb[i].style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16);
+          }
+        )
+      };
+
+    </script>
+
+  </body>
+</html>
