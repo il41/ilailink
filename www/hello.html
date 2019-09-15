@@ -52,6 +52,11 @@
         top:0;
         right:3em;
       }
+      #monitor{
+        position:absolute;
+        top:3em;
+        right:3em;
+      }
       .chat-frame{
         padding:2px;
         margin:2px;
@@ -114,6 +119,7 @@
     <div id="hidden">♫ click to stream audio ♫</div>
     <div id="audi"><br> <audio id="hide" src="audio/august19/08282019pairedreturn.mp3" controls></audio></div>
     <a href=helloworld.html><img id="kuramon"src="images/kuramon.gif"></a>
+
     <script>
       let b = document.getElementById("hide");
       let a = document.getElementById("hidden").addEventListener('click',()=>{
@@ -226,6 +232,6 @@
     </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/chat1.js"></script>
-
+    <a href=monitors.html><iframe id="monitor"src="monitor.html" width="400" height="100"></iframe</a>
   </body>
 </html>
