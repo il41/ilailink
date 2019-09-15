@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body{
+        margin:0;
+        padding:0;
+        background-color:black;
+        color:white;
+      }
+      iframe{
+        background-color: grey;
+        display:block;
+      }
+      div{
+        /* display:inline; */
+        margin: 20px;
+        margin-bottom: 1px;
+        font-family: monospace;
+      }
+      span{
+        display:inline;
+      }
+    </style>
+  </head>
+  <body>
+
+    <script>
+      for(let i=0;i<5;i++){
+        let cont=document.createElement('span');
+
+        let txt=document.createElement('div');
+        txt.textContent=i;
+        txt.width="400";
+        txt.height="100";
+        txt.id="txt"+i;
+        txt.className="txtClass";
+        cont.appendChild(txt);
+
+        let mon=document.createElement('iframe');
+        mon.src="monitor.html";
+        mon.width="400";
+        mon.height="100";
+        mon.id="monitor"+i;
+        cont.appendChild(mon);
+        document.body.appendChild(cont);
+      }
+
+
+      let x = 0;
+      let readouts = document.querySelectorAll(".txtClass");
+      console.log(readouts);
+      setInterval(()=>{
+        x++;
+        readouts.forEach(randomize)
+        document.title=(x.toString(2));
+      },10);
+      readouts.forEach(randomize);
+      function randomize(item){
+        item.textContent=Math.floor(1234567890*Math.random());
+      }
+
+    </script>
+
+  </body>
+</html>
