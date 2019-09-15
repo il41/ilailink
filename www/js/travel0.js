@@ -7,7 +7,7 @@ let startVar = 1;
 
 function preload() {
   soundFormats('mp3');
-  mysound = loadSound('audio/plasticv1.mp3');
+  mysound = loadSound('audio/8000/angels002 8000Hz.mp3');
   mysound.setVolume(1);
 
 }

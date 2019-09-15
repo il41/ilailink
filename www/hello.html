@@ -30,12 +30,27 @@
         margin: 10px;
         padding: 10px;
         cursor:pointer;
+        border-radius: 15px;
+        font-family: monospace;
+        font-size: 20px;
+        border-style: double;
+      }
+      #colorButton:active{
+        border-style: inset;
       }
       #chat{
-        background-color: white;
+        background-color: grey;
         width: 40vw;
         padding: 5px;
         border-radius: 10px;
+        height: 20vw;
+        overflow-y: scroll;
+      }
+
+      #kuramon{
+        position:absolute;
+        top:0;
+        right:3em;
       }
       .chat-frame{
         padding:2px;
@@ -49,6 +64,11 @@
         font-family: sans-serif;
         text-shadow: 1px 1px #000000;
       }
+      .chat-message{
+        /* display: inline-block; */
+        width: 40vw;
+        overflow: scroll;
+      }
 
       .box{
         display:inline-block;
@@ -56,6 +76,16 @@
         padding:10px;
         text-decoration-color: white;
       }
+
+      .no-select {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
 
     </style>
   </head>
@@ -68,7 +98,7 @@
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=index.html>main page</a></li>
     <li> • <a href=index.html>main page</a></li>
-    <li> • <a href=audio/be2v3.mp3 target="_blank">main page</a></li>
+    <li> • <a href=audio/be2v3.mp3 target="_blank">be</a></li>
 
     <br><br>
 
@@ -80,28 +110,34 @@
     </div>
     <br><br>
     <br><br>
-      <div id="colorButton">color</div>
+      <div id="colorButton" class="no-select">color</div>
     <div id="hidden">♫ click to stream audio ♫</div>
-    <div id="audi"> <audio id="hide" src="audio/august19/08282019pairedreturn.mp3" controls></audio></div>
-
+    <div id="audi"><br> <audio id="hide" src="audio/august19/08282019pairedreturn.mp3" controls></audio></div>
+    <a href=helloworld.html><img id="kuramon"src="images/kuramon.gif"></a>
     <script>
       let b = document.getElementById("hide");
       let a = document.getElementById("hidden").addEventListener('click',()=>{
         b.style.display = "inline";
       });
 
-      // let cb = document.getElementById("colorButton");
-      // cb.addEventListener("mouseover",()=>{
-      //   function change(item){
-      //     item.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16)
-      //   }
-      //   let boxes = document.querySelectorAll(".box");
-      //   boxes.forEach(change);
-      //
-      // })
+      let colorButton = document.getElementById("colorButton");
+
+      colorButton.addEventListener("click",()=>{
+        function change(item){
+          if(item.textContent>6){
+            item.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16)
+          } else{
+            item.style.fontSize='400% '
+          }
+        }
+        let boxes = document.querySelectorAll(".box");
+        boxes.forEach(change);
+
+      })
 
 
     </script>
+    <br><br>
 
     <script>
     let amount = 1001;
@@ -160,19 +196,32 @@
     </script>
     <script>
       let zero = document.querySelector("#div0")
-      zero.setAttribute("href","http://ilai.link/hello2.html");
+      zero.setAttribute("href","hello0.html");
+      zero.style.backgroundColor="aqua";
 
       let one = document.querySelector("#div1")
-      one.setAttribute("href","http://ilai.link/spiral1.html");
+      one.setAttribute("href","spiral1.html");
+      one.style.backgroundColor="aqua";
 
       let two = document.querySelector("#div2")
-      two.setAttribute("href","http://ilai.link/spiral2.html");
+      two.setAttribute("href","spiral2.html");
+      two.style.backgroundColor="aqua";
 
       let three = document.querySelector("#div3")
-      three.setAttribute("href","http://ilai.link/spiral3.html");
+      three.setAttribute("href","spiral3.html");
+      three.style.backgroundColor="aqua";
 
       let four = document.querySelector("#div4")
-      four.setAttribute("href","http://ilai.link/temporal.html");
+      four.setAttribute("href","temporal.html");
+      four.style.backgroundColor="aqua";
+
+      let five = document.querySelector("#div5")
+      five.setAttribute("href","rings.html");
+      five.style.backgroundColor="aqua";
+
+      let six = document.querySelector("#div6")
+      six.setAttribute("href","b-city.html");
+      six.style.backgroundColor="aqua";
 
     </script>
     <script src="/socket.io/socket.io.js"></script>
