@@ -130,7 +130,7 @@
 
       colorButton.addEventListener("click",()=>{
         function change(item){
-          if(item.textContent>6){
+          if(item.textContent>7){
             item.style.backgroundColor='#'+Math.floor(Math.random()*16777215).toString(16)
           } else{
             item.style.fontSize='400% '
@@ -228,6 +228,10 @@
       let six = document.querySelector("#div6")
       six.setAttribute("href","b-city.html");
       six.style.backgroundColor="aqua";
+
+      let seven = document.querySelector("#div7")
+      seven.setAttribute("href","c-city.html");
+      seven.style.backgroundColor="aqua";
 
     </script>
     <script src="/socket.io/socket.io.js"></script>
