@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    html{
+      background-image: linear-gradient(to bottom right, lightblue, blue);
+    }
+    body{
+      background-image:url("c64fb.png");
+    }
+    #portal3{
+      width:150px;
+      height:85px;
+    }
+    #portal2{
+      width:150px;
+      height:85px;
+    }
+    #portal1{
+      width:150px;
+      height:85px;
+    }
+    #navi{
+      display:inline;
+    }
+  </style>
+  <body>
+    <div id=#navi>
+      <a href="../hello.html"><img id="portal3" src="../images/remove3.png"></a>
+      <a href="../remove2.html"><img id="portal2" src="../images/remove2.png"></a>
+      <a href="../remove1.html"><img id="portal1" src="../images/remove1.png"></a>
+    </div>
+    <img id="hurry" width="200px"src="../images/hurry.png">
+  </body>
+  <script>
+    let e = document.querySelector("#hurry");
+    // let clone = e.cloneNode(true);
+    for(let i = 0; i<200; i++){
+      let clone = e.cloneNode(true);
+      // clone.style.width=i+"px";
+      document.body.appendChild(clone);
+      }
+
+  </script>
+</html>

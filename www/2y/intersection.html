@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body{margin:0; background-color: #fff;}
+      img{width:100vw;}
+      a{margin:400px};
+      #pwr{width:20vw; text-align: center; margin:auto;}
+    </style>
+  </head>
+  <body>
+    <img id ="inter"src="intersection.png">
+    <a href="glass.html"><img id="pwr" src="powerranger.png"></a>
+    <script>
+
+    let b = document.querySelector('#inter');
+    document.body.style.backgroundColor = "white";
+    b.addEventListener('click',()=>{
+      if(document.body.style.backgroundColor == "white"){
+        document.body.style.backgroundColor="black";
+      } else {
+      document.body.style.backgroundColor="white";
+    }
+  });
+    </script>
+  </body>
+</html>
