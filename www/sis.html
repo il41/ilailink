@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    html{
+      background-image: linear-gradient(to bottom right, lightblue, blue);
+    }
+    body{
+      background-image:url("c64fb.png");
+    }
+    #portal3{
+      width:150px;
+      height:85px;
+    }
+    #portal2{
+      width:150px;
+      height:85px;
+    }
+    #portal1{
+      width:150px;
+      height:85px;
+    }
+    #navi{
+      display:inline;
+    }
+  </style>
+  <body>
+    <div id=#navi>
+    </div>
+    <a id="sivan" href="sis2.html"><img width="200px"src="images/siv/sivan-transparent.png"></a>
+  </body>
+  <script>
+    window.alert('welcome');
+    let e = document.querySelector("#sivan");
+    // let clone = e.cloneNode(true);
+    for(let i = 0; i<200; i++){
+      let clone = e.cloneNode(true);
+      // clone.style.width=i+"px";
+      document.body.appendChild(clone);
+      }
+
+  </script>
+</html>

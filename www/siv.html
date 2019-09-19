@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>S-Portal</title>
+    <style>
+      body{
+        background-color:aquamarine;
+        word-wrap: break-word;
+      }
+      #toolbar{
+        font-style: italic;
+        font-family: sans-serif;
+        font-size: 300px;
+        color:white;
+        background-color:black;
+        display: inline;
+        border-radius: 50px;
+      }
+      #button{
+        font-size: 40px;
+        font-family: sans-serif;
+        margin:10px;
+        margin-left: 40px;
+        padding:20px;
+        border-radius: 30px;
+        background-color: #FF00FF;
+        display: inline;
+        font-style: normal;
+
+      }
+      .sivan{
+        width:100px;
+        height:100px;
+        border-radius:20px;
+        display:inline-block;
+        padding:5px;
+        margin:10px;
+        font-size: 40px;
+      }
+
+
+      .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="noselect"id="toolbar">91819</div>
+    <div class="noselect"id="button"> click </div>
+    <br>
+    <script>
+      let toolbar = document.querySelector('#toolbar');
+      let birthArr = [];
+      let birthString = "happy birthday ssivvann !!!!";
+      for(let i = 0;i<birthString.length;i++){
+        birthArr.push(birthString[i]);
+      }
+      let button = document.querySelector('#button');
+      button.addEventListener('click',birth);
+
+      let loopID;
+      let loop = document.querySelector('#loop-button');
+      button.addEventListener('click',()=>{
+        loopID = setInterval(birth, 200);
+        toolbar.style.opacity=Math.random()/2;
+        toolbar.style.fontSize="20px";
+
+      });
+
+
+      function birth(){
+        document.body.querySelectorAll('.sivan').forEach(clear);
+        for(let i=0;i<100;i++){
+          let s=document.createElement("div")
+          s.className="sivan";
+          s.id="sivan"+i;
+          s.innerHTML=birthArr[Math.floor(Math.random()*(birthArr.length-1))];
+          s.style.backgroundColor="#"+Math.floor(Math.random()*165534).toString(16);
+          document.body.appendChild(s);
+        }
+      }
+      function clear(item){
+        item.parentNode.removeChild(item);
+      }
+
+
+    </script>
+  </body>
+</html>
