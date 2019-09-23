@@ -76,7 +76,21 @@
         height:200px;
         transition: 100ms;
       }
-
+      #cellportal{
+        position:absolute;
+        top:35em;
+        right:4em;
+        height:200px;
+        transition: 100ms;
+        width:4rem;
+        height:4rem;
+        animation: rave 1s infinite;
+      }
+      @keyframes rave
+      {
+        from{opacity: 0;}
+          to{opacity: 1;}
+      }
 
       .chat-frame{
         padding:2px;
@@ -142,6 +156,7 @@
     <a href=helloworld.html><img id="kuramon"src="images/kuramon.gif"></a>
     <a href=2y/bos.html><img id="yportal"src="images/remove3.png"></a>
     <a href=sportal.html><img id="sportal"src="images/sparklecursor1.gif"></a>
+    <a href=cell.html><img id="cellportal"src="favicon.ico"></a>
 
     <script>
       let b = document.getElementById("hide");
