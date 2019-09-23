@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cell</title>
+    <script src="p5.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <style>
+      body{
+          margin:0;
+      }
+
+      .wrapper {
+
+          width: 30%;
+          height: 400px;
+          background-color: #fb4a9c;
+          margin: 0px auto;
+          padding: 50px;
+          margin-top: 100px;
+          border-radius: 20%;
+      }
+
+
+      .row {
+          height: 20%;
+        <!-- background-color: rgba(255, 0, 0, 0.2);
+        border-radius:10%; -->
+      }
+
+      .row::after{
+          content:"";
+          display: block;
+          clear: both;
+      }
+
+      .box {
+          float: left;
+          width: 19%;
+          height: 76%;
+          margin: 2% 3%;
+          border-radius: 25%;
+          background-color: #69a3c1;
+          background-size: contain;
+          transition: 0.2s;
+      }
+
+      .box:hover {
+          transform: scale(1.2);
+      }
+
+      .frog {
+          background-image: url("images/identify.png");
+          background-size:contain;
+      }
+      iframe{
+        display: inline-block;
+        margin: auto;
+
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!--Row 1-->
+    <div class="row">
+        <a href="images/identify.png" target="_blank"><div class="box frog"></div></a>
+        <a href ="images/adaptive.png" target"_blank"><div class="box" style="background-image:url(images/adaptive.png)"></div></a>
+        <a href ="monitor.html" target"_blank"><iframe src = "monitor.html"class="box"></iframe></a>
+        <a href ="images/vertz.png"><div class="box" style="background-image:url(images/vertz.png);background-size:cover;"></div></a>
+    </div>
+    <!--Row 2-->
+    <div class="row">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+    </div>
+    <!--Row 3-->
+    <div class="row">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+    </div>
+    <!--Row 4-->
+    <div class="row">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

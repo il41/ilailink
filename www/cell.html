@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cell</title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <style>
+      body{
+          margin:0;
+          background-image: url("images/dude.png");
+          background-size: 700vh;
+      }
+      input{
+        border: 20px black;
+        margin:20px;
+        background-color: black;
+      }
+      .wrapper {
+
+          width: 25%;
+          height: 31vw;
+          background-color: #fb4a9c;
+          margin: 0px auto;
+          padding: 50px;
+          margin-top: 100px;
+          border-radius: 20%;
+      }
+
+
+      .row {
+          height: 20%;
+          /* background-color: rgba(255, 0, 0, 0.2);
+        border-radius:10%; */
+      }
+
+      .row::after{
+          content:"";
+          display: block;
+          clear: both;
+      }
+
+      .box {
+          float: left;
+          width: 19%;
+          height: 76%;
+          margin: 2% 3%;
+          border-radius: 25%;
+          background-color: #69a3c1;
+          background-size: contain;
+          transition: 0.2s;
+          text-align: center;
+          font-family: sans-serif;
+
+
+      }
+
+      .box:hover {
+          transform: scale(1.1);
+      }
+
+      .frog {
+          background-image: url("images/identify.png");
+          background-size:contain;
+      }
+      iframe{
+        display: inline-block;
+        margin: auto;
+      }
+
+      #addToggle{
+        background-color: lightgreen;
+        position:absolute;
+        top: 2rem;
+        right: 10vw;
+        padding:2%;
+        border-radius: 25%;
+        display: inline;
+        user-select: none;
+        width:2rem;
+        height:2rem;
+        font-family: sans-serif;
+        font-size: 1rem;
+
+      }
+
+      #play, #stop, #reverse, #forwards{
+      background-color: lightblue;
+      font-size: 1rem;
+      background: linear-gradient(black, white);
+      color: white;
+      }
+      /* #stop{
+      background-color: lightblue;
+      }
+      #reverse{
+      background-color: lightblue;
+      }
+      #forwards{
+      background-color: lightblue;
+      } */
+      #force1 {
+        background-color: white;
+          background-image: url("images/wireup.png");
+          background-size:cover;
+      }
+      #force2 {
+          background-image: url("images/horiz.png");
+          background-size:cover;
+      }
+      #force3 {
+          background-image: url("images/vertz.png");
+          background-size:cover;
+      }
+      #force4 {
+          background-image: url("images/liquid.png");
+          background-size:cover;
+      }
+
+      #sweep1{
+        background-image:url("images/adaptive.png");
+        background-size: 350px;
+        transform:scaleX(-1);
+
+      }
+      #sweep1rev{
+        background-image:url("images/adaptive.png");
+        background-size: auto;
+        background-size: 450px;
+        transform:scaleY(-1);
+      }
+      #sweep2{
+        background-image:url("images/adaptive.png");
+        background-position: right;
+        background-size: 500px;
+      }
+      #sweep2rev{
+        background-image:url("images/adaptive.png");
+        background-size: auto;
+        background-size: 590px;
+      }
+      #attak1{
+        background-image:url("images/k1.png");
+        background-size: 100%;
+        /* background-size: 590px; */
+      }
+      #attak1rev{
+        background-image:url("images/k1.png");
+        background-size: 590px;
+      }
+      #attak2{
+        background-image:url("images/tb3032.png");
+        background-size: 690px;
+        transform:scaleX(-1);
+        transform:scaleY(-1);
+      }
+      #attak2rev{
+        background-image:url("images/tb3032.png");
+        background-size: 690px;
+        transform:scaleX(-1);
+        transform:scaleX(-1);
+      }
+      #attak3{
+        background-image:url("images/tb3032.png");
+        background-size: auto;
+        background-size: 590px;
+      }
+      #attak4{
+        background-image:url("images/tb3032.png");
+        background-size: 290px;
+        transform:scaleX(-1);
+        transform:scaleY(-1);
+      }
+      #attak5{
+        background-image:url("images/tb3032.png");
+        background-size: auto;
+        background-size: 190px;
+      }
+      #voice1{
+        background-image:url("images/adaptive.png");
+        background-size:200%;
+        background-position: bottom left;
+      }
+      #attak2,#attak3,#attak4,#attak5 {
+        background-color: hotpink;
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!--Row 1-->
+    <div class="row">
+        <div class="box" id="play">play</div>
+        <div class="box" id= "stop">stop</div>
+        <div class="box" id= "reverse">reverse</div>
+        <div class="box" id= "forwards">forwards<br>/add</div>
+    </div>
+    <!--Row 2-->
+    <div class="row">
+        <div class="box" id="force1"></div>
+        <div class="box" id="force2"></div>
+        <div class="box" id="force3"></div>
+        <div class="box" id="force4"></div>
+    </div>
+    <!--Row 3-->
+    <div class="row">
+        <div class="box" id="sweep1"></div>
+        <div class="box" id="sweep1rev"></div>
+        <div class="box" id="sweep2"></div>
+        <div class="box" id=sweep2rev></div>
+    </div>
+    <!--Row 4-->
+    <div class="row">
+      <div class="box" id="attak2"></div>
+        <div class="box" id=attak3></div>
+        <div class="box" id=attak4></div>
+        <div class="box" id=attak5></div>
+
+    </div>
+    <!--Row 5-->
+    <div class="row">
+      <div class="box" id="attak2rev"></div>
+      <div class="box" id="attak1"></div>
+      <div class="box" id="attak1rev"></div>
+
+
+      <div class="box" id=voice1></div>
+
+    </div>
+
+</div>
+
+
+<script>
+let sounds = [];
+let sliders = [];
+let add = false;
+
+let force1
+let force2
+let force3
+let force4
+let sweep1
+let sweep2
+let attak1
+let attak2
+let voice1
+let voice2
+function setup(){
+  for(let i = 1; i<8;i++){
+    sounds[i] = loadSound("samples/wave"+i+".mp3"),()=>{sounds[i].stop();sounds[i].setVolume(1);}
+    sliders[i] = createSlider(0,1,0,0.01);
+    sliders[i].position(0,i*20)
+  }
+  sliders[1].value(1);
+
+  force1=loadSound("samples/force1.mp3",(()=>{force1.stop();force1.setVolume(1);}));
+  force2=loadSound("samples/force2.mp3",(()=>{force2.stop();force2.setVolume(1);}));
+  force3=loadSound("samples/force3.mp3",(()=>{force3.stop();force3.setVolume(1);}));
+  force4=loadSound("samples/force4.mp3",(()=>{force4.stop();force4.setVolume(1);}));
+
+  sweep1=loadSound("samples/sweep1.mp3",(()=>{sweep1.stop();sweep1.setVolume(1);}));
+  sweep2=loadSound("samples/sweep2.mp3",(()=>{sweep2.stop();sweep2.setVolume(1);}));
+
+  attak1=loadSound("samples/attak1.mp3",(()=>{attak1.stop();attak1.setVolume(1);}));
+  attak2=loadSound("samples/attak2.mp3",(()=>{attak2.stop();attak2.setVolume(1);}));
+
+  voice1=loadSound("samples/voice1.mp3",(()=>{voice1.stop();voice1.setVolume(1.2);}));
+  // voice2=loadSound("samples/voice2.mp3",(()=>{voice2.stop();voice2.setVolume(1);}));
+
+}
+
+let playButton=document.querySelector("#play");
+playButton.addEventListener('click',sync);
+function sync(){
+  for(let i = 1; i<8;i++){
+    sounds[i].stop();
+    sounds[i].loop();
+    sounds[i].play();
+  }
+}
+
+let stopButton=document.querySelector("#stop");
+stopButton.addEventListener('click',stop);
+function stop(){
+  for(let i = 1; i<8;i++){
+    sounds[i].stop();
+  }
+}
+
+let reverseButton=document.querySelector("#reverse");
+reverseButton.addEventListener('click',reverse);
+function reverse(){
+  for(let i = 1; i<8;i++){
+    sounds[i].rate(-1);
+  }
+}
+
+let forwardsButton=document.querySelector("#forwards");
+forwardsButton.addEventListener('click',forwards);
+function forwards(){
+  for(let i = 1; i<8;i++){
+    sounds[i].rate(1);
+    if(add==true){
+      sounds[i].loop();
+    }
+  }
+}
+
+let force1Button=document.querySelector("#force1");
+force1Button.addEventListener('click',()=>{force1.play()});
+
+let force2Button=document.querySelector("#force2");
+force2Button.addEventListener('click',()=>{force2.play()});
+
+let force3Button=document.querySelector("#force3");
+force3Button.addEventListener('click',()=>{force3.play()});
+
+let force4Button=document.querySelector("#force4");
+force4Button.addEventListener('click',()=>{force4.play()});
+
+
+let sweep1Button=document.querySelector("#sweep1");
+sweep1Button.addEventListener('click',()=>{sweep1.rate(1);sweep1.play()});
+
+let sweep2Button=document.querySelector("#sweep1rev");
+sweep2Button.addEventListener('click',()=>{sweep1.rate(-1);sweep1.play()});
+
+let sweep3Button=document.querySelector("#sweep2");
+sweep3Button.addEventListener('click',()=>{sweep2.rate(1);sweep2.play()});
+
+let sweep4Button=document.querySelector("#sweep2rev");
+sweep4Button.addEventListener('click',()=>{sweep2.rate(-1);sweep2.play()});
+
+
+
+let attak1Button=document.querySelector("#attak1");
+attak1Button.addEventListener('click',()=>{attak1.rate(1);attak1.play()});
+
+let attak2Button=document.querySelector("#attak1rev");
+attak2Button.addEventListener('click',()=>{attak1.rate(-1);attak1.play()});
+
+let attak3Button=document.querySelector("#attak2");
+attak3Button.addEventListener('click',()=>{attak2.rate(2.02);attak2.play()});
+
+let attak4Button=document.querySelector("#attak2rev");
+attak4Button.addEventListener('click',()=>{attak2.rate(-1);attak2.play()});
+
+let attak5Button=document.querySelector("#attak3");
+attak5Button.addEventListener('click',()=>{attak2.rate(1.51);attak2.play()});
+
+let attak6Button=document.querySelector("#attak4");
+attak6Button.addEventListener('click',()=>{attak2.rate(1.8);attak2.play()});
+
+let attak7Button=document.querySelector("#attak5");
+attak7Button.addEventListener('click',()=>{attak2.rate(1.7);attak2.play()});
+
+
+let voice1Button=document.querySelector("#voice1");
+voice1Button.addEventListener('click',()=>{voice1.play()});
+
+
+
+
+let addToggle=document.createElement('div');
+addToggle.id="addToggle";
+addToggle.textContent="toggle add";
+addToggle.addEventListener('click',()=>{
+  if(add==false){
+    add=true
+    addToggle.style.backgroundColor="red";
+  }else{
+    add=false
+    addToggle.style.backgroundColor="lightgreen";
+  };
+})
+document.body.appendChild(addToggle);
+
+
+
+
+function draw(){
+  for(let i=1;i<sounds.length;i++){
+    sounds[i].setVolume(sliders[i].value());
+  }
+}
+
+</script>
+
+</body>
+</html>
