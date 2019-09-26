@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="flx.css">
+  </head>
+  <body>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+    <div class="wrapper">
+      <div class="container1">
+        <div class="box1 b"></div>
+        <div class="box2 b"></div>
+        <div class="box3 b"></div>
+        <div class="box4 b"></div>
+        <div class="box5 b"></div>
+      </div>
+      <div class="container2">
+        <div class="box1 b"></div>
+        <div class="box2 b"></div>
+        <div class="box3 b"></div>
+        <div class="box4 b"></div>
+        <div class="box5 b"></div>
+      </div>
+      <div class="container3">
+        <div class="box1 b"></div>
+        <div class="box2 b"></div>
+        <div class="box3 b"></div>
+        <div class="box4 b"></div>
+        <div class="box5 b"></div>
+      </div>
+    </div>
+    <script>
+      let sound1
+
+      let boxes=[];
+      document.querySelectorAll('.b').forEach((item,i)=>{
+        boxes.push(item);
+        item.id="box"+i;
+        addnote(item,i);
+      });
+      function addnote(e,pitch){
+        e.addEventListener('click',()=>{})
+      }
+
+      function setup(){
+        sound1=loadSound("samples/attak1.mp3",(()=>{force1.stop();force1.setVolume(1);}));
+      }
+
+    </script>
+  </body>
+</html>
