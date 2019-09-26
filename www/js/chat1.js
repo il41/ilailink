@@ -3,8 +3,11 @@ const chat = document.querySelector('#chat');
 const userField = document.querySelector('#user');
 const messageField = document.querySelector('#message');
 const button = document.querySelector('#enterbutton');
+
+let chatWindow = document.getElementById("chat");
 let focus = document.createElement('div');
 focus.id="focus";
+
 button.addEventListener('click',()=>{
   let data= {};
   data.username=userField.value;
@@ -12,9 +15,8 @@ button.addEventListener('click',()=>{
   socket.emit('client chat',data);
   messageField.value="";
   let focus = document.getElementById("focus");
-  let chatWindow = document.getElementById("chat");
   chatWindow.scrollTop = chatWindow.scrollHeight;
-  focus.focus();
+  // focus.focus();
 
 })
 
@@ -27,6 +29,9 @@ socket.on('load recent',(history)=>{
   history.forEach((item)=>{
     newChat(item);
   })
+
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+
 })
 
 socket.on('server chat',(msg)=>{
