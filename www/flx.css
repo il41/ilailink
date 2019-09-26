@@ -59,3 +59,10 @@ html, body{
   height:50px;
   border:2px solid yellow;
 }
+.b{
+  opacity:0.5;
+  transition-duration: 1s;
+}
+.b:onclick{
+  opacity:1;
+}

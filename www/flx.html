@@ -42,11 +42,18 @@
         addnote(item,i);
       });
       function addnote(e,pitch){
-        e.addEventListener('click',()=>{})
+        e.addEventListener('click',()=>{
+          playPitch(sound1,pitch,e);
+        })
       }
 
       function setup(){
-        sound1=loadSound("samples/attak1.mp3",(()=>{force1.stop();force1.setVolume(1);}));
+        sound1=loadSound("samples/attak1.mp3",(()=>{sound1.stop();sound1.setVolume(1);}));
+      }
+      function playPitch(sound,pitch,e){
+        sound.rate(pitch/2);
+        sound.play();
+
       }
 
     </script>
