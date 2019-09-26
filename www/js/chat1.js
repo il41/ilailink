@@ -3,13 +3,19 @@ const chat = document.querySelector('#chat');
 const userField = document.querySelector('#user');
 const messageField = document.querySelector('#message');
 const button = document.querySelector('#enterbutton');
-
+let focus = document.createElement('div');
+focus.id="focus";
 button.addEventListener('click',()=>{
   let data= {};
   data.username=userField.value;
   data.message=messageField.value;
   socket.emit('client chat',data);
   messageField.value="";
+  let focus = document.getElementById("focus");
+  let chatWindow = document.getElementById("chat");
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  focus.focus();
+
 })
 
 
@@ -44,6 +50,7 @@ function newChat(msg){
   chatDiv.appendChild(chatUser);
   chatDiv.appendChild(chatMsg);
   chat.appendChild(chatDiv);
+  chat.appendChild(focus);
 }
 
 
