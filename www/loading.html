@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>loading...</title>
+    <style>
+      html, body{
+        margin:0;
+        margin-top:20vh;
+        background-color:purple;
+        animation: phase 120s;
+      }
+      div {
+        position: absolute;
+        display:flex;
+        margin:auto;
+        width: 100vw;
+        height: 100px;
+        background-color: red;
+        /* animation: example 0.19s infinite; */
+        animation: load 120s, flip 10s infinite;
+
+      }
+      .box{
+        display:inline;
+        width:30px;
+        height:30px;
+      }
+      @keyframes example {
+        0%   {background-color: red;}
+        25%  {background-color: yellow;}
+        50%  {background-color: blue;}
+        100% {background-color: green;}
+      }
+      @keyframes load{
+        from{width:0vw;}
+        to{width:100vw;}
+      }
+      @keyframes flip{
+        0%{background-color: red;}
+        50%{background-color: blue;}
+        100%{background-color: red;}
+      }
+      @keyframes phase{
+        from{background-color:red;}
+        to{background-color:blue;}
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
