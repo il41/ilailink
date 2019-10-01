@@ -114,6 +114,9 @@
             display: inline-block;
             text-decoration: underline;
           }
+          #clock:hover{
+            color:blue;
+          }
           #time{
             font-size: 400%;
             position:static;
@@ -123,6 +126,7 @@
             padding-right: 10px;
             display: none;
           }
+
 
           #playButtonZ{
             font-size: 200%;
@@ -197,7 +201,7 @@
             background-color: white;
             position: absolute;
             z-index: 1;
-            top:50px;
+            top:100px;
             right:120px;
             height: 20px;
             background: blue;
@@ -212,7 +216,7 @@
             background-color: white;
             position: absolute;
             z-index: 1;
-            top:100px;
+            top:150px;
             right:120px;
 
             background: blue;
@@ -227,7 +231,7 @@
             background-color: white;
             position: absolute;
             z-index: 1;
-            top:0;
+            top:200px;
             right:120px;
             width: 30px;
             height: 20px;
@@ -236,7 +240,46 @@
             padding:10px;
             margin:10px;
             border-radius: 10px;
+            transition: all 1s;
           }
+          #shortcut6:hover{
+            background:skyblue;
+            transform: rotate3d(1, 1, 1, 45deg);
+          }
+          #netjam{
+            position:absolute;
+            background-color: white;
+            z-index: 1;
+            top:0px;
+            right:20px;
+            width: 100px;
+            height: 70px;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+
+          }
+          #netjamimage{
+            max-height:130%; max-width:130%;
+            border-radius: 10px;
+          }
+          #cell{
+            position:absolute;
+            z-index: 1;
+            top:0px;
+            right:150px;
+            width: 50px;
+            height: 70px;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+          }
+          #cellimage{
+            /* background-color: white; */
+            max-height:100%; max-width:100%;
+            border-radius: 10px;
+          }
+
           #nostyle{
           color: inherit;
           font: inherit;
@@ -319,6 +362,8 @@
             </audio> <a id="audi" href= "audio/august19/volta.wav" download>⬇︎</a>
             <br>
         </section>
+        <a href="http://netjam.studio"><div id="netjam"><img id="netjamimage"src="images/netjam.png"></div><a>
+          <a href="http://ilai.link/cell.html"><div id="cell"><img id="cellimage"src="favicon.ico"></div><a>
 
         <script id="threejs" src="js/aquatic.js"></script>
 
