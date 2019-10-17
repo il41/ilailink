@@ -10,10 +10,12 @@
         background-image:url(images/flyB.png);
         /* background-size: 100vw; */
         background-size: 200vh;
+        background-repeat: no-repeat;
 
         display:flex;
         justify-content: left;
         flex-wrap: nowrap;
+        /* font-size: 1em; */
       }
       .cont{
         width:100vw;
@@ -29,9 +31,9 @@
         font-family: sans-serif;
       }
       #news{
-        position:absolute;
-        top:20px;
-        left:50vw;
+        /* position:absolute; */
+        /* top:20px;
+        left:50vw; */
         font-family: sans-serif;
         opacity: 0.8;
       }
@@ -43,6 +45,24 @@
         font-family: sans-serif;
         text-decoration: none;
       }
+
+
+      @media screen and (max-width: 491px) {
+        body {
+          background-size: 100vw;
+          background-color:aqua;
+          flex-wrap: wrap;
+        }
+        #news{
+          position:relative;
+          /* top:20px; */
+          /* left:50vw; */
+          opacity: 0.8;
+
+        }
+      }
+
+
     </style>
   </head>
   <body>
