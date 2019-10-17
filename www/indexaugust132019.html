@@ -1,0 +1,371 @@
+<!-- //13 august 2019 -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> ilai's HP </title>
+        <link rel="stylesheet" href="css/styles.css">
+        <style>
+          body{
+           margin: 0;
+           padding: 0;
+           /* background-image: url("images/alien maelstrom.JPG"); */
+            background-image: linear-gradient(to bottom right, aqua, blue);
+           /* background-size: cover; */
+           height: 100%;
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+          }
+          audio{
+            position: absolute;
+            bottom: 0%;
+            left:40%;
+            /* display: inline; */
+            /* box-shadow: 2px 2px 4px 10px #006773; */
+            /* border-radius:0px; */
+            /* z-index: 1; */
+            /* transition:all 0.5s linear; */
+          }
+          #audi{
+            position: absolute;
+            top: 95%;
+            right:4%;
+            color: red;
+            background-color: white;
+            border-radius: 100px;
+          }
+          /* audio:hover, audio:focus, audio:active
+          {
+            box-shadow: 150px 10px 2px rgba(0,0, 0, 40);
+            transform: scale(1.15);
+
+          } */
+
+          a{
+            font-size: 20px;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline;
+          }
+
+          video{
+            opacity:1;
+            margin-top: 10px;
+            transform: scale(0.4);
+          }
+          video:hover{
+            animation: rave2 1s infinite;
+            opacity:0;
+          }
+          @keyframes rave2
+          {
+            from{opacity: 0;}
+              to{opacity: 1;}
+          }
+          #portal{
+            background-color: black;
+            font-size: 300%;
+            position:static;
+            border-radius: 10px;
+            padding: 10px;
+            color:white;
+
+          }
+          #portal:hover{
+            animation: rave2 0.2s infinite;
+          }
+
+          #info{
+
+            font-size: 500%;
+            position:static;
+            background: rgba(255, 255, 255, 20);
+            border-radius: 15px;
+            color:blue;
+          }
+          #info:hover{
+            animation: rave2 0.4s infinite;
+          }
+          #plus{
+            font-size: 300%;
+            position:static;
+            color:blue;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: inline;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+            display: none;
+          }
+          #plus:active{
+            color:red;
+          }
+          #clock{
+            font-size: 200%;
+            position:static;
+            color:white;
+            font-style: normal;
+            font-family: monospace;
+            margin-left: 2px;
+            padding-left: 1px;
+            padding-right: 10px;
+            display: inline-block;
+            text-decoration: underline;
+          }
+          #clock:hover{
+            color:blue;
+          }
+          #time{
+            font-size: 400%;
+            position:static;
+            color:red;
+            margin-left: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: none;
+          }
+
+
+          #playButtonZ{
+            font-size: 200%;
+            position:static;
+            color:blue;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+            cursor:pointer;
+          }
+          #playButtonY{
+            font-size: 200%;
+            position:static;
+            color:green;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+            cursor:pointer;
+          }
+          #playButtonX{
+            font-size: 200%;
+            position:static;
+            color:red;
+            margin-left: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: aliceblue;
+            display: inline-block;
+            border-radius: 100px;
+            border-color: black;
+            border-style: groove;
+            cursor:pointer;
+          }
+          #buttons{
+            position: absolute;
+            top: 85%;
+            right: 40%;
+            border-width: medium;
+
+          }
+          #speedSelector{
+            background-color: white;
+            color: blue;
+
+            display: inline-block;
+            font-size: 300%;
+            padding: 10px;
+            padding-bottom: 5px;
+            padding-top: 1px;
+            border-radius: 20px;
+            position: absolute;
+            top: 85%;
+          }
+          #link1{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:100px;
+            right:120px;
+            height: 20px;
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+            font-size: 20px;
+          }
+          #link2{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:150px;
+            right:120px;
+
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+            font-size: 20px;
+          }
+          #shortcut6{
+            position:absolute;
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top:200px;
+            right:120px;
+            width: 30px;
+            height: 20px;
+            background: blue;
+            color:white;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+            transition: all 1s;
+          }
+          #shortcut6:hover{
+            background:skyblue;
+            transform: rotate3d(1, 1, 1, 45deg);
+          }
+          #netjam{
+            position:absolute;
+            background-color: white;
+            z-index: 1;
+            top:0px;
+            right:20px;
+            width: 100px;
+            height: 70px;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+
+          }
+          #netjamimage{
+            max-height:130%; max-width:130%;
+            border-radius: 10px;
+          }
+          #cell{
+            position:absolute;
+            z-index: 1;
+            top:0px;
+            right:150px;
+            width: 50px;
+            height: 70px;
+            padding:10px;
+            margin:10px;
+            border-radius: 10px;
+          }
+          #cellimage{
+            /* background-color: white; */
+            max-height:100%; max-width:100%;
+            border-radius: 10px;
+          }
+
+          #nostyle{
+          color: inherit;
+          font: inherit;
+          margin: inherit;
+          text-align: inherit;
+          text-decoration: inherit;
+          }
+
+          .img-wrapper {
+    display: inline-block; /* change the default display type to inline-block */
+    overflow: hidden;      /* hide the overflow */
+}
+
+          .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+          }
+          canvas{
+
+            position: absolute; z-index: -1;
+        		left:0px; top:0px;
+        		image-rendering: crisp-edges;
+        		image-rendering: -moz-crisp-edges;
+        		image-rendering: -webkit-optimize-contrast;
+        		image-rendering: optimize-contrast;
+        		-ms-interpolation-mode: nearest-neighbor;
+          }
+          canvas:hover{
+            cursor: cell;
+          }
+        </style>
+    </head>
+    <body>
+      <script src="js/three.min.js"></script>
+      <div id="3dcont">
+
+      </div>
+
+      <br>
+      <a id="info" href="info.txt" target="blank">✆</a>
+      <br>
+      <div id="shortcut6"><a id="nostyle" href="index6.html">shortcut</a></div>
+      <a id="link1"href="https://ilai.bandcamp.com/" target="_blank">re-simulate</a>
+      <a id="link2" href="https://vimeo.com/351678382" target="_blank">kaleidoscoping</a>
+      <div id="time" class="noselect" onclick="speedChange();colorChange()">
+        ⚙
+      </div>
+      <br>
+      <a id="portal" href="index07232019.html">
+        ->
+      </a>
+      <br>
+      <div id="plus" class="noselect" onclick="rotateToggle()">
+        +
+      </div>
+      <br>
+      <a href="hello.html"><div id="clock"><div></div></div></a>
+      <br>
+      <br>
+      <section id=buttons>
+      <div id="playButtonZ">▶</div>
+      <div id="playButtonX">⬇︎</div>
+      <div id="playButtonY">⬅︎</div>
+      </section>
+
+      <br>
+      <br>
+          <div id="speedSelector">⚙<input type="range" min="10" max="200" value="50" class="slider" id="speedSlider"></input></div>
+
+      <br>
+      <br>
+        <section>
+            <audio id="my-audio" controls>
+              <source src= "audio/august19/volta.mp3">
+            </audio> <a id="audi" href= "audio/august19/volta.wav" download>⬇︎</a>
+            <br>
+        </section>
+        <a href="http://netjam.studio"><div id="netjam"><img id="netjamimage"src="images/netjam.png"></div><a>
+          <a href="http://ilai.link/cell.html"><div id="cell"><img id="cellimage"src="favicon.ico"></div><a>
+
+        <script id="threejs" src="js/aquatic.js"></script>
+
+    </body>
+</html>

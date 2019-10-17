@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>music tools</title>
+    <style>
+
+      body{
+        margin:0;
+        padding:0;
+      }
+      .wrapper{
+        height:100vh;
+        width:100vw;
+        display:flex;
+        justify-content:center;
+        flex-wrap:nowrap;
+        flex-direction: row;
+        background-image: url(images/ocean.png);
+
+      }
+
+      .container{
+        /* background-color:aqua; */
+        width:50%;
+        height:65%;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+      #item{
+        animation: pulse 1s infinite;
+      }
+      @keyframe pulse{
+        0%{opacity:0;}
+        100%{opacity:1;}
+      }
+      #netjam{
+        width: 100px;
+        height: 70px;
+        border-radius: 10px;
+        background-image:url(images/netjam.png);
+        background-size:contain;
+      }
+      #cell{
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        background-image:url(favicon.ico);
+        background-size:100%;
+        border-radius: 10px;
+      }
+      #in{
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        background-image:url(images/fly1.gif);
+        background-size:100%;
+        border-radius: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+  <div class="wrapper">
+    <div class="container">
+      <div id="item">
+        <a href="http://netjam.studio"><div id="netjam"></div><a>
+      </div>
+      <div id="item">
+        <a href="http://ilai.link/cell.html"><div id="cell"></div><a>
+      </div>
+      <div id="item">
+        <a href="http://ilai.link/in.html"><div id="in"></div><a>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
