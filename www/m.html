@@ -30,9 +30,12 @@
         align-items: center;
       }
       #item{
+        opacity:1;
+      }
+      #item:hover{
         animation: pulse 1s infinite;
       }
-      @keyframe pulse{
+      @keyframes pulse{
         0%{opacity:0;}
         100%{opacity:1;}
       }
@@ -66,13 +69,13 @@
   <div class="wrapper">
     <div class="container">
       <div id="item">
-        <a href="http://netjam.studio"><div id="netjam"></div><a>
+        <a href="http://netjam.studio"><div id="netjam"></div></a>
       </div>
       <div id="item">
-        <a href="http://ilai.link/cell.html"><div id="cell"></div><a>
+        <a href="http://ilai.link/cell.html"><div id="cell"></div></a>
       </div>
       <div id="item">
-        <a href="http://ilai.link/in.html"><div id="in"></div><a>
+        <a href="http://ilai.link/in.html"><div id="in"></div></a>
       </div>
     </div>
   </div>
