@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ambient c64</title>
+  </head>
+  <style>
+
+    body{
+      margin:0;
+      padding:0;
+    }
+    a{color:red;}
+    .wrapper{
+      height:100vh;
+      width:100vw;
+      display:flex;
+      justify-content:center;
+      flex-wrap:nowrap;
+      flex-direction: row;
+      background-image: url(images/ocean.png);
+
+    }
+
+    .container{
+      /* background-color:aqua; */
+      width:90%;
+      height:100%;
+      display:flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #item{
+      opacity:1;
+    }
+    #item:hover{
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse{
+      0%{opacity:0.6;}
+      50%{opacity:1;}
+      100%{opacity:0.8;}
+    }
+    h1,h2,h3{
+      font-family:sans-serif;
+    }
+    h4{
+      font-family:sans-serif
+    }
+    #installation{
+      padding:20px;
+      margin:10px;
+      border-radius: 20px;
+      background-color: pink;
+    }
+    #waves{
+      line-height: 50%;
+      padding:20px;
+      background-image: linear-gradient(to bottom right, blue, aqua);
+    }
+    #melodies{
+      line-height: 50%;
+      padding:20px;
+      background-image: linear-gradient(to bottom right, aquamarine, green);
+    }
+    #events{
+      line-height: 50%;
+      padding:20px;
+      background-image: linear-gradient(to bottom right, purple, blue);
+    }
+  </style>
+  <body>
+    <h1>ilai's ambient soundware</h1>
+    <h2>for the commodore 64</h2>
+    <h3>and c64 emulators</h3>
+    <h3>2019</h3>
+
+    <div id="installation">
+      <h4>instructions—commodore 64:</h4>
+      <p>these programs are written in BASIC and utilize the SID chip of the commodore 64 computer to generate sounds and music</p>
+      <p>the 1982 commodore 64 computer can be emulated on contemporary computers: use the <a href="http://vice-emu.sourceforge.net/">Versatile Commodore Emulator</a>, or VICE, to load the provided program files rather than typing them in as you would normally do if you are using a hardware C64</p>
+      <p>the windows version of VICE can load snapshots of code. the mac version works fine but you will have to type in the code.</p>
+      <h4>instructions—emulator:</h4>
+      <p>download WinVICE and run the x64.exe</p>
+      <p>if you are on mac, either download the mac version and type in the code, or use <a href="https://www.winehq.org/" target="_blank">WINE</a> to run VICE's x64.exe ((make sure to install <a href="https://www.xquartz.org/">XQuartz</a> for WINE to run))</p>
+    </div>
+
+    <div id="waves">
+      <h3>waves</h3>
+      <p>type in this code:</p>
+      <code>
+        10 SID = 54272
+        <br>
+        20 FOR I= 0 TO 28 POKE SID+I,0:NEXT
+        <br>
+        30 POKE SID+23,1:POKE SID+22,0
+        <br>
+        40 POKE SID+21,128
+        <br>
+        50 A%=INT(RND(1)*2)+13:D%=0
+        <br>
+        60 S%=INT(RND(1)*2)+13:R%=15
+        <br>
+        70 DR%=(A%+D%)*200
+        <br>
+        80 DE%=DR%+(R%*500)
+        <br>
+        90 P%=255
+        <br>
+        100 POKE SID+24,70
+        <br>
+        110 POKE SID+1,P%
+        <br>
+        120 POKE SID+5,A%*16+D%
+        <br>
+        130 POKE SID+6,S%*16+R%
+        <br>
+        140 POKE SID+4,1+128
+        <br>
+        150 FOR I=0 TO DR%:NEXT
+        <br>
+        160 POKE SID+4,128
+        <br>
+        170 FOR I=0 TO DE%:NEXT
+        <br>
+        180 GOTO 30
+        <br>
+      </code>
+      <p>type RUN to start the program!</p>
+      <p>if you don't want to type in the code, open <a href="images/64/waves.vsf" download>this</a> file and load it as a snapshot in VICE</p>
+    </div>
+
+    <div id="melodies">
+      <h3>melodies</h3>
+      <p>type in this code:</p>
+      <code>
+        10 SID = 54272
+        <br>
+        20 FOR I=0 TO 24:POKE SID+I,0:NEXT
+        <br>
+        30 POKE SID+23,1:POKE SID+22,0
+        <br>
+        40 POKE SID+21,70
+        <br>
+        50 A%=INT(RND(1)*15):D%=INT(RND(1)*15)
+        <br>
+        60 S%=INT(RND(1)*15):R%=INT(RND(1)*15)
+        <br>
+        70 DR%=(A%+D%)*20
+        <br>
+        80 DE%=DR%+(R%*200)
+        <br>
+        90 P%=INT(RND(1)*40)*3
+        <br>
+        100 POKE SID+24,70
+        <br>
+        110 POKE SID+1,P%
+        <br>
+        120 POKE SID+5,A%*16+D%
+        <br>
+        130 POKE SID+6,S%*16+R%
+        <br>
+        140 POKE SID+4,1+16
+        <br>
+        150 FOR I=0 TO DR%:NEXT
+        <br>
+        160 POKE SID+4,16
+        <br>
+        170 FOR I=0 TO DE%:NEXT
+        <br>
+        180 GOTO 30
+        <br>
+      </code>
+      <p>type RUN to start the program!</p>
+      <p>if you don't want to type in the code, open <a href="images/64/melodies.vsf" download>this</a> file and load it as a snapshot in VICE</p>
+    </div>
+
+    <div id="events">
+      <h3>events</h3>
+      <p>type in this code:</p>
+      <code>
+        10 SID = 54272
+        <br>
+        20 FOR I=0 TO 24:POKE SID+I,0:NEXT
+        <br>
+        30 POKE SID+23
+        <br>
+        40 POKE SID+21,128:POKE SID+22,128
+        <br>
+        50 A%=INT(RND(1)*15):D%=INT(RND(1)*15)
+        <br>
+        60 S%=INT(RND(1)*15):R%=INT(RND(1)*15)
+        <br>
+        70 DR%=(A%+D%)*20
+        <br>
+        80 DE%=DR%+(R%*200)
+        <br>
+        90 P%=INT(RND(1)*40)*3
+        <br>
+        100 POKE SID+24,70
+        <br>
+        110 POKE SID+1,P%
+        <br>
+        120 POKE SID+5,A%*16+D%
+        <br>
+        130 POKE SID+6,S%*16+R%
+        <br>
+        140 POKE SID+4,1+128
+        <br>
+        150 FOR I=0 TO DR%:NEXT
+        <br>
+        160 POKE SID+4,128
+        <br>
+        170 FOR I=0 TO DE%:NEXT
+        <br>
+        180 GOTO 30
+        <br>
+      </code>
+      <p>type RUN to start the program!</p>
+      <p>if you don't want to type in the code, open <a href="images/64/events.vsf" download>this</a> file and load it as a snapshot in VICE</p>
+    </div>
+
+  </body>
+</html>
