@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Particle Z</title>
+    <style>
+      body{
+        margin:0;
+        padding:0;
+      }
+      #input{
+        padding:10px;
+        background-color: aqua;
+        display: flex;
+        justify-content: space-around;
+
+      }
+      #changeButton{
+        background-color:grey;
+        padding:10px;
+        border-radius: 50%;
+        user-select: none;
+      }
+    </style>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+  </head>
+  <body>
+    <script>
+      let objects = []
+      let canvas
+      let a=0
+      let d=1
+      let s=0
+      let r=1
+      class Sound{
+        constructor(){
+          this.particle = new Particle();
+          this.osc = new p5.Oscillator();
+          this.slider= createSlider(100,1000,100,0.01);
+          this.button=createDiv("change")
+          this.button.id("changeButton");
+          this.button.mousePressed(()=>{randomNote(Cmin)})
+          this.sound=loadSound("audio/in.mp3",()=>{this.sound.play();this.sound.loop();});
+          this.env= new p5.Envelope();
+          this.env.setADSR(a,d,s,r);
+          this.sound.amp(this.env);
+          this.input=createDiv();
+          this.input.id("input");
+          this.input.child(this.slider);
+          this.input.child(this.button);
+
+
+        }
+
+        update(){
+          this.osc.freq(this.slider.value());
+          this.sound.rate(this.slider.value()/1000);
+        }
+      }
+      let Particle = function(position) {
+        this.acceleration = createVector(0, 0.05);
+        this.velocity = createVector(random(-1, 1), random(-1, 0));
+        this.position = createVector(random(0,innerWidth/2));
+        this.lifespan = 255;
+
+      };
+      let hi;
+      let t=0;
+      let Cmin = [261.63,293.66,311.13,349.23,392.00,440.00,466.16,523.25,587.33,622.25,698.46];
+      fft = new p5.FFT();
+
+      function setup(){
+        canvas=createCanvas(innerWidth,innerHeight-innerHeight/8);
+        hi = new Sound();
+      }
+      function draw(){
+        hi.update();
+
+
+        var waveform = fft.waveform();
+        //console.log(waveform);
+        fill(color(0,0,255));
+        beginShape();
+        stroke(255,0,0); // waveform is red
+        strokeWeight(1);
+        for (var i = 0; i< waveform.length; i++){
+          var x = map(i, 0, waveform.length, 0, width);
+          var y = map( waveform[i], -0.9, 0.9, 0, height);
+          vertex(x,y);
+        }
+        background(waveform.length/2,waveform.length,waveform.length,10);
+        endShape();
+        // background(200,200,200,0);
+
+
+      }
+
+      let screen=0;
+      function mousePressed() {
+        if (screen==1) {
+          screen=0;
+          background(0, 255, 0);
+          hi.env.play();
+        } else {
+          screen=1;
+          background(0, 255, 0);
+          hi.env.play();
+        }
+
+      }
+
+
+      function keyPressed() {
+        let keyIndex = -1;
+        if (key >= 'a' && key <= 'z') {
+          keyIndex = key.charCodeAt(0) - 'a'.charCodeAt(0);
+        }
+        if (keyIndex === -1) {
+          background(230);
+        } else {
+    // It's a letter key, fill a rectangle
+        randomNote(Cmin)
+        }
+      }
+
+      function randomNote(scale){
+        let noteFreqIndex=Math.floor(Math.random()*10)
+        hi.slider.value(scale[noteFreqIndex])
+      }
+
+
+    </script>
+  </body>
+</html>
