@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Particle A</title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+    <style>
+      html,body{
+        margin:0;
+        padding:0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100%
+      }
+      #container{
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+
+
+
+    <script>
+      class Particle{
+        constructor(){
+
+          this.pos = createVector(random(width), random(height));
+          this.vel = createVector(random(-1, 1), random(-1, 1));
+          this.accel = createVector(random(-0.06, 0.07), random(-.0014, .0020));
+
+          this.size = random(2, 8);
+          this.color = color(random(100), 100, 100);
+
+
+          this.osc=new p5.Oscillator();
+          this.osc.start();
+          this.osc.freq(map(this.pos.x,0,width,100,1000)+this.pos.y);
+          // this.slider=createSlider(100,1000,100,0.1);
+        }
+        update(){
+          this.vel.add(this.accel);
+          this.pos.add(this.vel);
+          this.osc.freq(map(this.pos.x,0,width,100,1000)+this.pos.y);
+        }
+      }
+
+
+      let particles = [];
+      function setup(){
+        let canvas=createCanvas(innerWidth/2, innerHeight/2);
+        canvas.parent("#container");
+        for(let i = 0; i < 50; i++) {
+          let p = new Particle();
+          particles.push(p);
+        }
+      }
+
+      function draw(){
+        background(100);
+
+        for(let i = 0; i < particles.length; i++) {
+
+          fill(particles[i].color);
+          ellipse(particles[i].pos.x, particles[i].pos.y, particles[i].size, particles[i].size);
+          if(particles[i].pos.y < 0) {
+            particles[i].pos.y = height;
+          }
+          particles[i].update();
+        }
+      }
+    </script>
+  </body>
+</html>
