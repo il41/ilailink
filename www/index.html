@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.sound.min.js"></script>
     <style>
       body{
         background-color:black;
@@ -15,6 +17,11 @@
       #love{
         text-shadow: 10px 10px 20px;
         font-size: 200px;
+      }
+      #love>img{
+        width:200px;
+        border-radius: 100px;
+        margin:16px;
       }
       #enter{
         font-size: 100px;
@@ -46,7 +53,7 @@
     </style>
   </head>
   <body>
-    <div id="love">love</div>
+    <div id="love">love <img class="capsule" src="images/14.gif"><img class="capsule" src="images/13.gif"><img class="capsule" src="images/12.gif"></div>
     <div id="upper">...11ai</div>
     <a href="indexoct2019.html"><div id="enter">enter</div></a>
     <br>
@@ -54,5 +61,90 @@
     <br>
     <br>
     <a id="info"href=info.html>?</a>
+
+
+
+    <script>
+    let Bbmaj = [233.08,293.66,349.23,440.00]
+    let Amin = [220.00,261.63,329.63,392.00]
+    let Gmaj = [196.00,246.94,293.66,369.99]
+    let Gmin = [196.00,246.94,293.66,369.99]
+    class love{
+      constructor(parent){
+        this.osc1=new p5.Oscillator('triangle');
+        this.osc1.freq((Math.random()*10000)+1);
+        this.osc1.start();
+
+        this.osc2=new p5.Oscillator('triangle');
+        this.osc2.freq((Math.random()*10000)+1);
+        this.osc2.start();
+
+        this.osc3=new p5.Oscillator('triangle');
+        this.osc3.freq((Math.random()*10000)+1);
+        this.osc3.start();
+
+        this.osc4=new p5.Oscillator('triangle');
+        this.osc4.freq((Math.random()*10000)+1);
+        this.osc4.start();
+
+        this.env=new p5.Envelope()
+        this.env.setADSR(0.1,0.2,0.2,.9);
+        this.env.setRange(0.5,0);
+        this.osc1.amp(this.env);
+        this.osc2.amp(this.env);
+        this.osc3.amp(this.env);
+        this.osc4.amp(this.env);
+        if(parent==c[0]){
+          parent.addEventListener('click',()=>{
+            // this.osc1.freq(returnFreq(Bbmaj));
+            // this.env.play()
+            this.osc1.freq(Bbmaj[0]);
+            this.osc2.freq(Bbmaj[1]);
+            this.osc3.freq(Bbmaj[2]);
+            this.osc4.freq(Bbmaj[3]);
+            this.env.play()
+          });
+        }
+        if(parent==c[1]){
+          parent.addEventListener('click',()=>{
+            // this.osc1.freq(returnFreq(Bbmaj));
+            // this.env.play()
+            this.osc1.freq(Amin[0]);
+            this.osc2.freq(Amin[1]);
+            this.osc3.freq(Amin[2]);
+            this.osc4.freq(Amin[3]);
+            this.env.play()
+          });
+        }
+        if(parent==c[2]){
+          parent.addEventListener('click',()=>{
+            // this.osc1.freq(returnFreq(Bbmaj));
+            // this.env.play()
+            this.osc1.freq(Gmaj[0]);
+            this.osc2.freq(Gmaj[1]);
+            this.osc3.freq(Gmaj[2]);
+            this.osc4.freq(Gmaj[3]);
+            this.env.play()
+          });
+        }
+      }
+
+    }
+
+
+      let cs = []
+      let c = document.getElementsByClassName('capsule');
+      for(let i=0;i<(c.length);i++){
+        let a = new love(c[i]);
+        cs.push(a);
+      }
+
+      function returnFreq(scale){
+        let answer = Math.floor(Math.random()*(scale.length-1))
+        let freq = scale[answer]
+
+        return freq;
+      }
+    </script>
   </body>
 </html>

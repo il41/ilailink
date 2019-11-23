@@ -351,6 +351,7 @@ playButton.addEventListener('click',sync);
 function sync(){
   for(let i = 1; i<8;i++){
     sounds[i].stop();
+    sounds[i].rate(1.00);
     sounds[i].loop();
     sounds[i].play();
   }
