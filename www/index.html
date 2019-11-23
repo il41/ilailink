@@ -3,56 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
-    <style media="screen">
+    <style>
       body{
-        margin:0;
-        padding:0;
-        background-image:url(images/flyB.png);
-        /* background-size: 100vw; */
-        background-size: 200vh;
-        background-repeat: no-repeat;
-
-          /* display:flex;
-          justify-content: left;
-          flex-wrap: wrap; */
-        /* font-size: 1em; */
-        background-color:aqua;
-      }
-      .cont{
-        width:100vw;
-        height:100vh;
-        background-color: rgba(10,20,40,0.8)
-      }
-      #main{
-
-        /* margin:200px; */
-        margin:16%;
-        /* margin-bottom:15%; */
-        margin-bottom:10%;
-        line-height: 40px;
+        background-color:black;
         color:white;
-        font-family: sans-serif;
-        font-size:120%;
-        margin-left: 14%;
-        display:block;
+        background-image:url(images/linkhead2.png)
       }
-      #news{
-        margin:2%;
-        /* position:absolute;
-        top:20px;
-        left:50vw; */
-        font-family: sans-serif;
+      #upper{
+        font-size: 100px;
       }
-      #news-element-wrapper{
-        opacity: 0.8;
-        transition: opacity 0.3s linear;
-        background-color:pink;
+      #love{
+        text-shadow: 10px 10px 20px;
+        font-size: 200px;
+      }
+      #enter{
+        font-size: 100px;
+        color:#ffff00;
+        padding:0;
+        display:inline;
+        padding:20px;
+        margin:200px;
+        border: 2px green solid;
         border-radius: 20px;
-        padding:2%;
-        background-image:url(images/fly1.gif);
-        background-size: cover;
       }
-      .title-element{
+      #return{
+        font-size: 100px;
+        margin-left:20px;
+        display:inline;
+      }
+      #info{
+        margin-left:50px;
         color:white;
         font-family: sans-serif;
         text-decoration: none;
@@ -61,71 +41,18 @@
         border-radius: 100%;
         box-shadow:15px 5px 10px rgba(255,255,255,0);
         transition: all 0.2s ease;
-
       }
-      .title-element:hover{
-        /* color:aqua; */
-        box-shadow:80vw 2px 12px;
-        background-color: rgba(200,200,200,0);
-        box-shadow:15px 5px 10px rgba(255,255,255,1);
-      }
-      /* #hp:hover{box-shadow:80vw 2px 12px black;}
-      #music:hover{box-shadow:80vw 2px 12px blue;}
-      #chill:hover{box-shadow:80vw 2px 12px aqua;}
-      #tools:hover{box-shadow:80vw 2px 12px #f74aebff;}
-      #info:hover{color:white;} */
-
-      #horizon{
-        cursor:pointer;
-
-      }
-      #horizon:hover{
-      }
-
+      a,a:visited{color:white;text-decoration: none;}
     </style>
   </head>
   <body>
-    <div id="main">
-    <div id="main-item"><a class="title-element" id="hp" href="index.html">ilai.link</a></div>
-    <div id="main-item"><a class="title-element" id="music" href="indexaugust132019.html" target="_blank">music and animation</a></div>
-    <div id="main-item"><a class="title-element" id="chill" href="hello.html" target="_blank">chillout zone</a></div>
-    <div id="main-item"><a class="title-element" id="tools" href="m.html" target="_blank">music tools/games</a></div>
-
-    <!-- <div id="main-item"><a class="title-element" href="https://vimeo.com/351678382" target="blank">kaleidoscoping</a></div> -->
-    <!-- <div class="title-element">wormhole</div> -->
-    <div id="main-item"><a class="title-element" id="info" href="info.html" target="_blank">info</a></div>
-    </div>
-    <div id="news">
-      <h2 id="horizon">on the horizon...</h2>
-      <div id="news-element-wrapper">
-      <div id="news-element">more music coming out very soon on <a href="https://ilai.bandcamp.com" target="_blank">ilai.bandcamp.com</a></div>
-      <br>
-      <div id="news-element">virtual reality music game 'Kinetics' presenting at <a href="https://www.videogameartgallery.com/">VGA Gallery</a> in Chicago<br> October 25th 2019</div>
-      </div>
-    </div>
-    <script>
-    let horizon=document.getElementById('horizon');
-    let news=document.getElementById('news-element-wrapper');
-    news.style.opacity=0;
-    horizon.addEventListener('click',()=>{
-      if(news.style.opacity==0){
-        news.style.opacity=0.8;
-      } else {
-        news.style.opacity=0;
-      }
-    });
-    // var i = 0;
-    // var txt = 'ilai \n music \n games \n music tools \n virtual \n website';
-    // var speed = 50;
-    //
-    // function typeWriter() {
-    //   if (i < txt.length) {
-    //     document.getElementById("demo").innerHTML += txt.charAt(i);
-    //     i++;
-    //     setTimeout(typeWriter, speed);
-    //   }
-    // }
-    // typeWriter();
-    </script>
+    <div id="love">love</div>
+    <div id="upper">...11ai</div>
+    <a href="indexoct2019.html"><div id="enter">enter</div></a>
+    <br>
+    <a href="nautic.html"><div id="return">please return soon...</div></a>
+    <br>
+    <br>
+    <a id="info"href=info.html>?</a>
   </body>
 </html>
