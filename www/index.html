@@ -13,6 +13,7 @@
       }
       #upper{
         font-size: 100px;
+        display:inline;
       }
       #love{
         text-shadow: 10px 10px 20px;
@@ -50,6 +51,20 @@
         box-shadow:15px 5px 10px rgba(255,255,255,0);
         transition: all 0.2s ease;
       }
+      #stop{
+        width:40px;
+        height:40px;
+        background-color:red;
+        border-radius:20%;
+        margin:10px;
+      }
+      #modulate{
+        width:40px;
+        height:40px;
+        background-color:#ff00ff;
+        border-radius:20%;
+        margin:10px;
+      }
       a,a:visited{color:white;text-decoration: none;}
     </style>
   </head>
@@ -66,6 +81,14 @@
 
 
     <script>
+    let mySound;
+    let cnv;
+    function preload(){
+      mySound = loadSound('samples/force2.mp3');
+      mySound.amp(0.7);
+      mySound.loop();
+
+    }
     let Bbmaj = [233.08,293.66,349.23,440.00]
     let Amin = [220.00,261.63,329.63,392.00]
     let Gmaj = [196.00,246.94,293.66,369.99]
@@ -145,6 +168,66 @@
         let freq = scale[answer]
 
         return freq;
+      }
+      let upper=document.querySelector("#upper");
+      let stop = document.createElement("div");
+      stop.id="stop";
+      let modulate = document.createElement("div");
+      modulate.id="modulate";
+      let mod = false;
+      let backgrounds=["top left","top right","left","right","bottom left","bottom right","bottom","top"]
+      modulate.addEventListener('click',()=>{
+        if(mod==false){
+          mod=true
+          modulate.style.backgroundColor="#00ff0a";
+          document.body.style.backgroundPosition="center";
+        }else{
+          mod=false
+          modulate.style.backgroundColor="#ff00ff";
+          // document.body.style.backgroundPosition="bottom";
+          document.body.style.backgroundPosition=backgrounds[Math.floor(Math.random()*backgrounds.length)]
+        };
+      })
+      function setup(){
+        cnv=createCanvas(300,100,WEBGL);
+        cnv.parent(upper);
+        cnv.mouseClicked(()=>{
+          mySound.play();
+        })
+        upper.appendChild(stop);
+        stop.addEventListener('click',()=>{
+          mySound.stop();
+        })
+        upper.appendChild(modulate);
+        stop.addEventListener('click',()=>{
+          mySound.stop();
+        })
+      }
+      let fft=new p5.FFT();
+
+      function draw(){
+        if(mod==true){
+          mySound.rate(sin(frameCount));
+        } else {
+          // mySound.rate(0.98);
+        }
+
+        var waveform = fft.waveform();
+        //console.log(waveform);
+        fill(color(0,0,255));
+        beginShape();
+        stroke(255,0,0); // waveform is red
+        strokeWeight(2);
+        for (var i = 0; i< waveform.length; i++){
+          var x = map(i, 0, waveform.length, 0, width);
+          var y = map( waveform[i], -0.9, 0.9, 0, height);
+          vertex(x,y);
+        }
+        background(waveform.length/2,waveform.length,waveform.length,10);
+        endShape();
+        rotateX(frameCount * 0.01);
+        rotateY(frameCount * 0.01);
+        box(45, 4, 45);
       }
     </script>
   </body>
