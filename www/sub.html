@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.sound.min.js"></script>
+    <style>
+      body{
+        background:linear-gradient(aqua, blue);
+        margin:0;
+        padding:0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="sub"></div>
+
+    <script>
+    let sub;
+    sub=document.querySelector("#sub")
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    let bufferSize;
+    let buffer;
+    let noise;
+    function preload(){
+      bufferSize = audioCtx.sampleRate * 100
+      mySound =loadSound('audio/august19/volta.mp3');
+      buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    }
+    function setup(){
+      let data = buffer.getChannelData(0); // get data
+      let mine=mySound.buffer.getChannelData(0);
+      // fill the buffer with noise
+      let j;
+      for (let i = 0; i < bufferSize; i+=1) {
+
+         // data[i]=Math.sin(j);
+         // j++;
+         // console.log(data[i]);
+         data[i]=mine[Math.round(Math.sin(i/bufferSize*2)*bufferSize)];
+         // data[i*2+1]=mine[i*2];
+         // data[i*2-1]=data[i*2];
+         // data[i]=mine[i*2+1]
+
+      }
+
+      noise = audioCtx.createBufferSource();
+      noise.buffer = buffer;
+      noise.connect(audioCtx.destination);
+      // noise.playbackRate(0.5);
+      noise.start();
+
+    }
+    function draw(){
+      sub.style.backgroundColor="#"+audioCtx.currentTime.toString(16);
+    }
+
+
+
+    </script>
+  </body>
+</html>

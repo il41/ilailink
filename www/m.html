@@ -13,22 +13,23 @@
         height:100vh;
         width:100vw;
         display:flex;
-        justify-content:center;
+        justify-content: center;
+        align-items: center;
         flex-wrap:nowrap;
-        flex-direction: row;
+        flex-direction: column;
         background-image: url(images/ocean.png);
         background-size:cover;
 
       }
 
-      .container{
+      .container,.container2{
         /* background-color:aqua; */
         width:50%;
-        height:65%;
+        height:30%;
         display:flex;
         flex-direction: row;
         justify-content: space-around;
-        justify-content: space-around;
+        align-items: center;
         align-items: center;
       }
       /* .row{
@@ -41,7 +42,7 @@
       } */
       #item{
         opacity:1;
-        margin:1%;
+        /* margin:1%; */
       }
       #item:hover{
         animation: pulse 1s infinite;
@@ -89,7 +90,6 @@
         background-image:url(images/red3.png);
         background-size:cover;
         background-repeat: no-repeat;
-
       }
 
     </style>
@@ -111,6 +111,15 @@
         </div>
       </div>
       <div class="container2">
+        <div id="item">
+          <a href="particles.html"><div id="particles"></div></a>
+        </div>
+        <div id="item">
+          <a href="particles.html"><div id="particles"></div></a>
+        </div>
+        <div id="item">
+          <a href="particles.html"><div id="particles"></div></a>
+        </div>
         <div id="item">
           <a href="particles.html"><div id="particles"></div></a>
         </div>
