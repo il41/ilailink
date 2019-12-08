@@ -13,6 +13,8 @@
         background-color: aqua;
         display: flex;
         justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
 
       }
       #changeButton{
@@ -21,6 +23,7 @@
         border-radius: 50%;
         user-select: none;
       }
+
     </style>
     <script src="js/p5.min.js"></script>
     <script src="js/p5.dom.js"></script>
@@ -30,7 +33,7 @@
     <script>
       let objects = []
       let canvas
-      let a=0
+      let a=0.1
       let d=1
       let s=0
       let r=1
@@ -38,10 +41,13 @@
         constructor(){
           this.particle = new Particle();
           this.osc = new p5.Oscillator();
+          this.field= createInput();
+          this.field.id("field");
+          this.field.style.placeholder="transpose";
           this.slider= createSlider(100,1000,100,0.01);
           this.button=createDiv("change")
           this.button.id("changeButton");
-          this.button.mousePressed(()=>{randomNote(Cmin)})
+
           this.sound=loadSound("audio/in.mp3",()=>{this.sound.play();this.sound.loop();});
           this.env= new p5.Envelope();
           this.env.setADSR(a,d,s,r);
@@ -50,13 +56,16 @@
           this.input.id("input");
           this.input.child(this.slider);
           this.input.child(this.button);
+          this.input.child(this.field);
+          // this.button.mousePressed(()=>{randomNoteButton(Cmin)})
 
 
         }
 
         update(){
           this.osc.freq(this.slider.value());
-          this.sound.rate(this.slider.value()/1000);
+          this.sound.rate(this.slider.value()/1000)
+          // console.log(this.slider);;
         }
       }
       let Particle = function(position) {
@@ -68,12 +77,13 @@
       };
       let hi;
       let t=0;
-      let Cmin = [261.63,293.66,311.13,349.23,392.00,440.00,466.16,523.25,587.33,622.25,698.46];
+      let Cmin = [261.63,293.66,311.13,349.23,392.00,440.00,466.16,523.25,587.33,622.25,698.46,261.63*2,293.66*2,311.13*2,349.23*2,392.00*2,440.00*2,466.16*2,523.25*2,587.33*2,622.25*2,698.46*2];
       fft = new p5.FFT();
 
       function setup(){
         canvas=createCanvas(innerWidth,innerHeight-innerHeight/8);
         hi = new Sound();
+        document.querySelector("#changeButton").addEventListener('click',()=>{document.querySelector("*").style.background=('black');});
       }
       function draw(){
         hi.update();
@@ -121,14 +131,21 @@
           background(230);
         } else {
     // It's a letter key, fill a rectangle
-        randomNote(Cmin)
+        transpose=hi.field.value();
+        randomNote(Cmin,transpose)
         }
       }
 
-      function randomNote(scale){
+      function randomNote(scale,boost){
         let noteFreqIndex=Math.floor(Math.random()*10)
-        hi.slider.value(scale[noteFreqIndex])
+        hi.slider.value(scale[noteFreqIndex]+boost)
       }
+      function randomNoteButtom(scale,boost){
+        let noteFreqIndex=Math.floor(Math.random()*10)
+        this.slider.value(scale[noteFreqIndex]+boost)
+      }
+
+
 
 
     </script>
