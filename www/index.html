@@ -1,149 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <!-- oct 2019 -->
     <meta charset="utf-8">
     <title>ilai.link</title>
-    <style media="screen">
+    <style>
       body{
         margin:0;
-        padding:0;
-        background-image:url(images/flyB.png);
-        /* background-size: 100vw; */
-        background-size: 200vh;
-        background-repeat: no-repeat;
-
-          /* display:flex;
-          justify-content: left;
-          flex-wrap: wrap; */
-        /* font-size: 1em; */
-        background-color:aqua;
+        width:100vw;
       }
-      .cont{
+      /* #arrow{
+        position:absolute;
+        bottom:50px;
+        right:20px;
+        font-size:30px;
+        text-align:right;
+        line-height:47px;
+      } */
+      #arrow{
+        position:relative;
+        margin:10px;
+        margin-top:0px;
+        font-size:30px;
+        text-align:right;
+        /* line-height:47px; */
+      }
+      #waterlink{
+        margin-left: 10px;
+        font-size:20px;
+      }
+      .container{
         width:100vw;
         height:100vh;
-        background-color: rgba(10,20,40,0.8)
+        display:flex;
+        justify-content:center;
+        align-items:center;
+          height:100vh;
+          width:100vw;
       }
-      #main{
-
-        /* margin:200px; */
-        margin:16%;
-        /* margin-bottom:15%; */
-        margin-bottom:10%;
-        line-height: 40px;
-        color:white;
-        font-family: sans-serif;
-        font-size:120%;
-        margin-left: 14%;
+      #fly{
+        display: inline;
+        margin-top:0px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
         display:block;
       }
-      #news{
-        margin:2%;
-        /* position:absolute;
-        top:20px;
-        left:50vw; */
-        font-family: sans-serif;
-      }
-      #news-element-wrapper{
-        opacity: 0.8;
-        transition: opacity 0.3s linear;
-        background-color:pink;
-        border-radius: 20px;
-        padding:2%;
-        background-image:url(images/fly1.gif);
-        background-size: cover;
-      }
-      .title-element{
-        color:white;
-        font-family: sans-serif;
-        text-decoration: none;
-        /* color:black; */
-        background-color: rgba(200,200,200,0);
-        border-radius: 100%;
-        box-shadow:15px 5px 10px rgba(255,255,255,0);
-        transition: all 0.2s ease;
+      #xm{
+        /* margin-left: 10px;
+        margin-top:10px; */
+        padding:2px;
+        background-color: rgba(0,0,0,0.1);
+        /* height:100px; */
+        display:inline-block;
+        text-align: right;
 
       }
-      .title-element:hover{
-        /* color:aqua; */
-        box-shadow:80vw 2px 12px;
-        background-color: rgba(200,200,200,0);
-        box-shadow:15px 5px 10px rgba(255,255,255,1);
-      }
-      /* #hp:hover{box-shadow:80vw 2px 12px black;}
-      #music:hover{box-shadow:80vw 2px 12px blue;}
-      #chill:hover{box-shadow:80vw 2px 12px aqua;}
-      #tools:hover{box-shadow:80vw 2px 12px #f74aebff;}
-      #info:hover{color:white;} */
 
-      #horizon{
-        font-size: 40px;
-        color:white;
-        border-radius: 20px;
-        cursor:pointer;
-        transition: all 0.6s;
-        /* font-style: italic; */
-        text-decoration: none;
-        font-family:  sans-serif;
-        /* text-decoration: overline underline; */
-        /* font-weight: 400; */
-        /* font-style: italic; */
-        /* letter-spacing: 2px; */
-
-      }
-    a{
-        text-decoration: none;
-      }
-      #horizon:hover{
-      box-shadow:15px 5px 10px rgba(255,255,255,1);
-      }
 
     </style>
   </head>
   <body>
-    <div id="main">
-    <div id="main-item"><a class="title-element" id="hp" href="index.html">ilai.link</a></div>
-    <div id="main-item"><a class="title-element" id="music" href="indexaugust132019.html" target="_blank">music and animation</a></div>
-    <div id="main-item"><a class="title-element" id="chill" href="hello.html" target="_blank">chillout zone</a></div>
-    <div id="main-item"><a class="title-element" id="tools" href="m.html" target="_blank">music tools/games</a></div>
-
-    <!-- <div id="main-item"><a class="title-element" href="https://vimeo.com/351678382" target="blank">kaleidoscoping</a></div> -->
-    <!-- <div class="title-element">wormhole</div> -->
-    <div id="main-item"><a class="title-element" id="info" href="info.html" target="_blank">info</a></div>
-    <a href="http://ilai.bandcamp.com" target="_blank"><h2 id="horizon">fly1</h2></a>
+    <!-- <div class="container">
+    <a href="https://ilai.bandcamp.com/" target="_blank"><img src="images/inwater.jpg"
+      style="width:70vh;">
+    </a>
     </div>
-    <!-- <div id="news">
-      <h2 id="horizon">fly1...</h2>
-      <div id="news-element-wrapper">
-      <div id="news-element"><i>fly1</i> by 11ai out now on <a href="https://ilai.bandcamp.com" target="_blank">ilai.bandcamp.com</a></div>
+    <div id="arrow">
+      <a href="https://ilai.bandcamp.com/">in water - 11ai</a>
       <br>
-      <div id="news-element">find official releases on <a href="https://ilai.bandcamp.com/" target="_blank">bandcamp</a>, <a href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3" target="_blank">spotify</a>, <a href="">apple music, etc</a> under <a href="info.html" target="_blank">11ai</a>
-      </div>
+      <a href="index.html">ilai.link</a>
     </div> -->
-    <script>
-    // let horizon=document.getElementById('horizon');
-    // let news=document.getElementById('news-element-wrapper');
-    // news.style.opacity=0;
-    // horizon.addEventListener('click',()=>{
-    //   if(news.style.opacity==0){
-    //     news.style.opacity=0.8;
-    //   } else {
-    //     news.style.opacity=0;
-    //   }
-    // });
 
-    // var i = 0;
-    // var txt = 'ilai \n music \n games \n music tools \n virtual \n website';
-    // var speed = 50;
-    //
-    // function typeWriter() {
-    //   if (i < txt.length) {
-    //     document.getElementById("demo").innerHTML += txt.charAt(i);
-    //     i++;
-    //     setTimeout(typeWriter, speed);
-    //   }
-    // }
-    // typeWriter();
-    </script>
+
+
+
+<a href="https://ilai.bandcamp.com/" target="_blank" ><img alt="fly1" id="fly" src="images/fly1.jpg"></a>
+    <a id="waterlink"href="https://ilai.bandcamp.com/" style="font-family:sans-serif">fly1 - 11ai</a>
+     <!-- • <a href="https://open.spotify.com/album/2AGR52nGXIgyG7FxpOvSf0?si=5a8TnmT8TFG1rt44l5CIEw" target="_blank">spotify portal</a> -->
+
+    <div id="arrow">
+      <br>
+    <span>continue to...</span>  <a href="navi.html">ilai.link</a>
+    </div>
   </body>
 </html>
