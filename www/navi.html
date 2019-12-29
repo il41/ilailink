@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <title>ilai.link</title>
     <style media="screen">
+    html{
+
+    }
       body{
         margin:0;
         padding:0;
@@ -19,8 +22,8 @@
           flex-wrap: wrap; */
         /* font-size: 1em; */
         /* background-color:#00d8d8; */
-        /* background-color: #38f7f7; */
-         background-blend-mode: lighten;
+        background-color: #38f7f7;
+         background-blend-mode:  normal;
       }
       .cont{
         width:100vw;
@@ -102,12 +105,31 @@
       box-shadow:15px 5px 10px rgba(255,255,255,1);
       background-image:url("fly1.jpg");
       }
+      #blender{
+        /* float: right; */
+        /* position: relative; */
+        /* left:-20px; */
+        margin-left:10px;
+        font-size:20px;
+        cursor: cell;
+        user-select: none;
+        display: inline;
+        /* transform: rotate(45deg); */
+        /* text-decoration: underline; */
+          /* box-shadow:-5px 5px 10px rgba(255,255,255,0) */
+      }
+      #blender:hover{
+        color:aqua;
+      }
+      #blender:active{
+        color:blue;
+      }
 
     </style>
   </head>
   <body>
     <div id="main">
-    <div id="main-item"><a class="title-element" id="hp" href="index.html">ilai.link</a></div>
+    <div id="main-item"><a class="title-element" id="hp" href="index.html">ilai.link</a><div id="blender">/  11ai</div></div>
     <div id="main-item"><a class="title-element" id="music" href="indexaugust132019.html" target="_blank">music and animation</a></div>
     <div id="main-item"><a class="title-element" id="chill" href="hello.html" target="_blank">chillout zone</a></div>
     <div id="main-item"><a class="title-element" id="tools" href="m.html" target="_blank">music tools/games</a></div>
@@ -126,6 +148,22 @@
       </div>
     </div> -->
     <script>
+
+    let blendmodes = ["hard-light","darken","hue","color","color-dodge","lighten","luminosity","multiply","difference","exclusion","normal","overlay","saturation","screen","soft-light"]
+    let randomIndex = Math.floor(Math.random()*blendmodes.length);
+    console.log(randomIndex);
+
+    let fly1 = document.querySelector("#blender");
+    fly1.addEventListener("click",()=>{
+      randomIndex++;
+      blend();
+      if(randomIndex>blendmodes.length){randomIndex=0};
+    });
+
+    function blend(){
+      document.body.style.backgroundBlendMode=blendmodes[randomIndex];
+    }
+
     // let horizon=document.getElementById('horizon');
     // let news=document.getElementById('news-element-wrapper');
     // news.style.opacity=0;
