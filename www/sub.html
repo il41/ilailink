@@ -20,6 +20,7 @@
     <script>
     let sub;
     sub=document.querySelector("#sub")
+    sub.style.height="100px";
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioCtx = new AudioContext();
 
@@ -29,19 +30,19 @@
     function preload(){
       bufferSize = audioCtx.sampleRate * 100
       mySound =loadSound('audio/august19/volta.mp3');
-      buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate/4);
     }
     function setup(){
       let data = buffer.getChannelData(0); // get data
       let mine=mySound.buffer.getChannelData(0);
       // fill the buffer with noise
       let j;
-      for (let i = 0; i < bufferSize; i+=1) {
+      for (let i = 0; i < bufferSize; i+=4) {
 
          // data[i]=Math.sin(j);
          // j++;
          // console.log(data[i]);
-         data[i]=mine[Math.round(Math.sin(i/bufferSize*2)*bufferSize)];
+         data[i]=mine[Math.round(Math.sin(i/bufferSize*2)*bufferSize*(i/1000))];
          // data[i*2+1]=mine[i*2];
          // data[i*2-1]=data[i*2];
          // data[i]=mine[i*2+1]
@@ -56,7 +57,12 @@
 
     }
     function draw(){
-      sub.style.backgroundColor="#"+audioCtx.currentTime.toString(16);
+      let bc="#"+Math.floor(Math.random(audioCtx.currentTime)*136918).toString(16);
+      console.log(bc);
+      sub.style.backgroundColor=bc;
+      let h = Math.abs((Math.sin(audioCtx.currentTime)*100)+100)
+      let hstring=h.toString()+"px"
+      sub.style.height=hstring
     }
 
 
