@@ -13,7 +13,7 @@
         padding:0;
         background-image:url(images/dude.png);
         /* background-size: 100vw; */
-        background-size: 200vh;
+        background-size: 100vw;
         background-repeat: no-repeat;
         background-position: center;
 
@@ -21,9 +21,9 @@
           justify-content: left;
           flex-wrap: wrap; */
         /* font-size: 1em; */
-        /* background-color:#00d8d8; */
-        background-color: #38f7f7;
-         background-blend-mode:  lighten;
+        background-color:#00d8d8;
+        /* background-color: #38f7f7; */
+         background-blend-mode: lighten;
       }
       .cont{
         width:100vw;
@@ -44,7 +44,7 @@
         display:block;
         width:200px;
         background-color:black;
-        mix-blend-mode:  darken;
+        mix-blend-mode:  normal;
 
 
       }
@@ -106,11 +106,13 @@
     a{
         text-decoration: none;
       }
-      #horizon:hover{
-      box-shadow:15px 5px 10px rgba(255,255,255,1);
-      background-image:url("fly1.jpg");
+      #horizon:hover,#horizon:active{
+      box-shadow:15px 5px 100px rgba(255,255,255,1);
+      background-image:url("images/fly1.gif");
+      background-size: cover;
+      background-position: bottom;
       color:#ff6333;
-
+      mix-blend-mode: difference;
       }
       #blender{
         /* float: right; */
