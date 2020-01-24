@@ -10,20 +10,23 @@
 
         margin:0;
         padding:0;
-        background-image:url(images/black.png);
+        /* background-image:url(images/black.png); */
         /* background-size: 100vw; */
         /* background-size: 200vh; */
         background-repeat: no-repeat;
-        background-position: center;
-        /* background-size: cover; */
+        /* background-position: bottom; */
+        background-size: cover;
+
 
           /* display:flex;
           justify-content: left;
           flex-wrap: wrap; */
         /* font-size: 1em; */
         /* background-color:#00d8d8; */
-        background-color: #38f7f7;
-         background-blend-mode: exclusion;
+        /* background-color: #38f7f7; */
+         /* background-blend-mode: exclusion; */
+         background-image: url(images/flatearth.png);
+         /* background-attachment: fixed; */
       }
       /* #arrow{
         position:absolute;
@@ -62,27 +65,57 @@
           height:100vh;
           width:100vw;
       }
+      .spinner{
+        animation: love 10s linear 2s infinite;
+        animation-delay:0s;
+      }
       #fly{
         position:relative;
         /* display: inline; */
         margin-top:60px;
-        /* margin-left: auto; */
+        /* margin-left: 60px; */
         /* margin-right: auto; */
-        width: 420px;
+        width: 300px;
+        /* margin-bottom:60px; */
         /* display:block; */
         /* border:20px blue dashed; */
         /* border-radius: 20px; */
         /* transform: perspective(1000px) rotateY(180deg); */
         /* animation-name: love; */
 
-        animation: love 10s linear 2s infinite;
-        animation-delay:0s;
+
+        z-index: 1;
+        text-align:center;
+      }
+      #in-water{
+        border: 5px outset black;
+        position:relative;
+        margin-top:60px;
+        width: 300px;
+        /* animation: love 10s linear 1.5s infinite;
+        animation-delay:0.2s; */
+        transform: perspective(1000px) rotateY(25deg);
+        z-index: 1;
+      }
+      #re-simulate{
+        border: 5px outset black;
+        position:relative;
+        margin-top:60px;
+        width: 300px;
+        /* animation: love 10s linear 1.8s infinite;
+        animation-delay:0.5s; */
+        transform: perspective(1000px) rotateY(25deg);
         z-index: 1;
       }
       @keyframes love {
         0%{ transform: perspective(1000px) rotateY(0deg);}
         50%{ transform: perspective(1000px) rotateY(180deg);}
         100%{ transform: perspective(1000px) rotateY(360deg);}
+      }
+      @keyframes pulse {
+        0%{ transform: scale(1);}
+        50%{ transform: scale(1.5);}
+        100%{ transform: scale(1);}
       }
       #xm{
         /* margin-left: 10px;
@@ -95,12 +128,40 @@
 
       }
       #display{
-        text-align: center;
+        /* text-align: center; */
+        margin-left:50px;
       }
+      .new{
+        color:hotpink;
+        text-decoration: none;
+        position:relative;
+        z-index: 2;
+        font-family:  sans-serif;
+        animation: pulse 1s infinite;
+        rotate:20deg;
+        position: relative;
+        top:-300px;
+        right:-145px;
+        font-size:20px;
+      }
+      .desc{
+        background-color: white;
+        padding:3px;
+        border-radius: 5px;
 
+      }
+      h1{
+        font-family: sans-serif;
+        background-color: white;
+        display:block;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
+    <div id="arrow">
+    <span>continue to...</span>  <a href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
+    </div>
     <!-- <div class="container">
     <a href="https://ilai.bandcamp.com/" target="_blank"><img src="images/inwater.jpg"
       style="width:70vh;">
@@ -113,11 +174,18 @@
     </div> -->
 
 
+    <div id="display"><a href="https://ilai.bandcamp.com/album/re-simulate" target="_blank" ><img alt="re-simulate" id="re-simulate" src="images/resim.png"></a><h1>Re-Simulate</h1><div class="desc">the first EP, architectural house and techno, cyberbubble, city grid, initialize aquatic</div></div>
+    <div id="display"><a href="https://ilai.bandcamp.com/album/in-water" target="_blank" ><img alt="in-water" id="in-water" src="images/inwater.jpg"></a><h1>in water</h1><div class="desc">51 minute archival LP of ocean speculative fiction and future sustainability design, coastal and underwater racing, machines, self-sustainability</div></div>
+    <div id="display">
+      <div class="spinner" id="fly"><a href="https://ilai.bandcamp.com/" target="_blank" ><img alt="fly1" id="fly" src="images/fly1.jpg"></a><div class="new">New!</div></div>
+
+    <h1>fly1</h1><div class="desc">the final project of 2019, includes the exclusive first appearance of Carlala, the new vocaloid singer and emerging virtual pop star, on track 2. <br>trapped drum and bass, vertical monorail jazz, positive crystal techno, emergence metaphor</div></div>
+    <br><br>
 
 
-    <div id="display"><a href="https://ilai.bandcamp.com/" target="_blank" ><img alt="fly1" id="fly" src="images/fly1.jpg"></a></div>
     <a class="waterlink"href="https://ilai.bandcamp.com/" style="font-family:sans-serif">fly1 - 11ai</a>
     <a class="waterlink"href="https://open.spotify.com/album/7eHItqCU3I8MKEiVeltgbO?si=C-NjsghnT8iDEJXSUt6tqg" style="font-family:sans-serif; color:green;">spotify portal</a>
+    <a class="waterlink"href="https://www.discogs.com/11ai-fly1/release/14700172" style="font-family:sans-serif; color:blue;">discogs portal</a>
      <!-- • <a href="https://open.spotify.com/album/2AGR52nGXIgyG7FxpOvSf0?si=5a8TnmT8TFG1rt44l5CIEw" target="_blank">spotify portal</a> -->
 
     <div id="arrow">

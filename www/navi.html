@@ -11,19 +11,22 @@
       body{
         margin:0;
         padding:0;
-        background-image:url(images/dude.png);
+        background-image:url(images/21t3.png);
+        /* background-size: 100vh; */
         /* background-size: 100vw; */
-        background-size: 100vw;
+        /* background-size: cover; */
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: top right;
+        background-attachment: fixed;
 
           /* display:flex;
           justify-content: left;
           flex-wrap: wrap; */
         /* font-size: 1em; */
         /* background-color:#00d8d8; */
-        background-color: #38f7f7;
-         background-blend-mode: lighten;
+        /* background-color: #38f7f7; */
+        background-color:lightgrey;
+         /* background-blend-mode: lighten; */
       }
       .cont{
         width:100vw;
@@ -37,15 +40,18 @@
         /* margin-bottom:15%; */
         margin-bottom:10%;
         line-height: 40px;
-        color:white;
+        /* color:white; */
         font-family: sans-serif;
         font-size:120%;
         margin-left: 14%;
         display:block;
         width:200px;
-        background-color:black;
-        mix-blend-mode:  normal;
+        background-color:lightgrey;
+        padding:5px;
+        /* mix-blend-mode:  difference; */
+        /* font-weight: lighter; */
 
+        border-radius: 0px;
 
       }
       #news{
@@ -65,7 +71,7 @@
         background-size: cover;
       }
       .title-element{
-        color:white;
+        /* color:white; */
         font-family: sans-serif;
         text-decoration: none;
         /* color:black; */
@@ -97,7 +103,7 @@
         text-decoration: none;
         font-family:  sans-serif;
         /* text-decoration: overline underline; */
-        /* font-weight: 400; */
+        font-weight: 400;
         /* font-style: italic; */
         /* letter-spacing: 2px; */
         width:500px;
@@ -105,6 +111,7 @@
       }
     a{
         text-decoration: none;
+        color:#551A8B;
       }
       #horizon:hover,#horizon:active{
       box-shadow:15px 5px 100px rgba(255,255,255,1);
@@ -157,21 +164,36 @@
       </div>
     </div> -->
     <script>
-
-    let blendmodes = ["hard-light","darken","hue","color","color-dodge","lighten","luminosity","multiply","difference","exclusion","normal","overlay","saturation","screen","soft-light"]
-    let randomIndex = Math.floor(Math.random()*blendmodes.length);
+    let backgrounds = ["21t2.png","21t3.png","21t4.png","21t5.png","21t6.png","21t7.png","flatearth.png","tb3032.png"]
+    let randomIndex = Math.floor(Math.random()*backgrounds.length);
     console.log(randomIndex);
 
     let fly1 = document.querySelector("#blender");
     fly1.addEventListener("click",()=>{
       randomIndex++;
       blend();
-      if(randomIndex>blendmodes.length){randomIndex=0};
+      if(randomIndex>backgrounds.length){randomIndex=0};
     });
 
     function blend(){
-      document.body.style.backgroundBlendMode=blendmodes[randomIndex];
+      document.body.style.backgroundImage="url(images/"+backgrounds[randomIndex]+")";
     }
+
+
+    // let blendmodes = ["hard-light","darken","hue","color","color-dodge","lighten","luminosity","multiply","difference","exclusion","normal","overlay","saturation","screen","soft-light"]
+    // let randomIndex = Math.floor(Math.random()*blendmodes.length);
+    // console.log(randomIndex);
+    //
+    // let fly1 = document.querySelector("#blender");
+    // fly1.addEventListener("click",()=>{
+    //   randomIndex++;
+    //   blend();
+    //   if(randomIndex>blendmodes.length){randomIndex=0};
+    // });
+    //
+    // function blend(){
+    //   document.body.style.backgroundBlendMode=blendmodes[randomIndex];
+    // }
 
     // let horizon=document.getElementById('horizon');
     // let news=document.getElementById('news-element-wrapper');
