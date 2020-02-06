@@ -84,6 +84,21 @@ function draw(){
   sequencer(sequencerInput.value());
   // console.log(sequencerInput.value());
 
+
+
+  //audiocontext starter
+  if (getAudioContext().state !== 'running') {
+    text('click to start audio', width/2, height/2);
+  } else {
+    text('', width/2, height/2);
+  }
+
+  function touchStarted() {
+    if (getAudioContext().state !== 'running') {
+      getAudioContext().resume();
+    }
+  }
+
 }
 
 function sequencer(letters){
