@@ -29,9 +29,7 @@ let tock;
 let prevTock;
 
 function preload(){
-  notes=loadJSON("notes.json");
-  birds=loadJSON("birds.json");
-  console.log(birds);
+  notes=loadJSON("js/notes.json");
   console.log(notes);
 
 }
