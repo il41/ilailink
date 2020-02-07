@@ -21,9 +21,11 @@
       }
       .slidercont{
         text-align: right;
-        margin-bottom:20px;
-        background-color: #eee;
+        margin-bottom:14px;
+        background-color: #ddd;
         width:500px;
+        /* height:22px; */
+
       }
       .slidercont span{
         width:100px;
@@ -33,8 +35,12 @@
         color:white;
 
       }
-      .p5canvas{
-        border-radius: 25px;
+      #canvas{
+        /* border-radius: 25px; */
+        z-index: -1;
+        position: relative;
+        /* float: right; */
+
       }
       .starter{
         background-color: blue;
@@ -52,16 +58,48 @@
       }
       .text-field{
         box-shadow: 5px 5px 50px 0px red;
+        font-family: monospace;
+        /* height:20px; */
+        /* width:400px; */
 
+        word-wrap: break-word;
         /* border: green 0px groove; */
 
         transition:1s all ease;
 
       }
       .text-field:focus{
+        border-radius: 20px;
         /* background-image:linear-gradient(to right, white, lightblue); */
         box-shadow: 5px 5px 5px 0px blue;
         border: green 2px groove;
+      }
+      .empty-field{
+
+        margin-top:3px;
+        border-radius: 20px;
+        /* background-image:linear-gradient(to right, white, lightblue); */
+        /* box-shadow: 5px 5px 5px 0px blue; */
+        border: grey 1px groove;
+
+      }
+      .notepad{
+        border-radius: 20px;
+        transition:1s all ease;
+        font-family: monospace;
+        border: grey 1px groove;
+        box-shadow: 5px 5px 5px 0px blue;
+        /* width:400px; */
+        width:700px;
+        height:320px;
+        padding:10px;
+        /* height:200px; */
+      }
+
+      .right-div{
+        position: absolute;
+        left:500px;
+        width:100px;
       }
 
     </style>
@@ -75,11 +113,43 @@
     </div>
     <div id="space"class="slidercont">
       <span class="reverser" style="color:black;font-size:15px;">negative time?</span>
-      <input type="checkbox" onchange="reverser(this)"  autocomplete="off"></input>
+      <input type="checkbox" onclick="reverser(this)"  autocomplete="off">
       <span>space</span>
     </div>
     <div id="speed"class="slidercont">
       <span>speed</span>
+    </div>
+
+    <div class="right-div">
+      <textarea class="text-field notepad" wrap="soft" autocomplete="off">/~welcome to the datasynth~\
+• press the start button
+• keys on the keyboard corespond to piano notes
+• 'z' and 'x' keys will change the octave
+• use the blushing field as a sequencer
+• non-note keys will play as rests in the sequencer
+• the sequencer detects z and x octave changes
+• for example "az" will continually rise in octave
+• if the octave passes the high limit, it will reset to the lowest octave, and vice versa
+
+• feel free to use this text pad to save your sequences, but they will disappear if you reload the page so be careful!
+• mobile users can also click this textpad to enable their keyboard in order to play the synth
+
+-you cant undo reversal of spacetime (until you reload)
+-speed controls the tempo of the sequencer
+
+\www.ilai.link 2020 A.D./
+
+heres a diagram of the keyboard:
+
+|  | | | |  |  | | | | | |  |  | | | |  |
+|  | | | |  |  | | | | | |  |  | | | |  |
+|  |w| |e|  |  |t| |y| |u|  |  |o| |p|  |
+|  |_| |_|  |  |_| |_| |_|  |  |_| |_|  |
+|   |   |   |   |   |   |   |   |   |   |
+| a | s | d | f | g | h | j | k | l | ; | (x-raise octave)
+|___|___|___|___|___|___|___|___|___|___| (z-lower octave)
+
+</textarea>
     </div>
 
     <script src="js/play.js"></script>

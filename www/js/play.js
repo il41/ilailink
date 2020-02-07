@@ -46,6 +46,7 @@ function preload(){
 function setup(){
 
   cnv = createCanvas(400, 400);
+  cnv.id('canvas');
   cnv.parent().style="border-radius:25%"
   textAlign(CENTER);
   text('hello', width/2, height/2);
@@ -128,7 +129,7 @@ function draw(){
   } else {
     text('', width/2, height/2);
   }
-
+  rect(10,height/2-octave*10,10,10);
 }
 function start() {
   text('okay', width/2, height/2);
@@ -152,6 +153,14 @@ function sequencer(letters){
     tick=-1;
   }
   prevTock=tock;
+
+
+  if(octave>9){
+  octave=0;
+  }
+  if(octave<0){
+    octave=9;
+  }
 }
 
 
@@ -251,12 +260,25 @@ function playEnv()  {
 function reverser(e){
   if(e.checked==false){
     reverb.set(3,2,0);
+    reverse=0
     console.log('0')
   } else if(e.checked==true){
     reverb.set(3,2,1);
+    reverse=1
     console.log('1')
   }
   e.disabled=true;
-
-
 }
+
+
+// function spaceOnly(e){
+//   if(e.checked==true){
+//     osc.disconnect();
+//     delay.process(osc, .7, .3, 20000);
+//     reverb.process(osc, 3, 2, reverse);
+//   } else if(e.checke==false){
+//     osc.connect();
+//     delay.process(osc, .7, .3, 20000);
+//     reverb.process(osc, 3, 2, reverse);
+//   }
+// }
