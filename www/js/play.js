@@ -18,6 +18,8 @@ let delay;
 let delayTime;
 let feedback;
 
+let reverse = 0;
+
 let sequencerInput;
 let steps = [];
 let step;
@@ -49,19 +51,29 @@ function setup(){
   text('hello', width/2, height/2);
 
   delayTime=createSlider(100, 1000, 500);
+  delayTime.addClass('slider');
   let delaycont=document.getElementById('delayTime');
   delayTime.parent(delaycont);
 
   feedback=createSlider(000, 999, 500);
+  feedback.addClass('slider');
   let feedbackcont=document.getElementById('feedback');
   feedback.parent(feedbackcont);
 
+  space=createSlider(0, 10000, 0);
+  space.addClass('slider');
+  let spacecont=document.getElementById('space');
+  space.parent(spacecont);
+
   speed=createSlider(1, 100000, 10000);
+  speed.addClass('slider');
   let speedcont=document.getElementById('speed');
   speed.parent(speedcont);
 
 
   sequencerInput = createInput();
+  sequencerInput.addClass('text-field');
+  sequencerInput.placeholder="sequencer for keys";
 
   env = new p5.Envelope();
   env.setADSR(attack, decay, sus, release);
@@ -75,21 +87,32 @@ function setup(){
   delay = new p5.Delay();
   delay.process(osc, .7, .3, 20000);
 
+  reverb = new p5.Reverb();
+  reverb.process(osc, 3, 2, reverse);
+
 
   console.log(notes.C[1]);
 
   noStroke();
 
   starter=createDiv('start');
-  starter.id("starter");
-  starter.position(0,600);
+  starter.addClass("starter");
+  // starter.position(0,600);
   starter.mouseClicked(start);
+
+  emptyfield=createInput();
+  emptyfield.addClass('empty-field');
+  emptyfield.placeholder="for mobile keyjammers"
+
+  textSize(80);
 
 }
 
 function draw(){
   delay.delayTime(delayTime.value()/1000);
   delay.feedback(feedback.value()/1000);
+  reverb.amp(space.value()/1000);
+
 
   interval=speed.value()/10000;
   background(color(255,25,255,10));
@@ -117,8 +140,6 @@ function start() {
 function sequencer(letters){
   tick+=0.05*interval;
   tock=ceil(tick);
-
-
 
   steps=letters.split('');
   step=steps[floor(tick)];
@@ -225,4 +246,17 @@ function keyCoder(keyCode){
 
 function playEnv()  {
   env.play();
+}
+
+function reverser(e){
+  if(e.checked==false){
+    reverb.set(3,2,0);
+    console.log('0')
+  } else if(e.checked==true){
+    reverb.set(3,2,1);
+    console.log('1')
+  }
+  e.disabled=true;
+
+
 }

@@ -15,25 +15,55 @@
         display:
       }
       div{
-        margin:auto;
+        /* margin:auto; */
         word-wrap: break-word;
         font-family: sans-serif;
       }
       .slidercont{
+        text-align: right;
         margin-bottom:20px;
+        background-color: #eee;
+        width:500px;
+      }
+      .slidercont span{
+        width:100px;
+        display: inline-block;
+        font-weight: lighter;
+        font-size:20px;
+        color:white;
+
       }
       .p5canvas{
         border-radius: 25px;
       }
-      #starter{
+      .starter{
         background-color: blue;
         color:white;
         font-size: 20px;
-
-        /* display: inline; */
         width:60px;
         height:60px;
+        transition:all 0.5s ease;
       }
+      .starter:hover{
+        background-color:#0066ff;
+      }
+      .slider{
+        border:2px red solid;
+      }
+      .text-field{
+        box-shadow: 5px 5px 50px 0px red;
+
+        /* border: green 0px groove; */
+
+        transition:1s all ease;
+
+      }
+      .text-field:focus{
+        /* background-image:linear-gradient(to right, white, lightblue); */
+        box-shadow: 5px 5px 5px 0px blue;
+        border: green 2px groove;
+      }
+
     </style>
   </head>
   <body>
@@ -43,9 +73,15 @@
     <div id="feedback"class="slidercont">
       <span>feedback</span>
     </div>
+    <div id="space"class="slidercont">
+      <span class="reverser" style="color:black;font-size:15px;">negative time?</span>
+      <input type="checkbox" onchange="reverser(this)"  autocomplete="off"></input>
+      <span>space</span>
+    </div>
     <div id="speed"class="slidercont">
       <span>speed</span>
     </div>
+
     <script src="js/play.js"></script>
 
   </body>
