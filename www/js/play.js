@@ -22,11 +22,16 @@ let sequencerInput;
 let steps = [];
 let step;
 let timer;
-let interval = 10000;
-let countdown;
+
+let speed = 10000;
+let interval = 1;
+
 let tick = 0;
 let tock;
 let prevTock;
+
+
+let starter
 
 function preload(){
   notes=loadJSON("js/notes.json");
@@ -46,9 +51,14 @@ function setup(){
   delayTime=createSlider(100, 1000, 500);
   let delaycont=document.getElementById('delayTime');
   delayTime.parent(delaycont);
+
   feedback=createSlider(000, 999, 500);
   let feedbackcont=document.getElementById('feedback');
   feedback.parent(feedbackcont);
+
+  speed=createSlider(1, 100000, 10000);
+  let speedcont=document.getElementById('speed');
+  speed.parent(speedcont);
 
 
   sequencerInput = createInput();
@@ -70,16 +80,19 @@ function setup(){
 
   noStroke();
 
+  starter=createDiv('start');
+  starter.id("starter");
+  starter.position(0,600);
+  starter.mouseClicked(start);
 
 }
 
 function draw(){
-  timer = millis() + interval;
-  countdown = ceil((timer-millis())/1000);
-
   delay.delayTime(delayTime.value()/1000);
   delay.feedback(feedback.value()/1000);
-  background(color(255,25,255,2));
+
+  interval=speed.value()/10000;
+  background(color(255,25,255,10));
 
   sequencer(sequencerInput.value());
   // console.log(sequencerInput.value());
@@ -88,21 +101,21 @@ function draw(){
 
   //audiocontext starter
   if (getAudioContext().state !== 'running') {
-    text('click to start audio', width/2, height/2);
+    text('click blue to start', width/2, height/2);
   } else {
     text('', width/2, height/2);
   }
 
-  function touchStarted() {
-    if (getAudioContext().state !== 'running') {
-      getAudioContext().resume();
-    }
+}
+function start() {
+  text('okay', width/2, height/2);
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume();
   }
-
 }
 
 function sequencer(letters){
-  tick+=0.05;
+  tick+=0.05*interval;
   tock=ceil(tick);
 
 
@@ -137,8 +150,10 @@ function play (key,keyCode){
   //octaves
   if(key=="z"){
     octave--;
+    text('⬇︎', width/2, height/2+15);
   } else if(key=="x"){
     octave++;
+    text('⬆︎', width/2, height/2-15);
   } else
   // console.log(key);
   //diatonic
