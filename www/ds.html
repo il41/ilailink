@@ -103,6 +103,21 @@
         width:100px;
       }
 
+      .absolink{
+        font-family: sans-serif;
+        color:hotpink;
+      }
+      #back{
+        position: absolute;
+        right:10px;
+        top:0px;
+      }
+      #navi{
+        position: absolute;
+        right:10px;
+        top:20px;
+      }
+
     </style>
   </head>
   <body>
@@ -124,7 +139,7 @@
     <div class="right-div">
       <textarea class="text-field notepad" wrap="soft" autocomplete="off">/~welcome to the datasynth~\
 • press the start button
-• keys on the keyboard corespond to piano notes
+• keys on the keyboard correspond to piano notes
 • 'z' and 'x' keys will change the octave
 • use the blushing field as a sequencer
 • non-note keys will play as rests in the sequencer
@@ -140,7 +155,7 @@
 
 \www.ilai.link 2020 A.D./
 
-heres a diagram of the keyboard:
+here's a diagram of the keyboard:
 
 |  | | | |  |  | | | | | |  |  | | | |  |
 |  | | | |  |  | | | | | |  |  | | | |  |
@@ -154,6 +169,7 @@ heres a diagram of the keyboard:
     </div>
 
     <script src="js/play.js"></script>
-
+    <a class="absolink" id="back" href="m.html">more soundware</a>
+    <a class="absolink" id="navi" href="http://ilai.link">ilai.link</a>
   </body>
 </html>
