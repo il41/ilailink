@@ -1,0 +1,168 @@
+{
+  "description":"camera crossings",
+  "crosses": [
+    {
+      "num":"01",
+      "date": "1 24",
+      "time": "5 25 pm",
+      "music": "Stylin'",
+      "call": false,
+      "text": "But makes sense"
+    },
+
+    {
+      "num":"02",
+      "date": "1 25",
+      "time": "1 05 am",
+      "music":"Let It Ride (Jimpster Remix)",
+      "call": false,
+      "text": "Finally"
+    },
+    {
+      "num":"03",
+      "date": "1 26",
+      "time": "3 41 pm",
+      "music": "3 AM",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"04",
+      "date":"1 28",
+      "time": "1 16 pm",
+      "music": "The Void",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"05",
+      "date": "1 28",
+      "time": "9 17 pm",
+      "music": false,
+      "call": true,
+      "text": false
+    },
+    {
+      "num":"06",
+      "date": "1 29",
+      "time": "6 15 pm",
+      "music": "Rush (Album Mix)",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"07",
+      "date": "1 30",
+      "time": "9 30 pm",
+      "music": "True Love",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"08",
+      "date": "2 1",
+      "time": "2 45 pm",
+      "music": "Her Name Was Truly",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"09",
+      "date": "2 2",
+      "time": "12 25 pm",
+      "music": true,
+      "song": "Focus",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"10",
+      "date": "2 2",
+      "time": "2 24 pm",
+      "music": false,
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"11",
+      "date": "2 3",
+      "time": "7 19 pm",
+      "music": "The Void",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"12",
+      "date": "2 3",
+      "time": "7 52 pm",
+      "music": false,
+      "call": true,
+      "text": false
+    },
+    {
+      "num":"13",
+      "date": "2 4",
+      "time": "8 36 pm",
+      "music": false,
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"14",
+      "date": "2 5",
+      "time": "8 35 pm",
+      "music": false,
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"15",
+      "date": "2 7",
+      "time": "5 52 pm",
+      "music": "Red Shift",
+      "call": true,
+      "text": false
+    },
+    {
+      "num":"16",
+      "date": "2 11",
+      "time": "8 47 pm",
+      "music": "Sundance",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"17",
+      "date": "2 11",
+      "time": "6 38 pm",
+      "music": false,
+      "call": false,
+      "text": "https://sebpearce.com/bullshit/"
+    },
+    {
+      "num":"18",
+      "date": "2 12",
+      "time": "8 28 pm",
+      "music": false,
+      "call": false,
+      "text": "Snoozing 4:47 remaining"
+    },
+    {
+      "num":"19",
+      "date": "2 12",
+      "time": "5 20 pm",
+      "music": "Facet of Jazz",
+      "call": false,
+      "text": false
+    },
+    {
+      "num":"20",
+      "date": "1 13",
+      "time": "11 56 pm",
+      "music": false,
+      "call": false,
+      "text": false
+    }
+  ]
+
+}

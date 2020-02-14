@@ -2,6 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <!-- big up to Alexander Craxton and asciiart.website for the original keyboard diagram -->
+
+    <!-- ###EXAMPLE SEQUENCES### (copy+paste these into the text sequencer)
+    Coldplay - Clocks
+    pugpugpuoufoufououfoufoukyekyeky
+
+    Daft Punk - Veridis Quo
+    f d f s     f a fzj                 ; l ; k     ; j ; h               x
+  -->
+
     <meta charset="utf-8">
     <title></title>
     <script src="js/p5.min.js"></script>
@@ -105,28 +114,38 @@
 
       .absolink{
         font-family: sans-serif;
-        color:hotpink;
+        color:magenta;
       }
       #back{
         position: absolute;
+        /* float:right; */
         right:10px;
-        top:0px;
+        bottom:10px;
       }
       #navi{
+        color:hotpink;
         position: absolute;
+        /* float:right; */
         right:10px;
-        top:20px;
+        bottom:35px;
       }
-
+      #crossings{
+        /* position: absolute; */
+        float: right;
+        right:300px;
+        top:10px;
+      }
     </style>
   </head>
   <body>
+
     <div id="delayTime"class="slidercont">
       <span>delay time</span>
     </div>
     <div id="feedback"class="slidercont">
       <span>feedback</span>
     </div>
+    <div class="absolink" id="crossings">crossing log data -></div>
     <div id="space"class="slidercont">
       <span class="reverser" style="color:black;font-size:15px;">negative time?</span>
       <input type="checkbox" onclick="reverser(this)"  autocomplete="off">
@@ -138,38 +157,35 @@
 
     <div class="right-div">
       <textarea class="text-field notepad" wrap="soft" autocomplete="off">/~welcome to the datasynth~\
+        INSTRUCTIONS
 • press the start button
 • keys on the keyboard correspond to piano notes
 • 'z' and 'x' keys will change the octave
 • use the blushing field as a sequencer
-• non-note keys will play as rests in the sequencer
+• "speed" slider changes the tempo of the sequence
 • the sequencer detects z and x octave changes
-• for example "az" will continually rise in octave
-• if the octave passes the high limit, it will reset to the lowest octave, and vice versa
 
 • feel free to use this text pad to save your sequences, but they will disappear if you reload the page so be careful!
-• mobile users can also click this textpad to enable their keyboard in order to play the synth
+• mobile users can also click this textpad or the textfield under the start button to enable their keyboard in order to play the synth
 
--you cant undo reversal of spacetime (until you reload)
--speed controls the tempo of the sequencer
+-you can't undo reversal of spacetime (until you reload)
 
 \www.ilai.link 2020 A.D./
-
-here's a diagram of the keyboard:
-
-|  | | | |  |  | | | | | |  |  | | | |  |
+_________________________________________
 |  | | | |  |  | | | | | |  |  | | | |  |
 |  |w| |e|  |  |t| |y| |u|  |  |o| |p|  |
-|  |_| |_|  |  |_| |_| |_|  |  |_| |_|  |
-|   |   |   |   |   |   |   |   |   |   |
-| a | s | d | f | g | h | j | k | l | ; | (x-raise octave)
-|___|___|___|___|___|___|___|___|___|___| (z-lower octave)
+|  |_| |_|  |  |_| |_| |_|  |  |_| |_|  | (x-raise octave)
+|   |   |   |   |   |   |   |   |   |   | (z-lower octave)
+| a | s | d | f | g | h | j | k | l | ; |
+|___|___|___|___|___|___|___|___|___|___|
 
 </textarea>
     </div>
 
     <script src="js/play.js"></script>
-    <a class="absolink" id="back" href="m.html">more soundware</a>
-    <a class="absolink" id="navi" href="http://ilai.link">ilai.link</a>
+    <a class="absolink" id="back" href="m.html"><i>more web sound projects</i></a>
+    <a class="absolink" id="navi" href="http://ilai.link">www.ilai.link</a>
+
+    </div>
   </body>
 </html>

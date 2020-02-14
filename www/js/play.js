@@ -1,7 +1,7 @@
 let osc;
 let cnv;
 let env;
-let attackLevel = 0.7;
+let attackLevel = 0.3;
 let releaseLevel = 0;
 
 let attack = 0.03;
@@ -18,6 +18,8 @@ let delay;
 let delayTime;
 let feedback;
 
+let comp;
+
 let reverse = 0;
 
 let sequencerInput;
@@ -28,23 +30,51 @@ let timer;
 let speed = 10000;
 let interval = 1;
 
-let tick = 0;
+let tick = -1;
 let tock;
 let prevTock;
 
 
 let starter
 
+let crossings = []
+let crossMenu;
+
 function preload(){
   notes=loadJSON("js/notes.json");
-  console.log(notes);
-
+  cross=loadJSON("js/crossing.json",setupCross);
+  // console.log(notes);
+  // console.log(cross);
 }
 
+function setupCross(){
+  crossings=cross.crosses;
+  crossDiv=document.querySelector('#crossings')
+  crossMenu=createSelect();
+  crossMenu.parent(crossDiv);
+  for (let i = 0; i < crossings.length; i++) {
+      crossMenu.option(crossings[i].num +" --- "+crossings[i].time+" on "+crossings[i].date);
+      crossMenu.selectedIndex=[i];
+  };
+  crossMenu.changed(crossChange);
+}
 
+function crossChange(){
+  let menuIndex = int(crossMenu.selected().charAt(0)+crossMenu.selected().charAt(1));
+  let newSequence;
+  console.log(menuIndex);
+  if (menuIndex<16){
+    newSequence=Math.random().toString(36).replace(/[^a-w]+/g, '').substr(0, 5);
+  } else if(menuIndex>15){
+    newSequence=(Math.random(+20)).toString(36).replace(/[^a-w]+/g, '');
+  }
+  sequencerInput.value(newSequence);
+  // sequencerInput.value(crossMenu.selectedIndex);
+  // let newSequence = scale[]
+  // sequencerInput.value(newSequence);
+};
 
 function setup(){
-
   cnv = createCanvas(400, 400);
   cnv.id('canvas');
   cnv.parent().style="border-radius:25%"
@@ -56,7 +86,7 @@ function setup(){
   let delaycont=document.getElementById('delayTime');
   delayTime.parent(delaycont);
 
-  feedback=createSlider(000, 999, 500);
+  feedback=createSlider(000, 900, 500);
   feedback.addClass('slider');
   let feedbackcont=document.getElementById('feedback');
   feedback.parent(feedbackcont);
@@ -72,9 +102,11 @@ function setup(){
   speed.parent(speedcont);
 
 
-  sequencerInput = createInput();
+  sequencerInput = createInput("sequencer");
+  // sequencerInput = createInput();
   sequencerInput.addClass('text-field');
-  sequencerInput.placeholder="sequencer for keys";
+  // sequencerInput.placeholder="SEQUENCER";
+  comp = new p5.Compressor();
 
   env = new p5.Envelope();
   env.setADSR(attack, decay, sus, release);
@@ -85,14 +117,17 @@ function setup(){
   osc.amp(env);
   osc.start();
 
+
   delay = new p5.Delay();
   delay.process(osc, .7, .3, 20000);
+
 
   reverb = new p5.Reverb();
   reverb.process(osc, 3, 2, reverse);
 
+  // comp.connect(delay,reverb);
 
-  console.log(notes.C[1]);
+  // console.log(notes.C[1]);
 
   noStroke();
 
@@ -103,11 +138,12 @@ function setup(){
 
   emptyfield=createInput();
   emptyfield.addClass('empty-field');
-  emptyfield.placeholder="for mobile keyjammers"
+  emptyfield.placeholder="for mobile keyjammers";
 
   textSize(80);
 
 }
+
 
 function draw(){
   delay.delayTime(delayTime.value()/1000);
@@ -125,6 +161,7 @@ function draw(){
 
   //audiocontext starter
   if (getAudioContext().state !== 'running') {
+    textSize(30);
     text('click blue to start', width/2, height/2);
   } else {
     text('', width/2, height/2);
@@ -132,6 +169,7 @@ function draw(){
   rect(10,height/2-octave*10,10,10);
 }
 function start() {
+  textSize(80);
   text('okay', width/2, height/2);
   if (getAudioContext().state !== 'running') {
     getAudioContext().resume();
@@ -155,11 +193,11 @@ function sequencer(letters){
   prevTock=tock;
 
 
-  if(octave>9){
-  octave=0;
+  if(octave>7){
+  octave=1;
   }
   if(octave<0){
-    octave=9;
+    octave=7;
   }
 }
 
@@ -243,6 +281,15 @@ function play (key,keyCode){
   }
   fill(tock*20,20*200-tock*2,tock+tock*octave);
   rect(100,0,100,keyCoder(keyCode));
+
+  if(steps.length<1){
+    textSize(400);
+    text(key,300,(30*tock)+405);
+  } else{
+    textSize(80);
+    text(key,300,(30*tock)+10);
+  }
+
   // ellipse(width/2,height/2,keyCoder(keyCode),100);
 }
 
