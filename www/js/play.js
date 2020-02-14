@@ -35,7 +35,8 @@ let tock;
 let prevTock;
 
 
-let starter
+let starter;
+let clear;
 
 let crossings = []
 let crossMenu;
@@ -105,6 +106,7 @@ function setup(){
   sequencerInput = createInput("sequencer");
   // sequencerInput = createInput();
   sequencerInput.addClass('text-field');
+  sequencerInput.addClass('sequencer');
   // sequencerInput.placeholder="SEQUENCER";
   comp = new p5.Compressor();
 
@@ -133,12 +135,15 @@ function setup(){
 
   starter=createDiv('start');
   starter.addClass("starter");
-  // starter.position(0,600);
   starter.mouseClicked(start);
 
   emptyfield=createInput();
   emptyfield.addClass('empty-field');
   emptyfield.placeholder="for mobile keyjammers";
+
+  clear=createDiv('clear sequence');
+  clear.addClass("clearSequence");
+  clear.mouseClicked(()=>{sequencerInput.value("")});
 
   textSize(80);
 
@@ -200,7 +205,6 @@ function sequencer(letters){
     octave=7;
   }
 }
-
 
 function keyPressed() {
   // background('yellow');

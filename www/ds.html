@@ -135,6 +135,30 @@
         right:300px;
         top:10px;
       }
+      .clearSequence{
+        color:white;
+        user-select: none;
+        font-size:20px;
+        width:150px;
+        height:20px;
+        border-radius: 20px;
+        padding:5px;
+        text-align: center;
+        background-color: blue;
+        background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
+        background-size: 400% 400%;
+        margin-bottom:2px;
+        display: inline;
+        animation: AnimationName 4s linear infinite;
+      }
+
+
+
+      @keyframes AnimationName {
+         0%{background-position:0% 50%}
+         100%{background-position:130% 50%}
+
+      }
     </style>
   </head>
   <body>
@@ -154,7 +178,7 @@
     <div id="speed"class="slidercont">
       <span>speed</span>
     </div>
-
+<!-- <div type="button" class="clearSequence" onclick="document.querySelector('.sequencer').value=''" return false>clear sequence</div> -->
     <div class="right-div">
       <textarea class="text-field notepad" wrap="soft" autocomplete="off">/~welcome to the datasynth~\
         INSTRUCTIONS
