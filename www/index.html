@@ -96,7 +96,20 @@
         font-size:20px;
         color:red;
         text-decoration:underline;
-        line-height: 0px;
+        line-height: 20px;
+      }
+      .enter{
+        font-size: 20px;
+        line-height: 22px;
+        padding-left: 27px;
+        width:80%;
+
+
+      }
+      .enter > *{
+        transition: all 0.2s ease-in;
+        border-radius: 20px;
+        padding:2px;
       }
     </style>
   </head>
@@ -105,8 +118,10 @@
         <a id="go" href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
       </div><br>
       <div id="content">
-        <div>enter the inner site with the link above. ⬆︎</div>
-        <div>more music, software, and info inside :)</div>
+        <div class="enter">
+          <span>enter the inner site with the link above. ⬆︎</span><br>
+          <span>more music, software, and info inside</span> <span>:)</span>
+        </div>
         <div class="head">news</div>
         <div>Qtime 2 is now finished, visit the <a target="_blank" href="https://11ai.bandcamp.com">website</a> for free download!</div>
         <div>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></div>
@@ -123,7 +138,8 @@
       <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark&show-count=0" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe>
     </div>
     <script>
-    let output=document.querySelector(".colors");
+      let output=document.querySelector(".colors");
+      let output2=document.querySelector(".enter");
       function randomColors(){
       output.querySelectorAll('*').forEach((e)=>{
         seed=Math.random()*(256*256*256-1);
@@ -132,7 +148,16 @@
         // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
       })
       }
+      function randomColors2(){
+      output2.querySelectorAll('*').forEach((e)=>{
+        seed=Math.random()*(156*06*256-1);
+        seed2=16777216-seed;
+        e.style.backgroundColor='#'+Math.floor(seed).toString(16)
+        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
+      })
+      }
       setInterval(randomColors,50);
+      setInterval(randomColors2,1000);
     </script>
   </body>
 </html>
