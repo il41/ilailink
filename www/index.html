@@ -5,9 +5,11 @@
     <title>ilai.link</title>
     <style>
       body{
-        background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
+        background-image:url("images/q22.jpg");
+        background-size: 200% 100%;
+        /* background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
         background-size: 400% 400%;
-        animation: AnimationName 4s linear infinite;
+        animation: AnimationName 40s linear infinite; */
         margin:0px;
         padding:0px;
         /* background-image: url("images/21t7.jpg"); */
@@ -21,13 +23,19 @@
       }
 
       #cont{
+        border-radius: 100px;
+        margin-left:30px;
         margin-right: 230px;
         padding: 20px;
         background-color: lightgrey;
+        background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
+        background-size: 4000% 400%;
+        animation: AnimationName 40s linear infinite;
         /* width:75vw; */
         /* word-wrap: break-word; */
       }
       #sidebar{
+        margin-right:20px;
         position:absolute;
         right:0px;
         top:0px;
@@ -49,11 +57,15 @@
         font-size: 300px;
         font-style: italic;
       }
-      img{
+      .blocky{
+        background-color: red;
+      }
+      img, .blocky{
         width:200px;
+        height:200px;
         display:block;
       }
-      a > img{
+      a > img,.blocky{
         margin:auto;
       }
     </style>
@@ -63,6 +75,7 @@
         <a id="go" href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
       </div>
       <div id="sidebar">
+        <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
         <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
         <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
         <a target ="_blank" href="http://ilai.bandcamp.com/album/in-water"><img src="images/inwater.jpg"></a><br>
