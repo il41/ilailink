@@ -23,17 +23,37 @@
       }
 
       #cont{
+        display:inline-block;
         border-radius: 100px;
         margin-left:30px;
-        margin-right: 230px;
-        padding: 20px;
+        /* margin-right: 330px; */
+        padding: 30px;
         background-color: lightgrey;
         background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
         background-size: 4000% 400%;
-        animation: AnimationName 40s linear infinite;
+        animation: AnimationName 29s linear infinite;
         /* width:75vw; */
         /* word-wrap: break-word; */
+
       }
+      #content{
+        line-height: 30px;
+        margin-top:30px;
+        font-size:18px;
+        display:inline-block;
+        margin-left:50px;
+        padding: 20px;
+        background-color: lightgrey;
+        background-image: url("images/bluearray.png");
+        background-size: 98% 98%;
+        border-radius: 20px;
+        width:500px;
+      }
+      #content > div{
+
+      }
+
+
       #sidebar{
         margin-right:20px;
         position:absolute;
@@ -41,6 +61,8 @@
         top:0px;
         padding-top:20px;
         width:230px;
+        min-height:900px;
+        max-height: 900px;
         background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
         background-size: 400% 400%;
         animation: AnimationName 4s linear infinite;
@@ -54,7 +76,7 @@
 
       }
       #go{
-        font-size: 300px;
+        font-size: 280px;
         font-style: italic;
       }
       .blocky{
@@ -68,11 +90,27 @@
       a > img,.blocky{
         margin:auto;
       }
+      .head{
+        margin-top:10px;
+        font-family: sans-serif;
+        font-size:20px;
+        color:red;
+        text-decoration:underline;
+        line-height: 0px;
+      }
     </style>
   </head>
   <body>
       <div id="cont">
         <a id="go" href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
+      </div><br>
+      <div id="content">
+        <div>enter the inner site with the link above. ⬆︎</div>
+        <div>more music, software, and info inside :)</div>
+        <div class="head">news</div>
+        <div>Qtime 2 is now finished, visit the <a target="_blank" href="https://11ai.bandcamp.com">website</a> for free download!</div>
+        <div>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></div>
+        <div>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></div>
       </div>
       <div id="sidebar">
         <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
@@ -81,6 +119,20 @@
         <a target ="_blank" href="http://ilai.bandcamp.com/album/in-water"><img src="images/inwater.jpg"></a><br>
         <a target ="_blank" href="http://ilai.bandcamp.com/album/resimulate"><img src="images/resim.png"></a><br>
       </div>
+      <br>
+      <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark&show-count=0" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe>
     </div>
+    <script>
+    let output=document.querySelector(".colors");
+      function randomColors(){
+      output.querySelectorAll('*').forEach((e)=>{
+        seed=Math.random()*(256*256*256-1);
+        seed2=16777216-seed;
+        e.style.color='#'+Math.floor(seed).toString(16)
+        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
+      })
+      }
+      setInterval(randomColors,50);
+    </script>
   </body>
 </html>
