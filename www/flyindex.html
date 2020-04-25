@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ilai.link</title>
+    <style>
+      body{
+        margin:0;
+        width:100vw;
+
+        margin:0;
+        padding:0;
+        background-image:url(images/k3.png);
+        /* background-size: 100vw; */
+        /* background-size: 200vh; */
+        background-repeat: no-repeat;
+        background-position: center;
+        /* background-size: cover; */
+
+          /* display:flex;
+          justify-content: left;
+          flex-wrap: wrap; */
+        /* font-size: 1em; */
+        /* background-color:#00d8d8; */
+        background-color: #38f7f7;
+         background-blend-mode: exclusion;
+      }
+      /* #arrow{
+        position:absolute;
+        bottom:50px;
+        right:20px;
+        font-size:30px;
+        text-align:right;
+        line-height:47px;
+      } */
+      #arrow{
+        /* position:relative; */
+        margin:10px;
+        margin-top:34px;
+        font-size:30px;
+        text-align:right;
+        /* line-height:47px; */
+        background-color: rgba(240,240,240,0.4);
+        border-radius:100%;
+        z-index: 10;
+
+      }
+      .waterlink{
+        margin-left: 10px;
+        font-size:20px;
+        padding:5px;
+        background-color: rgba(240,240,240,1);
+        z-index: 10;
+        /* border-radius:100%; */
+      }
+      .container{
+        width:100vw;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+          height:100vh;
+          width:100vw;
+      }
+      #fly{
+        position:relative;
+        /* display: inline; */
+        margin-top:60px;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        width: 420px;
+        /* display:block; */
+        /* border:20px blue dashed; */
+        /* border-radius: 20px; */
+        /* transform: perspective(1000px) rotateY(180deg); */
+        /* animation-name: love; */
+
+        animation: love 10s linear 2s infinite;
+        animation-delay:0s;
+        z-index: 1;
+      }
+      @keyframes love {
+        0%{ transform: perspective(1000px) rotateY(0deg);}
+        50%{ transform: perspective(1000px) rotateY(180deg);}
+        100%{ transform: perspective(1000px) rotateY(360deg);}
+      }
+      #xm{
+        /* margin-left: 10px;
+        margin-top:10px; */
+        padding:2px;
+        background-color: rgba(0,0,0,0.1);
+        /* height:100px; */
+        display:inline-block;
+        text-align: right;
+
+      }
+      #display{
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- <div class="container">
+    <a href="https://ilai.bandcamp.com/" target="_blank"><img src="images/inwater.jpg"
+      style="width:70vh;">
+    </a>
+    </div>
+    <div id="arrow">
+      <a href="https://ilai.bandcamp.com/">in water - 11ai</a>
+      <br>
+      <a href="index.html">ilai.link</a>
+    </div> -->
+
+
+
+
+    <div id="display"><a href="https://ilai.bandcamp.com/" target="_blank" ><img alt="fly1" id="fly" src="images/fly1.jpg"></a></div>
+    <a class="waterlink"href="https://ilai.bandcamp.com/" style="font-family:sans-serif">fly1 - 11ai</a>
+    <a class="waterlink"href="https://open.spotify.com/album/7eHItqCU3I8MKEiVeltgbO?si=C-NjsghnT8iDEJXSUt6tqg" style="font-family:sans-serif; color:green;">spotify portal</a>
+     <!-- • <a href="https://open.spotify.com/album/2AGR52nGXIgyG7FxpOvSf0?si=5a8TnmT8TFG1rt44l5CIEw" target="_blank">spotify portal</a> -->
+
+    <div id="arrow">
+    <span>continue to...</span>  <a href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
+    </div>
+    <script>
+    console.log("loading");
+      let blendmodes = ["hard-light","darken","hue","color","color-dodge","luminosity","multiply","difference","exclusion","normal","overlay","saturation","screen","soft-light"]
+      let randomIndex = Math.floor(Math.random()*blendmodes.length);
+      console.log(randomIndex);
+
+      blend();
+
+      function blend(){
+        document.body.style.backgroundBlendMode=blendmodes[randomIndex];
+        // document.body.style.backgroundBlendMode="overlay";
+      }
+      console.log("ok");
+    </script>
+  </body>
+</html>
