@@ -49,10 +49,15 @@
         border-radius: 20px;
         width:500px;
       }
-      #content > div{
-
+      #content > * > a{
+        transition:color ease 0.6s;
       }
-
+      #content > * > a:visited{
+        color: blue;
+      }
+      #content > * > a:hover{
+        color: hotpink;
+      }
 
       #sidebar{
         margin-right:20px;
@@ -70,9 +75,14 @@
         height:90%;
         scroll-behavior: auto;
       }
-      #sidebar > img{
-        margin:auto;
-        margin-bottom:0px;
+      #sidebar > a >img{
+        /* margin:auto; */
+        /* margin-bottom:0px; */
+        transition: box-shadow ease 1s;
+        box-shadow: 0px 0px 0px 0px black;
+      }
+      #sidebar > a > img:hover{
+        box-shadow: 3px 3px 3px 3px blue;
 
       }
       #go{
@@ -110,7 +120,9 @@
         transition: all 0.2s ease-in;
         border-radius: 20px;
         padding:2px;
+        /* font-family: sans-serif; */
       }
+
     </style>
   </head>
   <body>
@@ -123,9 +135,9 @@
           <span>more music, software, and info inside</span> <span>:)</span>
         </div>
         <div class="head">news</div>
-        <div>Qtime 2 is now finished, visit the <a target="_blank" href="https://11ai.bandcamp.com">website</a> for free download!</div>
+        <div>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</div>
         <div>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></div>
-        <div>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></div>
+        <div>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <a style="text-decoration: none; "target="_blank" href="https://www.twitch.tv/videos/601403882"> <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></a></div>
       </div>
       <div id="sidebar">
         <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
@@ -144,7 +156,8 @@
       output.querySelectorAll('*').forEach((e)=>{
         seed=Math.random()*(256*256*256-1);
         seed2=16777216-seed;
-        e.style.color='#'+Math.floor(seed).toString(16)
+        e.style.color='#'+Math.floor(seed).toString(16);
+
         // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
       })
       }
