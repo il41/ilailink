@@ -137,9 +137,9 @@ function setup(){
   starter.addClass("starter");
   starter.mouseClicked(start);
 
-  // emptyfield=createInput();
-  // emptyfield.addClass('empty-field');
-  // emptyfield.placeholder="for mobile keyjammers";
+  emptyfield=createInput();
+  emptyfield.addClass('empty-field');
+  emptyfield.placeholder="for mobile keyjammers";
 
   clear=createDiv('clear sequence');
   clear.addClass("clearSequence");
@@ -291,11 +291,7 @@ function play (key,keyCode){
     text(key,300,(30*tock)+405);
   } else{
     textSize(80);
-    let txtpos=(30*tock)+10
-    if(txtpos>430){txtpos=(txtpos%420)+10}
-
-    text(key,300,txtpos);
-    console.log(tock);
+    text(key,300,(30*tock)+10);
   }
 
   // ellipse(width/2,height/2,keyCoder(keyCode),100);

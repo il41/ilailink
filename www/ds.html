@@ -57,11 +57,14 @@
         color:white;
         font-size: 20px;
         width:60px;
-        height:60px;
-        transition:all 0.5s ease;
+        height:30px;
+        /* padding:2px; */
+        transition:color 0.5s ease;
+        display:inline-block;
       }
       .starter:hover{
-        background-color:#0066ff;
+        /* background-color:#0066ff; */
+        color:#00ff00;
       }
       .slider{
         border:2px red solid;
@@ -78,6 +81,16 @@
         transition:1s all ease;
 
       }
+      .sequencer{
+        width:400px;
+        display:block;
+        margin:10px;
+        margin-left:100px;
+        margin-bottom:30px;
+        /* font-size: 15px; */
+
+      }
+
       .text-field:focus{
         border-radius: 20px;
         /* background-image:linear-gradient(to right, white, lightblue); */
@@ -148,6 +161,7 @@
         background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
         background-size: 400% 400%;
         margin-bottom:2px;
+        margin-left:100px;
         display: inline;
         animation: AnimationName 4s linear infinite;
       }
