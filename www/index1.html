@@ -38,9 +38,18 @@
             from{opacity: 0;}
               to{opacity: 1;}
           }
-          #portal{
-            font-size: 26px;
-            position:static:
+          @keyframes notice
+          {
+            0%{color: #0004ff;}
+            50%{color: #ff00ff;}
+            100%{color: #ff9500;}
+          }
+          #portal,#portal:visited{
+            font-size: 46px;
+            position:static;
+            /* background-color:red; */
+            width:200px;
+            animation: notice 4s alternate infinite, rave2 0.4s alternate infinite;
           }
           #portal:hover{
             animation: rave2 0.4s infinite;

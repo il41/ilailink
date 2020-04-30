@@ -43,13 +43,21 @@
     <video playsinline autoplay muted loop id="vid">
         <source src="liquidvox2.mov">
     </video>
-    <audio autoplay loop>
+    <audio id="terra" autoplay loop>
       <source src= "audio/terraforming.mp3">
     </audio>
   <script>
+    let audio = document.querySelector("#terra");
+    console.log(audio);
     setInterval(function() {
     document.title=Math.random().toString().substr(2, 100)
   }, 50);
+  document.body.addEventListener('click',()=>{
+    if (audio.duration > 0 && !audio.paused) {
+      } else {
+      audio.play();
+    }
+  })
   </script>
   </body>
 </html>

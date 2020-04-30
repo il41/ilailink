@@ -147,7 +147,20 @@
         animation: AnimationName 40s linear infinite;
         z-index: -2;
       }
-
+      #space{
+        height:200vh;
+        width:100vw;
+      }
+      #lower-portals{
+        text-align:right;
+      }
+      #lower-portals > a >img{
+        display:inline;
+        margin:20px;
+        height:100px;
+        width:auto;
+        border-radius: 100%;
+      }
     </style>
   </head>
   <body>
@@ -175,6 +188,12 @@
       </div>
       <br>
       <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark&show-count=0" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe>
+    </div>
+    <div id="space"></div>
+    <div id="lower-portals">
+      <a href="index07232019.html"><img src="images/dotscreen0.jpg"></a>
+      <!-- <a href="index07232019.html"><img src="images/voltascreen0.jpg"></a> -->
+      <!-- <a href="index07232019.html"><img src="images/cubescreen0.jpg"></a> -->
     </div>
     <script>
       let output=document.querySelector(".colors");
