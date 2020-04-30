@@ -5,8 +5,12 @@
     <title>ilai.link</title>
     <style>
       body{
-        background-image:url("images/q22.jpg");
-        background-size: 200% 100%;
+        z-index: -2;
+        /* background-image:url("images/blue2.png");
+        background-size: contain;
+        background-attachment: fixed; */
+        /* transform: rotate(10deg); */
+        /* background-size: 200% 100%; */
         /* background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
         background-size: 400% 400%;
         animation: AnimationName 40s linear infinite; */
@@ -28,17 +32,22 @@
         margin-left:30px;
         /* margin-right: 330px; */
         padding: 30px;
-        background-color: lightgrey;
-        background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
+        /* background-color: lightgrey; */
+        /* background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff); */
         background-size: 4000% 400%;
         animation: AnimationName 29s linear infinite;
         /* width:75vw; */
         /* word-wrap: break-word; */
 
       }
+      #go{
+        font-size: 220px;
+        font-style: italic;
+      }
+
       #content{
         line-height: 30px;
-        margin-top:30px;
+        margin-top:0px;
         font-size:18px;
         display:inline-block;
         margin-left:50px;
@@ -85,10 +94,7 @@
         box-shadow: 3px 3px 3px 3px blue;
 
       }
-      #go{
-        font-size: 280px;
-        font-style: italic;
-      }
+
       .blocky{
         background-color: red;
       }
@@ -122,17 +128,38 @@
         padding:2px;
         /* font-family: sans-serif; */
       }
+      #back{
+        height:100vh;
+        width:100vw;
+        position: fixed;
+        z-index: -1;
+        background-image:url("images/blue2.png");
+        background-size: cover;
+        /* background-attachment: fixed; */
+      }
+      @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:133% 50%}}
+      #back-grad{
+        height:100vh;
+        width:100vw;
+        position: fixed;
+        background: linear-gradient(90deg, #ffffff, #002cff,#000000 80%);
+        background-size: 400% 400%;
+        animation: AnimationName 30s linear infinite;
+        z-index: -2;
+      }
 
     </style>
   </head>
   <body>
+      <div id="back"></div>
+      <div id="back-grad"></div>
       <div id="cont">
         <a id="go" href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
       </div><br>
       <div id="content">
         <div class="enter">
           <span>enter the inner site with the link above. ⬆︎</span><br>
-          <span>more music, software, and info inside</span> <span>:)</span>
+          <span>more music, software, and art inside</span> <span>:)</span>
         </div>
         <div class="head">news</div>
         <div>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</div>
