@@ -28,19 +28,20 @@ let cMajPent = []
 // let gSharpMin = [];
 // let aSharpMin = [];
 
-let scale1=[261.63,293.66];
+let scale1=[];
 let soundLoop;
 
-let a = 0.1;
-let d = 0.7;
-let s = 0.3;
-let r = 0.1;
+let a = 0.01;
+let d = 0.5;
+let s = 0.03;
+let r = 0.2;
 let dots = []
 let columns = []
 let oscillators = [];
 let mCont = document.getElementById("matrix");
 
-let hitEvent = new Event("hit");
+let activeColor="#00ff00";
+let inactiveColor="#0000ff";
 
 function setup(){
   for (var i = 0; i < cMajPentMIDI.length; i++) {
@@ -78,13 +79,13 @@ function setup(){
         // console.log(this)
         if(this.enabled==0){
           this.enabled=1;
-          this.div.style.backgroundColor="#00ff00";
+          this.div.style.backgroundColor=activeColor;
           oscillator.env.play();
           render();
           console.log(this.x+","+this.y);
         } else if(this.enabled==1){
           this.enabled=0;
-          this.div.style.backgroundColor="#0000ff";
+          this.div.style.backgroundColor=inactiveColor;
         }
       });
       this.div.addEventListener("hit",()=>{
@@ -128,7 +129,43 @@ function setup(){
       // oscillators[i].env.setADSR(a,d,s,r);
       // console.log(dots[i]);
       dots[i].enabled=0;
-      dots[i].div.style.backgroundColor="#0000ff";
+      dots[i].div.style.backgroundColor=inactiveColor;
+    }
+  })
+
+  let btn2 = document.getElementById("btn2")
+
+  btn2.addEventListener('click',()=>{
+    btn.click();
+    for (var i = 0; i < dots.length; i++) {
+      // oscillators[i].osc.freq(dMin[i+10]);
+      // oscillators[i].env.setADSR(a,d,s,r);
+      // console.log(dots[i]);
+      dots[i].enabled=(Math.random() >= 0.9);
+      if(dots[i].enabled){
+        dots[i].div.style.backgroundColor=activeColor;
+      } else {
+        dots[i].div.style.backgroundColor=inactiveColor;
+      }
+
+    }
+  })
+
+  let btn3 = document.getElementById("btn3")
+  btn3.addEventListener('click',()=>{
+    inactiveColor="#ff00ff";
+    for (var i = 0; i < cMajPentMIDI.length; i++) {
+      scale1.push(noteToFreq(cMajPentMIDI[16-i]-10));
+    }
+    for (var i = 0; i < oscillators.length; i++) {
+      oscillators[i].osc.freq(scale1[i]);
+      for (var i = 0; i < dots.length; i++) {
+        if(dots[i].enabled!=1){
+          dots[i].div.style.backgroundColor=inactiveColor;
+        }
+      }
+      // oscillators[i].env.setADSR(a,d,s,r);
+      // console.log(dots[i]);
     }
   })
 
