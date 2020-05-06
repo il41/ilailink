@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <title></title>
     <script src="js/p5.min.js"></script>
+    <script src="js/p5.dom.js"></script>
     <script src="js/p5.sound.min.js"></script>
+    <script src="js/THREE.min.js"></script>
     <style>
     body{
       line-height: 0px;
@@ -17,10 +19,33 @@
       height:100px;
       border:2px solid black;
       display: inline-block;
+
+    }
+    .voice{
+      width:20px;
+      height:20px;
+      /* background-color: blue; */
+      /* border: 1px solid black; */
+      display:inline-block;
+      margin:1px;
+      border-radius: 100%;
+      background-color: #00ff00;
+      transition: filter smooth 0.3s;
+    }
+    #matrix{
+      width:360px;
+      margin:10px;
+    }
+    .now{
+      filter: hue-rotate(40deg) drop-shadow(6px 6px 2px purple) ;);
     }
     </style>
   </head>
   <body>
-    <script src="js/ds2.js"></script>
+    <div id="matrix"></div>
+    <div id="btn">change scale</div>
+
+    <!-- <script src="js/ds2.js"></script> -->
+    <script src="js/body.js"></script>
   </body>
 </html>
