@@ -10,16 +10,13 @@
     <script src="js/THREE.min.js"></script>
     <style>
     body{
-      line-height: 0px;
       margin:0px;
-      padding:0px;
     }
     .box{
       width:100px;
       height:100px;
       border:2px solid black;
       display: inline-block;
-
     }
     .voice{
       width:20px;
@@ -32,18 +29,29 @@
       background-color: #00ff00;
       transition: filter smooth 0.3s;
     }
+    #btn1{
+      /* padding:2px; */
+      width:100px;
+      height:40px;
+      background-color: grey;
+      display: inline-block;
+
+    }
     #matrix{
       width:360px;
       margin:10px;
+      line-height: 0px;
+      padding:0px;
     }
     .now{
-      filter: hue-rotate(40deg) drop-shadow(6px 6px 2px purple) ;);
+      /* filter: hue-rotate(40deg) drop-shadow(6px 6px 2px purple); */
+      filter: hue-rotate(40deg);
     }
     </style>
   </head>
   <body>
     <div id="matrix"></div>
-    <div id="btn">change scale</div>
+    <div id="btn1">clear pattern</div>
 
     <!-- <script src="js/ds2.js"></script> -->
     <script src="js/body.js"></script>

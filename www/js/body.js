@@ -112,17 +112,23 @@ function setup(){
     for(let x=0;x<16;x++){
       let o = new voice(x,y,oscillator)
       columns[x].push(o);
+      dots.push(o);
     }
   }
-
-
-  let btn = document.getElementById("btn")
+  for (var i = 0; i < oscillators.length; i++) {
+    oscillators[i].env.setADSR(a,d,s,r)
+  }
+// oscillators[i].env.setADSR(a,d,s,r);
+  let btn = document.getElementById("btn1")
   btn.addEventListener('click',()=>{
     // oscillators.forEach((item, index) => console.log(`${index}:${item}`))
     // console.log(oscillators)
-    for (var i = 0; i < oscillators.length; i++) {
-      oscillators[i].osc.freq(dMin[i+10]);
-      oscillators[i].env.setADSR(a,d,s,r);
+    for (var i = 0; i < dots.length; i++) {
+      // oscillators[i].osc.freq(dMin[i+10]);
+      // oscillators[i].env.setADSR(a,d,s,r);
+      // console.log(dots[i]);
+      dots[i].enabled=0;
+      dots[i].div.style.backgroundColor="#0000ff";
     }
   })
 
@@ -156,6 +162,10 @@ function canvasPressed() {
 
   if (soundLoop.isPlaying) {
     soundLoop.stop();
+    let nows = document.querySelectorAll(".now");
+    for (var i = 0; i < nows.length; i++) {
+      nows[i].classList.remove("now");
+    }
   } else {
     // start the loop
     soundLoop.start();
