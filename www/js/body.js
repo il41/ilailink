@@ -1,9 +1,16 @@
-//needs
+//needs adsr, delay, scale change
 
 // let major = [43,45,48,50,51,52,54,55,57,60,62,63,64,66,67,69,72,74,75,76,78,79,81,84,86,87,88,90,91,93,96,98];
 // let minor = [51,53,55,56,57,58,59,60,62,63,65,67,68,69,70,71,72,74,75,77,79,80,81,82,83,84,86,87,89,91,92,93];
 let cMajPentMIDI = [52,55,57,60,62,64,67,69,72,74,76,79,81,84,86,88];
+let cMinPentMIDI = [51,55,56,60,62,63,67,68,72,74,75,79,80,83,86,87];
+let major= [-5,-3,-1,0,2,4,5,7,9,11,12,14,16,17,19,21,22];
+let lydian= [-5,-3,-1,0,2,4,6,7,9,11,12,14,16,18,19,21,22];
+let minor= [-5,-2,-2,0,2,3,5,7,8,10,12,14,15,17,19,21,22];
+let dorian= [-5,-3,-2,0,2,3,5,7,9,10,12,14,15,17,19,21,23];
 let cMajPent = []
+let cMinPent = []
+let scale=[];
 // let dMaj = [];
 // let eMaj = [];
 // let fMaj = [];
@@ -33,7 +40,7 @@ let soundLoop;
 
 let a = 0.01;
 let d = 0.5;
-let s = 0.03;
+let s = 0;
 let r = 0.2;
 let dots = []
 let columns = []
@@ -134,14 +141,16 @@ function setup(){
   })
 
   let btn2 = document.getElementById("btn2")
-
+  let randomslider= document.querySelector(".randomfactor")
+  randomslider.value=0.9;
   btn2.addEventListener('click',()=>{
     btn.click();
     for (var i = 0; i < dots.length; i++) {
       // oscillators[i].osc.freq(dMin[i+10]);
       // oscillators[i].env.setADSR(a,d,s,r);
       // console.log(dots[i]);
-      dots[i].enabled=(Math.random() >= 0.9);
+      // dots[i].enabled=(Math.random() >= 0.9);
+      dots[i].enabled=(Math.random() >= parseFloat(randomslider.value));
       if(dots[i].enabled){
         dots[i].div.style.backgroundColor=activeColor;
       } else {
@@ -151,15 +160,52 @@ function setup(){
     }
   })
 
-  let btn3 = document.getElementById("btn3")
-  btn3.addEventListener('click',()=>{
-    inactiveColor="#ff00ff";
-    for (var i = 0; i < cMajPentMIDI.length; i++) {
-      scale1.push(noteToFreq(cMajPentMIDI[16-i]-10));
+  // let btn3 = document.getElementById("btn3")
+  // btn3.addEventListener('click',()=>{
+  let select = document.querySelector("#scales");
+  select.value="MajorPent"
+  select.addEventListener('change',()=>{
+    if(select.value=="MajorPent"){
+      inactiveColor="#0000ff";
+      scale1.splice(0, scale1.length)
+      for (let i = 0; i < cMajPentMIDI.length; i++) {
+
+        scale1.push(noteToFreq(cMajPentMIDI[i]-0));
+      }
+    } else if(select.value=="MinorPent"){
+      inactiveColor="#ff00ff";
+      scale1.splice(0, scale1.length)
+      for (let i = 0; i < cMinPentMIDI.length; i++) {
+
+        scale1.push(noteToFreq(cMinPentMIDI[i]-0));
+      }
+    } else if (select.value=="Major"){
+      inactiveColor="#a0a0af";
+      scale1.splice(0, scale1.length)
+      for (let i = 0; i < major.length; i++) {
+
+        scale1.push(noteToFreq(major[i]+60));
+      }
+    } else if (select.value=="Lydian"){
+      inactiveColor="#f0dfdf";
+      scale1.splice(0, scale1.length)
+      for (let i = 0; i < lydian.length; i++) {
+
+        scale1.push(noteToFreq(lydian[i]+60));
+      }
+    } else if (select.value=="Dorian"){
+      inactiveColor="#0cc0c0";
+      scale1.splice(0, scale1.length)
+      for (let i = 0; i < dorian.length; i++) {
+
+        scale1.push(noteToFreq(dorian[i]+60));
+      }
     }
-    for (var i = 0; i < oscillators.length; i++) {
-      oscillators[i].osc.freq(scale1[i]);
-      for (var i = 0; i < dots.length; i++) {
+
+    for (let i = 0; i < oscillators.length; i++) {
+      oscillators[i].osc.freq(scale1[15-i]);
+
+      for (let i = 0; i < dots.length; i++) {
         if(dots[i].enabled!=1){
           dots[i].div.style.backgroundColor=inactiveColor;
         }
@@ -168,6 +214,60 @@ function setup(){
       // console.log(dots[i]);
     }
   })
+
+  let speed = document.querySelector(".speed");
+  speed.value=0.2;
+  speed.addEventListener("change",()=>{
+    soundLoop.interval=parseFloat(speed.value);
+    // console.log(speed.value)
+  })
+
+  let attack = document.querySelector(".attack");
+  attack.value=0.01;
+  attack.addEventListener("change",()=>{
+    a=parseFloat(attack.value);
+    for (let i = 0; i < oscillators.length; i++) {
+      oscillators[i].env.setADSR(a,d,s,r);
+    }
+  })
+
+  let decay = document.querySelector(".decay");
+  decay.value=0.5;
+  decay.addEventListener("change",()=>{
+    d=parseFloat(decay.value);
+    for (let i = 0; i < oscillators.length; i++) {
+      oscillators[i].env.setADSR(a,d,s,r);
+    }
+  })
+
+  let waves = document.querySelector("#waves");
+  waves.value="sine"
+  waves.addEventListener('change',()=>{
+    if(waves.value=="sine"){
+      for (let i = 0; i < oscillators.length; i++) {
+        oscillators[i].osc.setType("sine");
+      }
+    } else if(waves.value=="tri"){
+      for (let i = 0; i < oscillators.length; i++) {
+        oscillators[i].osc.setType("triangle");
+      }
+    } else if(waves.value=="saw"){
+      for (let i = 0; i < oscillators.length; i++) {
+        oscillators[i].osc.setType("sawtooth");
+      }
+    } else if(waves.value=="square"){
+      for (let i = 0; i < oscillators.length; i++) {
+        oscillators[i].osc.setType("square");
+      }
+    } else if(waves.value=="random"){
+      for (let i = 0; i < oscillators.length; i++) {
+        oscillators[i].osc.setType("sine");
+      }
+    }
+  })
+
+
+
 
 
   let cnv = createCanvas(100, 100);
@@ -187,10 +287,6 @@ function setup(){
 function noteToFreq(note) {
     let a = 440; //frequency of A (coomon value is 440Hz)
     return (a / 32) * (2 ** ((note - 9) / 12));
-}
-
-function render(){
-  //fun background css here
 }
 
 function canvasPressed() {

@@ -32,10 +32,14 @@
       transition: all ease 0.2s;
     }
     .btn{
-      width:100px;
-      height:40px;
+      /* width:100px; */
+      /* height:40px; */
       background-color: grey;
       display: inline-block;
+      color:white;
+      font-family: sans-serif;
+      padding:10px;
+      /* border-radius: 20px; */
     }
     #btn1{
 
@@ -51,14 +55,92 @@
       /* filter: hue-rotate(0deg); */
       border:1px blue solid;
     }
+    #speedcont,#randomcont{
+      width:150px;
+    }
+    .speed,.randomfactor{
+      direction: rtl;
+    }
+    .slider{
+      -webkit-appearance: none;  /* Override default CSS styles */
+      background-color: white;
+    }
+    #soundEdit > .btn{
+      background-color: red;
+    }
+    #attackcont,#decaycont{
+      width:150px;
+    }
+    #fxEdit > .btn{
+      /* background-color: lightblue; */
+      color:black;
+      font-style: italic;
+    }
+    #delayampcont,#delayfeedbackcont{
+      background-color:lightpink;
+    }
+    #reverbdecaycont,#reverbampcont{
+      background-color:lightblue;
+    }
     </style>
   </head>
   <body>
     <div id="matrix"></div>
-    <div id="btn1"class="btn">clear pattern</div>
-    <div id="btn2"class="btn">random pattern</div>
-    <div id="btn3"class="btn">change scale</div>
-
+    <div id="patternEdit">
+      <div id="btn0"class="btn">start</div>
+      <div id="btn1"class="btn">clear</div>
+      <div id="btn2"class="btn">random</div>
+      <div id="scalecont" class="btn">
+        <label for="scale">scale:</label>
+        <select id="scales">
+         <option value="MajorPent">Major Pentatonic</option>
+         <option value="MinorPent">Minor Pentatonic</option>
+         <option value="Major">Major</option>
+         <option value="Lydian">Lydian</option>
+         <option value="Dorian">Dorian</option>
+        </select>
+      </div>
+      <div id="speedcont" class="btn">
+        speed<input class="speed slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+      </div>
+      <div id="randomcont" class="btn">
+        random amount<input class="randomfactor slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
+      </div>
+    </div>
+<br>
+    <div id="soundEdit">
+      <div id="scalecont" class="btn">
+        <label for="scale">waves:</label>
+        <select id="waves">
+         <option value="sine">sine</option>
+         <option value="tri">triangle</option>
+         <option value="saw">saw</option>
+         <option value="square">square</option>
+         <option value="random">random</option>
+        </select>
+      </div>
+      <div id="attackcont" class="btn">
+        fade in<input class="attack slider" type="range" min="0.01" max="2" value="0.01" step="0.01"  id="speed">
+      </div>
+      <div id="decaycont" class="btn">
+        fade out<input class="decay slider" type="range" min="0.01" max="2" value="0.5" step="0.01"  id="speed">
+      </div>
+    </div>
+    <br>
+    <div id="fxEdit">
+      <div id="delayampcont" class="btn">
+        echos<input class="delayamp slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+      </div>
+      <div id="delayfeedbackcont" class="btn">
+        echo time<input class="delayfeedback slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+      </div>
+      <div id="reverbampcont" class="btn">
+        space<input class="reverbamp slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
+      </div>
+      <div id="reverbdecaycont" class="btn">
+        space size<input class="reverbdecay slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
+      </div>
+    </div>
     <!-- <script src="js/ds2.js"></script> -->
     <script src="js/body.js"></script>
   </body>
