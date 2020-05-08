@@ -12,16 +12,86 @@ let cMajPent = []
 let cMinPent = []
 let scale=[];
 
+let dataObj;
 let input;
 let img;
+let hex;
+let imgType;
+
+let imgDots=[];
+
+let hImage = document.getElementById("hImage");
+
 function handleFile(file) {
-  print(file);
+  // let tempCanvas = document.createElement('canvas');
+  // let ctx = tempCanvas.getContext('2d');
+  // canvas.id = "temp";
+  // canvas.width  = 16;
+  // canvas.height = 16;
+  // print(file);
   if (file.type === 'image') {
+    imgDots.splice(0, imgDots.length);
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].enabled=false;
+      dots[i].div.style.backgroundColor=inactiveColor;
+    }
+    dataObj=file;
+    imgType=file.subtype;
     img = createImg(file.data, '');
     img.hide();
+    let pixIndex=0;
+    img=loadImage(file.data,()=>{
+      img.loadPixels();
+      for(let y=0; y<img.height; y+=Math.floor(img.height/16)){
+        for(let x=0; x<img.width; x+=Math.floor(img.width/16)){
+          let index=(x+y*img.width)*4;
+          let r = img.pixels[index+0];
+          let g = img.pixels[index+1];
+          let b = img.pixels[index+2];
+          let bright=(r+g+b)/3;
+
+          if(bright>100){
+            dots[pixIndex].enabled=true;
+            dots[pixIndex].div.style.backgroundColor=activeColor;
+          }
+          pixIndex++;
+        }
+      }
+    });
+    img.loadPixels();
+
+
+    // dataObj.data=hexSize(img);
+    // hImage.src=dataObj.data;
+
+
+    // function hexSize(img){
+    //   let newDataUrl;
+    //   let image = new Image();
+    //   image.src = img;
+    //   let oldWidth = image.width;
+    //   let oldHeight = image.height;
+    //
+    //   // Create a temporary canvas to draw the downscaled image on.
+    //   let canvas = document.createElement("canvas");
+    //   canvas.width = 160;
+    //   canvas.height = 160;
+    //
+    //   // Draw the downscaled image on the canvas and return the new data URL.
+    //   let ctx = canvas.getContext("2d");
+    //   // console.log(ctx);
+    //   ctx.drawImage(image, 0, 0, 16, 16);
+    //   newDataUrl = canvas.toDataURL(imgType, 0);
+    //   return newDataUrl;
+    // }
+
+
   } else {
     img = null;
   }
+  // console.log(hexSize(img));
+
+
 }
 // let dMaj = [];
 // let eMaj = [];
@@ -74,8 +144,6 @@ function setup(){
   input.addClass("file");
   input.id("file");
   input.parent(uploadBtn);
-
-
 
 
   class v{
