@@ -11,6 +11,18 @@ let dorian= [-5,-3,-2,0,2,3,5,7,9,10,12,14,15,17,19,21,23];
 let cMajPent = []
 let cMinPent = []
 let scale=[];
+
+let input;
+let img;
+function handleFile(file) {
+  print(file);
+  if (file.type === 'image') {
+    img = createImg(file.data, '');
+    img.hide();
+  } else {
+    img = null;
+  }
+}
 // let dMaj = [];
 // let eMaj = [];
 // let fMaj = [];
@@ -54,6 +66,17 @@ function setup(){
   for (var i = 0; i < cMajPentMIDI.length; i++) {
     cMajPent.push(noteToFreq(cMajPentMIDI[i]));
   }
+  reverb = new p5.Reverb();
+  delay = new p5.Delay();
+
+  let uploadBtn = document.querySelector("#btn0");
+  input = createFileInput(handleFile);
+  input.addClass("file");
+  input.id("file");
+  input.parent(uploadBtn);
+
+
+
 
   class v{
     constructor(y){
@@ -88,7 +111,6 @@ function setup(){
           this.enabled=1;
           this.div.style.backgroundColor=activeColor;
           oscillator.env.play();
-          render();
           console.log(this.x+","+this.y);
         } else if(this.enabled==1){
           this.enabled=0;
@@ -123,8 +145,13 @@ function setup(){
       dots.push(o);
     }
   }
+
+  delay.amp(0);
+  delay.delayTime(0.5);
+  delay.feedback(0.4);
   for (var i = 0; i < oscillators.length; i++) {
     oscillators[i].env.setADSR(a,d,s,r)
+    delay.process(oscillators[i].osc);
   }
 // oscillators[i].env.setADSR(a,d,s,r);
   let btn = document.getElementById("btn1")
@@ -266,7 +293,36 @@ function setup(){
     }
   })
 
+  let delayAmp = document.querySelector(".delayamp");
+  delayAmp.value=0;
+  delayAmp.addEventListener("change",()=>{
+      console.log(delayAmp.value)
+    delay.amp(parseFloat(delayAmp.value));
+    // console.log(speed.value)
+  })
 
+  let feedback = document.querySelector(".delayfeedback");
+  feedback.value=0.4;
+  delay.feedback(parseFloat(feedback.value));
+  feedback.addEventListener("change",()=>{
+    delay.feedback(parseFloat(feedback.value));
+    // console.log(speed.value)
+  })
+
+  let delayTime = document.querySelector(".delaytime");
+  delayTime.value=0.5;
+  delay.delayTime(parseFloat(delayTime.value));
+  delayTime.addEventListener("change",()=>{
+    delay.delayTime(parseFloat(delayTime.value));
+    // console.log(speed.value)
+  })
+
+
+  let reverbAmp = document.querySelector(".reverbamp");
+  reverbAmp.value=1;
+  reverbAmp.addEventListener("change",()=>{
+    reverb.amp(parseFloat(reverbAmp.value));
+  })
 
 
 

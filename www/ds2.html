@@ -41,8 +41,16 @@
       padding:10px;
       /* border-radius: 20px; */
     }
-    #btn1{
-
+    #btn0{
+      /* width:100px; */
+    }
+    .file{
+      width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
     }
     #matrix{
       width:360px;
@@ -76,7 +84,7 @@
       color:black;
       font-style: italic;
     }
-    #delayampcont,#delayfeedbackcont{
+    #delayampcont,#delayfeedbackcont,#delaytimecont{
       background-color:lightpink;
     }
     #reverbdecaycont,#reverbampcont{
@@ -87,7 +95,7 @@
   <body>
     <div id="matrix"></div>
     <div id="patternEdit">
-      <div id="btn0"class="btn">start</div>
+      <label for="file"><div id="btn0"class="btn">upload</div></label>
       <div id="btn1"class="btn">clear</div>
       <div id="btn2"class="btn">random</div>
       <div id="scalecont" class="btn">
@@ -101,10 +109,10 @@
         </select>
       </div>
       <div id="speedcont" class="btn">
-        speed<input class="speed slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+        speed<input class="speed slider" type="range" min="0.01" max="1" value="0.2" step="0.01">
       </div>
       <div id="randomcont" class="btn">
-        random amount<input class="randomfactor slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
+        random amount<input class="randomfactor slider" type="range" min="0.01" max="1" value="0.9" step="0.01">
       </div>
     </div>
 <br>
@@ -116,30 +124,33 @@
          <option value="tri">triangle</option>
          <option value="saw">saw</option>
          <option value="square">square</option>
-         <option value="random">random</option>
+         <!-- <option value="random">random</option> -->
         </select>
       </div>
       <div id="attackcont" class="btn">
-        fade in<input class="attack slider" type="range" min="0.01" max="2" value="0.01" step="0.01"  id="speed">
+        fade in<input class="attack slider" type="range" min="0.01" max="2" value="0.01" step="0.01">
       </div>
       <div id="decaycont" class="btn">
-        fade out<input class="decay slider" type="range" min="0.01" max="2" value="0.5" step="0.01"  id="speed">
+        fade out<input class="decay slider" type="range" min="0.01" max="2" value="0.5" step="0.01">
       </div>
     </div>
     <br>
     <div id="fxEdit">
       <div id="delayampcont" class="btn">
-        echos<input class="delayamp slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+        echos<input class="delayamp slider" type="range" min="0.01" max="1" value="0.2" step="0.01">
+      </div>
+      <div id="delaytimecont" class="btn">
+        echo time<input class="delaytime slider" type="range" min="0.01" max="1" value="0.5" step="0.01">
       </div>
       <div id="delayfeedbackcont" class="btn">
-        echo time<input class="delayfeedback slider" type="range" min="0.01" max="1" value="0.2" step="0.01"  id="speed">
+        echo repetitions<input class="delayfeedback slider" type="range" min="0" max="0.7" value="0.4" step="0.01">
       </div>
       <div id="reverbampcont" class="btn">
-        space<input class="reverbamp slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
+        space<input class="reverbamp slider" type="range" min="0" max="1" value="0" step="0.01">
       </div>
-      <div id="reverbdecaycont" class="btn">
-        space size<input class="reverbdecay slider" type="range" min="0.01" max="1" value="0.9" step="0.01"  id="speed">
-      </div>
+      <!-- <div id="reverbdecaycont" class="btn">
+        space size<input class="reverbdecay slider" type="range" min="0.01" max="5" value="3" step="0.01">
+      </div> -->
     </div>
     <!-- <script src="js/ds2.js"></script> -->
     <script src="js/body.js"></script>
