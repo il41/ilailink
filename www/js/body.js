@@ -401,12 +401,14 @@ function setup(){
 
 
 
-  let cnv = createCanvas(100, 100);
+  let cnv = createCanvas(50, 50);
   cnv.position(500,200);
    cnv.mousePressed(canvasPressed);
    colorMode(HSB);
-   background(0, 0, 86);
-   text('tap to start/stop', 10, 20);
+   background(100, 100, 100);
+   textAlign(CENTER);
+   textSize(20);
+   text('play', 20, 20);
 
    //the looper's callback is passed the timeFromNow
    //this value should be used as a reference point from
@@ -425,6 +427,8 @@ function canvasPressed() {
   userStartAudio();
 
   if (soundLoop.isPlaying) {
+    background(100,100,100);
+    text('play', 20, 20)
     soundLoop.stop();
     let nows = document.querySelectorAll(".now");
     for (var i = 0; i < nows.length; i++) {
@@ -432,6 +436,8 @@ function canvasPressed() {
     }
   } else {
     // start the loop
+    background(200,200,200);
+    text('stop', 20, 20)
     soundLoop.start();
   }
 }
