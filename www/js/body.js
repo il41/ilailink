@@ -37,13 +37,20 @@ function handleFile(file) {
     }
     dataObj=file;
     imgType=file.subtype;
+
     img = createImg(file.data, '');
     img.hide();
     let pixIndex=0;
     img=loadImage(file.data,()=>{
+      dimension = img.width-(img.width%16);
+      // console.log(img.width);
+      // console.log(dimension);
       img.loadPixels();
-      for(let x=0; x<img.height; x+=Math.floor(img.height/16)){
-        for(let y=0; y<img.width; y+=Math.floor(img.width/16)){
+      img.resize(dimension,dimension);
+      img.resize(16,16);
+
+      for(let y=0; y<img.height; y+=Math.floor(img.height/16)){
+        for(let x=0; x<img.width; x+=Math.floor(img.width/16)){
           let index=(x+y*img.width)*4;
           let r = img.pixels[index+0];
           let g = img.pixels[index+1];
