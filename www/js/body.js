@@ -42,8 +42,8 @@ function handleFile(file) {
     let pixIndex=0;
     img=loadImage(file.data,()=>{
       img.loadPixels();
-      for(let y=0; y<img.height; y+=Math.floor(img.height/16)){
-        for(let x=0; x<img.width; x+=Math.floor(img.width/16)){
+      for(let x=0; x<img.height; x+=Math.floor(img.height/16)){
+        for(let y=0; y<img.width; y+=Math.floor(img.width/16)){
           let index=(x+y*img.width)*4;
           let r = img.pixels[index+0];
           let g = img.pixels[index+1];
