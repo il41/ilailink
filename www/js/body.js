@@ -127,7 +127,7 @@ function handleFile(file) {
 let scale1=[];
 let soundLoop;
 
-let a = 0.01;
+let a = 0.06;
 let d = 0.5;
 let s = 0;
 let r = 0.2;
@@ -221,7 +221,7 @@ function setup(){
     }
   }
 
-  delay.amp(0);
+  delay.amp(0.15);
   delay.delayTime(0.5);
   delay.feedback(0.4);
   for (var i = 0; i < oscillators.length; i++) {
@@ -325,7 +325,7 @@ function setup(){
   })
 
   let attack = document.querySelector(".attack");
-  attack.value=0.01;
+  attack.value=0.06;
   attack.addEventListener("change",()=>{
     a=parseFloat(attack.value);
     for (let i = 0; i < oscillators.length; i++) {
@@ -369,7 +369,7 @@ function setup(){
   })
 
   let delayAmp = document.querySelector(".delayamp");
-  delayAmp.value=0;
+  delayAmp.value=0.15;
   delayAmp.addEventListener("change",()=>{
       console.log(delayAmp.value)
     delay.amp(parseFloat(delayAmp.value));

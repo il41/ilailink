@@ -85,7 +85,7 @@
       border-radius:20px;
       /* width:100px; */
     }
-    .slider{
+    .slider:{
 
     }
     .slider:focus{
@@ -139,21 +139,11 @@
       <label for="file"><div id="btn0"class="btn clickable rounded">upload</div></label>
       <div id="btn1"class="btn clickable rounded">clear</div>
       <div id="btn2"class="btn clickable rounded">random</div>
-      <div id="scalecont" class="btn rounded">
-        <label for="scale">scale:</label>
-        <select id="scales">
-         <option value="MajorPent">Major Pentatonic</option>
-         <option value="MinorPent">Minor Pentatonic</option>
-         <option value="Major">Major</option>
-         <option value="Lydian">Lydian</option>
-         <option value="Dorian">Dorian</option>
-        </select>
+      <div id="randomcont" class="btn">
+        random amount<input class="randomfactor slider" type="range" min="0.01" max="1" value="0.9" step="0.01">
       </div>
       <div id="speedcont" class="btn">
         speed<input class="speed slider" type="range" min="0.01" max="1" value="0.2" step="0.01">
-      </div>
-      <div id="randomcont" class="btn">
-        random amount<input class="randomfactor slider" type="range" min="0.01" max="1" value="0.9" step="0.01">
       </div>
     </div>
 <br>
@@ -173,6 +163,16 @@
       </div>
       <div id="decaycont" class="btn">
         fade out<input class="decay slider" type="range" min="0.01" max="2" value="0.5" step="0.01">
+      </div>
+      <div id="scalecont" class="btn rounded">
+        <label for="scale">scale:</label>
+        <select id="scales">
+         <option value="MajorPent">Major Pentatonic</option>
+         <option value="MinorPent">Minor Pentatonic</option>
+         <option value="Major">Major</option>
+         <option value="Lydian">Lydian</option>
+         <option value="Dorian">Dorian</option>
+        </select>
       </div>
     </div>
     <br>
