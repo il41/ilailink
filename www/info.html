@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style media="screen">
       img{
         width:700px;
@@ -16,6 +17,18 @@
         font-size: 30px;
         margin-bottom:10px;
       }
+      .yt-cont{
+        display: inline-block;: 
+        margin-top:10px;
+        padding:30px;
+        padding-bottom:20px;
+        background-color:grey;
+        background-radius:25px;
+      }
+      .enter{
+        transition: all 0.2s ease-in;
+        border-radius:25px;
+      }
     </style>
   </head>
   <body>
@@ -24,11 +37,13 @@
       <div id="links">
         <div>music links</div>
         ↪︎official 2019 releases➜<a href="https://ilai.bandcamp.com/" target="_blank">ilai.bandcamp.com</a><br>
-        ↪︎latest music➜<a href="https://11ai.bandcamp.com/" target="_blank">11ai.bandcamp.com</a>
+        ↪︎latest quarantine music➜<a href="https://11ai.bandcamp.com/" target="_blank">11ai.bandcamp.com</a>
         <br>
         <a href="https://soundcloud.com/il-ai" target="_blank">soundcloud.com/il-ai</a>
         <br>
-        <a href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=Fi2ttOLETa-CBFSzrnExWw" target="_blank">11ai spotify</a>
+        <a href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=Fi2ttOLETa-CBFSzrnExWw" target="_blank">11ai <span style="color:#32CD32;">spotify</span></a>
+        <br>
+        <a href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg" target="_blank">11ai <span style="color:#DC143C;">youtube</span></a> <span style="font-size:20px;">new youtube channel!! :) <a href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg?sub_confirmation=1"target="_blank"><span class="colors">subscribe :D</span></a></span>
         <br>
       </div>
       <div> instagram = @4_a_m </div>
@@ -41,7 +56,33 @@
       <br>
       <br>
       <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark&show-count=0" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe>
+      <script src="https://apis.google.com/js/platform.js"></script>
+      <div class="yt-cont enter"><div class="g-ytsubscribe" data-channelid="UC21Rwi2tMZp7gnMrUbGG1zg" data-layout="full" data-count="hidden"></div></div>
       <!-- <iframe src="https://open.spotify.com/follow/1?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe> -->
     </div>
+
+    <script>
+      let output=document.querySelector(".colors");
+      let output2=document.querySelector(".enter");
+      function randomColors(){
+        seed=Math.random()*(256*256*256-1);
+        seed2=16777216-seed;
+        output.style.color='#'+Math.floor(seed).toString(16);
+        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
+      }
+      function randomColors2(){
+
+        seed=Math.random()*(156*06*256-1);
+        seed2=16777216-seed;
+        output2.style.backgroundColor='#'+Math.floor(seed).toString(16)
+        console.log(output2.style.backgroundColor);
+
+        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
+      }
+      setInterval(randomColors,200);
+      setInterval(randomColors2,500);
+
+    </script>
+
   </body>
 </html>
