@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>11AI01 - Re-Simulate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+      body{
+        margin:0;
+        width:100vw;
+
+        margin:0;
+        padding:0;
+        /* background-image:url(images/black.png); */
+        /* background-size: 100vw; */
+        /* background-size: 200vh; */
+        background-repeat: no-repeat;
+        /* background-position: bottom; */
+        background-size: cover;
+        /* filter: blur(1px); */
+
+         background-image: url(../images/resim.png);
+         /* font-family:monospace; */
+
+      }
+
+      .container{
+        width:100vw;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+          height:100vh;
+          width:100vw;
+      }
+      .spinner{
+        animation: love 10s linear 2s infinite;
+        animation-delay:0s;
+      }
+      #notwide{
+        width: 300px;
+        text-align:center;
+      }
+      #re-simulate{
+        border: 5px outset black;
+        position:relative;
+        margin-top:60px;
+        width: 300px;
+        /* animation: love 10s linear 1.8s infinite;
+        animation-delay:0.5s; */
+        transform: perspective(1000px) rotateY(25deg);
+        z-index: 1;
+        border-radius:26px;
+        padding:20px;
+      }
+      @keyframes love {
+        0%{ transform: perspective(1000px) rotateY(0deg);}
+        50%{ transform: perspective(1000px) rotateY(180deg);}
+        100%{ transform: perspective(1000px) rotateY(360deg);}
+      }
+      @keyframes pulse {
+        0%{ transform: scale(1);}
+        50%{ transform: scale(1.5);}
+        100%{ transform: scale(1);}
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="arrow">
+    <!-- <span></span>  <a href="navi.html" style="text-shadow: 10px 10px 20px white;">home ~ ilai.link</a> -->
+    </div>
+    <br><br>
+    <!-- <div class="container">
+    <a href="https://ilai.bandcamp.com/" target="_blank"><img src="images/inwater.jpg"
+      style="width:70vh;">
+    </a>
+    </div>
+    <div id="arrow">
+      <a href="https://ilai.bandcamp.com/">in water - 11ai</a>
+      <br>
+      <a href="index.html">ilai.link</a>
+    </div> -->
+
+
+    <div id="display"><a href="https://ilai.bandcamp.com/album/re-simulate" target="_blank" >download re-simulate</a><h1>Re-Simulate</h1><div class="desc">the first EP; architectural house and techno; cyberbubble; city grid; initialize aquatic</div></div>
+
+      <div class="spinner" id="notwide"><a href="https://ilai.bandcamp.com/album/re-simulate" target="_blank" ><img alt="re-simulate" id="re-simulate" src="images/fly1.jpg"></a><div class="new">FREE DL!</div></div>
+
+    <h1>listen</h1>
+    <div><iframe width="560" height="315" src="https://www.youtube.com/embed/pT7OAbWN88g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <br><br>
+
+
+    <a target="_blank" href="https://open.spotify.com/album/6wPrpbAfNesJqRET0KobeY?si=OzFhBzHFRnWZf-ldWDMnYA" style="font-family:sans-serif; color:green;">spotify portal</a>
+    <a target="_blank" href="https://www.discogs.com/11ai-Re-Simulate/release/14699858" style="font-family:sans-serif; color:blue;">discogs portal</a>
+     <!-- • <a href="https://open.spotify.com/album/2AGR52nGXIgyG7FxpOvSf0?si=5a8TnmT8TFG1rt44l5CIEw" target="_blank">spotify portal</a> -->
+
+    <div id="arrow">
+      <br>
+    <span>continue to...</span>  <a href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
+    </div>
+    <script>
+    </script>
+  </body>
+</html>
