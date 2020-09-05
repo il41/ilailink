@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
       body{
         z-index: -2;
@@ -19,7 +20,7 @@
         /* background-image: url("images/21t7.jpg"); */
       }
 
-      @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:130% 50%}}
+      /* @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:130% 50%}} */
       tw-story{
         background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
         background-size: 400% 400%;
@@ -41,9 +42,24 @@
 
       }
       #go{
+        color:hsl(9, 100%, 64%);
         font-size: 220px;
         font-style: italic;
+        animation: title 5s linear infinite;
+        text-shadow: 10px 10px 20px white;
+        /* font-family:sans-serif; */
+        /* background-color: white; */
+        border-radius: 100px;
+        transition: all linear 0.3s;
+        /* font-weight: 800; */
       }
+      #go:hover{
+        animation: titlehov 0.5s linear infinite;
+        /* font-weight: 100; */
+        text-shadow: 10px 10px 40px white;
+      }
+      @keyframes title {0%{color:hsl(300, 100%, 50%)}50%{color:hsl(1, 100%, 80%)}100%{color:hsl(300, 100%, 50%)}}
+      @keyframes titlehov {0%{color:hsl(100, 100%, 50%)}50%{color:hsl(200, 100%, 50%)}100%{color:hsl(300, 100%, 50%)}}
 
       #content{
         line-height: 30px;
@@ -71,12 +87,13 @@
       #sidebar{
         margin-right:20px;
         position:absolute;
-        right:0px;
+        /* right:0px; */
+        left:1000px;
         top:0px;
         padding-top:20px;
         width:230px;
-        min-height:1200px;
-        max-height: 1200px;
+        min-height:1350px;
+        max-height: 1350px;
         background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
         background-size: 400% 400%;
         animation: AnimationName 4s linear infinite;
@@ -134,8 +151,11 @@
         position: fixed;
         z-index: -1;
         background-image:url("images/blue2.png");
-        background-size: cover;
+        /* background-image:url("images/21t5.jpg"); */
+        /* background-image:url("images/question.png"); */
+        /* background-size: contain; */
         /* background-attachment: fixed; */
+        /* background-repeat: no-repeat; */
       }
       @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:133% 50%}}
       #back-grad{
@@ -167,7 +187,7 @@
       <div id="back"></div>
       <div id="back-grad"></div>
       <div id="cont">
-        <a id="go" href="navi.html" style="text-shadow: 10px 10px 20px white;">ilai.link</a>
+        <a id="go" href="navi.html">ilai.link</a>
       </div><br>
       <div id="content">
         <div class="enter">
@@ -175,7 +195,8 @@
           <span>more music, software, and art inside</span> <span>:)</span>
         </div>
         <div class="head">news</div>
-        <div><a target="_blank" href="https://11ai.bandcamp.com">Qtime 3 commenced.</a> new tracks every night</div>
+        <div><a target="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">Just made a youtube channel!!</a> like and subscribe :D</div>
+        <div><a target="_blank" href="https://11ai.bandcamp.com">Qtime vol. 1-4 is complete.</a> new tracks every night is over for now</div>
         <div><a target="_blank" href="/ds2.html">data synth 2</a> v1.0 is completed, have fun :)</div>
         <div>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</div>
         <div>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></div>
@@ -183,6 +204,7 @@
       </div>
       <div id="sidebar">
         <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
+        <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
         <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
         <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
         <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
