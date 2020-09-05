@@ -14,10 +14,7 @@ button.addEventListener('click',()=>{
   data.username=userField.value;
   data.message=messageField.value;
   data.time=t.getHours()+":"+t.getMinutes();
-  data.dates=t.getDate()+"/"+t.getMonth()+"/"+t.getFullYear();
-  date.date=t.toLocaleDateString("en-US", { day: 'numeric' })
-            + "-"+ t.toLocaleDateString("en-US", { month: 'short' })
-            + "-" + t.toLocaleDateString("en-US", { year: 'numeric' });
+  data.date=t.getDate()+"/"+t.getMonth()+"/"+t.getFullYear();
   socket.emit('client chat',data);
   messageField.value="";
   let focus = document.getElementById("focus");
