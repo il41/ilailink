@@ -38,6 +38,9 @@
       #colorButton:active{
         border-style: inset;
       }
+      #chatcont{
+
+      }
       #chat{
         background-color: grey;
         width: 40vw;
@@ -102,6 +105,11 @@
         border-radius: 10px;
         background-color: aqua;
         padding-bottom:5px;
+        word-wrap: break-word;
+      }
+      .chat-frame:hover .time{
+        /* display:inline; */
+        opacity:1;
       }
       .chat-user{
         padding:2px;
@@ -112,7 +120,23 @@
       .chat-message{
         /* display: inline-block; */
         width: 40vw;
-        overflow: scroll;
+        /* overflow: scroll; */
+      }
+      .time{
+        float: right;
+        transition: all 0.3s linear;
+        display:inline;
+        opacity:0;
+        right:0px;
+        color:blue;
+        font-size: 10px;
+        font-family: sans-serif;
+      }
+      .chat-t{
+
+      }
+      .chat-d{
+        /* float:right; */
       }
 
       .box{
@@ -147,11 +171,12 @@
 
     <br><br>
 
-    <div id='chat'><br></div>
+    <div id="chatcont"><div id='chat'><br></div></div>
     <div id='input'>
       <input id='user' type='text' placeholder="username">
       <input id='message' type='text' placeholder="type your message here">
       <button id='enterbutton'>enter</button>
+      <span style="background-color:white;border-radius:5px;"><input id='timecheck' type='checkbox' checked><span style="color:blue;font-size:11px;font-family:sans-serif;">include timestamp?</span></span>
     </div>
     <br><br>
     <br><br>

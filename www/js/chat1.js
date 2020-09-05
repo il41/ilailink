@@ -10,8 +10,14 @@ focus.id="focus";
 
 button.addEventListener('click',()=>{
   let data= {};
+  let t = new Date();
   data.username=userField.value;
   data.message=messageField.value;
+  data.time=t.getHours()+":"+t.getMinutes();
+  data.dates=t.getDate()+"/"+t.getMonth()+"/"+t.getFullYear();
+  date.date=t.toLocaleDateString("en-US", { day: 'numeric' })
+            + "-"+ t.toLocaleDateString("en-US", { month: 'short' })
+            + "-" + t.toLocaleDateString("en-US", { year: 'numeric' });
   socket.emit('client chat',data);
   messageField.value="";
   let focus = document.getElementById("focus");
@@ -45,6 +51,8 @@ function newChat(msg){
   chatUser.className='chat-user';
   let chatMsg= document.createElement('span');
   chatMsg.className='chat-message';
+  let timeDiv = document.createElement('div');
+  timeDiv.className='time';
   let chatDiv = document.createElement('div');
   chatDiv.className='chat-frame';
   chatUser.textContent=msg.username;
@@ -52,8 +60,14 @@ function newChat(msg){
   chatUser.style.color=nameToColor(msg.username);
   // chatUser.style.backgroundColor=nameToColor2(msg.username);
   // chatUser.style.color="rgba(20,140,255)";
+  // console.log(msg.time);
+  timeDiv.innerHTML=" <span class='chat-t'>"+msg.time+"</span> <span class='chat-d'>"+msg.date+"</span>";
+
+
   chatDiv.appendChild(chatUser);
   chatDiv.appendChild(chatMsg);
+  chatDiv.appendChild(timeDiv);
+
   chat.appendChild(chatDiv);
   chat.appendChild(focus);
 }
