@@ -45,7 +45,7 @@
         color:hsl(9, 100%, 64%);
         font-size: 220px;
         font-style: italic;
-        animation: title 5s linear infinite;
+        animation: title 2s linear infinite;
         text-shadow: 10px 10px 20px white;
         /* font-family:sans-serif; */
         /* background-color: white; */
@@ -54,11 +54,14 @@
         /* font-weight: 800; */
       }
       #go:hover{
-        animation: titlehov 0.5s linear infinite;
+        animation: titlehov 3s linear infinite alternate, float 2s linear infinite alternate;
+
+
         /* font-weight: 100; */
-        text-shadow: 10px 10px 40px white;
+        /* text-shadow: 10px 10px 4px white; */
       }
-      @keyframes title {0%{color:hsl(300, 100%, 50%)}50%{color:hsl(1, 100%, 80%)}100%{color:hsl(300, 100%, 50%)}}
+      @keyframes float {0%{text-shadow: 10px 7px 4px white}100%{text-shadow: 20px 20px 10px white}}
+      @keyframes title {0%{color:hsl(-40, 100%, 50%)}50%{color:hsl(10, 0%, 50%)}100%{color:hsl(300, 100%, 50%)}}
       @keyframes titlehov {0%{color:hsl(100, 100%, 50%)}50%{color:hsl(200, 100%, 50%)}100%{color:hsl(300, 100%, 50%)}}
 
       #content{
@@ -150,7 +153,7 @@
         width:100vw;
         position: fixed;
         z-index: -1;
-        background-image:url("images/blue2.png");
+        background-image:url("images/blue3.png");
         /* background-image:url("images/21t5.jpg"); */
         /* background-image:url("images/question.png"); */
         /* background-size: contain; */
