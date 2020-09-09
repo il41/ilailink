@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
       body{
         z-index: -2;
@@ -43,11 +43,11 @@
       }
       #go{
         color:hsl(9, 100%, 64%);
-        font-size: 220px;
-        font-style: italic;
+        font-size: 70px;
+        /* font-style: italic; */
         animation: title 2s linear infinite;
         text-shadow: 10px 10px 20px white;
-        /* font-family:sans-serif; */
+        font-family:sans-serif;
         /* background-color: white; */
         border-radius: 100px;
         transition: all linear 0.3s;
@@ -66,9 +66,9 @@
 
       #content{
         line-height: 30px;
-        margin-top:0px;
+        margin-top:30px;
         font-size:18px;
-        display:inline-block;
+        /* display:inline-block; */
         margin-left:50px;
         padding: 20px;
         background-color: lightgrey;
@@ -129,10 +129,19 @@
       .head{
         margin-top:10px;
         font-family: sans-serif;
-        font-size:20px;
+        font-size:120px;
         color:red;
         text-decoration:underline;
         line-height: 20px;
+        display: block;
+      }
+      .entercont{
+        background-color: white;
+        margin-bottom:10px;
+        background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
+        background-size: 400% 400%;
+        animation: AnimationName 4s linear infinite;
+
       }
       .enter{
         font-size: 20px;
@@ -147,6 +156,17 @@
         border-radius: 20px;
         padding:2px;
         /* font-family: sans-serif; */
+        background-color: white;
+      }
+      #vids{
+        margin-top: 20px;
+      }
+      #vids div{
+        background-color: black;
+        color:white;
+
+        font-size: 60px;
+        font-family: sans-serif;
       }
       #back{
         height:100vh;
@@ -156,7 +176,7 @@
         background-image:url("images/blue3.png");
         /* background-image:url("images/21t5.jpg"); */
         /* background-image:url("images/question.png"); */
-        /* background-size: contain; */
+        /* background-size: cover; */
         /* background-attachment: fixed; */
         /* background-repeat: no-repeat; */
       }
@@ -184,26 +204,52 @@
         width:auto;
         border-radius: 100%;
       }
+      p{
+        line-height: 30px;;
+
+      }
+      p::before{
+        content:"•";
+        color:black;
+        float: left;
+        position: relative;
+        left:-10px;
+      }
     </style>
   </head>
   <body>
+
       <div id="back"></div>
       <div id="back-grad"></div>
+
+
+
+      </div>
       <div id="cont">
-        <a id="go" href="navi.html">ilai.link</a>
+        <a id="go" href="navi.html">click here to enter ilai.link</a>
       </div><br>
-      <div id="content">
+      <div class="entercont">
         <div class="enter">
-          <span>enter the inner site with the link above. ⬆︎</span><br>
+          <span>enter ilai.link by clicking above ⬆︎</span><br>
           <span>more music, software, and art inside</span> <span>:)</span>
         </div>
-        <div class="head">news</div>
-        <div><a target="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">Just made a youtube channel!!</a> like and subscribe :D</div>
-        <div><a target="_blank" href="https://11ai.bandcamp.com">Qtime vol. 1-4 is complete.</a> new tracks every night is over for now</div>
-        <div><a target="_blank" href="/ds2.html">data synth 2</a> v1.0 is completed, have fun :)</div>
-        <div>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</div>
-        <div>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></div>
-        <div>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <a style="text-decoration: none; "target="_blank" href="https://www.twitch.tv/videos/601403882"> <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></a></div>
+      </div>
+      <!-- <div style="font-size:100px;color:white;font-family:sans-serif;background-color:red;">front page:</div> -->
+      <div id="vids">
+        <div>new music videos:</div>
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/H3Y7pmYTmRs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div>_</div>
+      </div>
+      <div class="head">news</div>
+      <div id="content">
+
+        <p><a target="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">new youtube channel!!</a> like and subscribe :D</p>
+        <p><a target="_blank" href="https://11ai.bandcamp.com">Qtime vol. 1-4 is complete.</a> new tracks every night is over for now</p>
+        <p><a target="_blank" href="/ds2.html">data synth 2</a> v1.0 is completed, have fun :)</p>
+        <p>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</p>
+        <p>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></p>
+        <p>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <a style="text-decoration: none; "target="_blank" href="https://www.twitch.tv/videos/601403882"> <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></a></p>
       </div>
       <div id="sidebar">
         <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
