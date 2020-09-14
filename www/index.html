@@ -3,294 +3,178 @@
   <head>
     <meta charset="utf-8">
     <title>ilai.link</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
-      body{
-        z-index: -2;
-        /* background-image:url("images/blue2.png");
-        background-size: contain;
-        background-attachment: fixed; */
-        /* transform: rotate(10deg); */
-        /* background-size: 200% 100%; */
-        /* background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
-        background-size: 400% 400%;
-        animation: AnimationName 40s linear infinite; */
-        margin:0px;
-        padding:0px;
-        /* background-image: url("images/21t7.jpg"); */
-      }
+      /* * { box-sizing: border-box; } */
 
-      /* @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:130% 50%}} */
-      tw-story{
-        background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff);
-        background-size: 400% 400%;
-        animation: AnimationName 44s linear infinite;
-      }
+body { font-family: sans-serif; }
+img {
+  width:300px;
+  display: inline;
+}
+a, a:visited{
+  color:white;
+}
+a:hover{
+  color:pink;
+}
+@keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:133% 50%}}
+#sidebar{
+padding:20px;
+padding-top:50px;
+background-color: grey;
+border: 2px solid black;
+background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
+background-size: 400% 400%;
+animation: AnimationName 4s linear infinite;
+/* background-image: url("images/flatearth.png") */
+}
+#sidebar > a > img{
+  display: inline;
+  transition: box-shadow ease 1s;
+  box-shadow: 0px 0px 0px 0px lightblue;
+}
+#sidebar > a > img:hover{
+  box-shadow: 3px 3px 3px 90px blue;
 
-      #cont{
-        display:inline-block;
-        border-radius: 100px;
-        margin-left:30px;
-        /* margin-right: 330px; */
-        padding: 30px;
-        /* background-color: lightgrey; */
-        /* background: linear-gradient(90deg, #bed4ff, #002cff,#bed4ff); */
-        background-size: 4000% 400%;
-        animation: AnimationName 29s linear infinite;
-        /* width:75vw; */
-        /* word-wrap: break-word; */
+}
+.mlinks{
+  margin-top: 0px;
+  margin-bottom:30px;
+  font-size:14px;
+  font-weight: normal;
+  line-height: normal;
+}
+.scene {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: auto;
+  perspective: 400px;
+  z-index: -1;
+}
 
-      }
-      #go{
-        color:hsl(9, 100%, 64%);
-        font-size: 70px;
-        /* font-style: italic; */
-        animation: title 2s linear infinite;
-        text-shadow: 10px 10px 20px white;
-        font-family:sans-serif;
-        /* background-color: white; */
-        border-radius: 100px;
-        transition: all linear 0.3s;
-        /* font-weight: 800; */
-      }
-      #go:hover{
-        animation: titlehov 3s linear infinite alternate, float 2s linear infinite alternate;
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 1.5s;
+}
 
+.cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-100px) translateY(100px) rotateY( -90deg); }
+.cube.show-right-2  { transform: translateZ(-100px) translateY(-100px) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-100px) translateX(200px) translateY(100px)rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-100px) translateY(200px) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-100px) translateY(200px) rotateX(  90deg); }
 
-        /* font-weight: 100; */
-        /* text-shadow: 10px 10px 4px white; */
-      }
-      @keyframes float {0%{text-shadow: 10px 7px 4px white}100%{text-shadow: 20px 20px 10px white}}
-      @keyframes title {0%{color:hsl(-40, 100%, 50%)}50%{color:hsl(10, 0%, 50%)}100%{color:hsl(300, 100%, 50%)}}
-      @keyframes titlehov {0%{color:hsl(100, 100%, 50%)}50%{color:hsl(200, 100%, 50%)}100%{color:hsl(300, 100%, 50%)}}
+.cube__face {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 2px solid black;
+  line-height: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
 
-      #content{
-        line-height: 30px;
-        margin-top:30px;
-        font-size:18px;
-        /* display:inline-block; */
-        margin-left:50px;
-        padding: 20px;
-        background-color: lightgrey;
-        background-image: url("images/bluearray.png");
-        background-size: 98% 98%;
-        border-radius: 20px;
-        width:500px;
-      }
-      #content > * > a{
-        transition:color ease 0.6s;
-      }
-      #content > * > a:visited{
-        color: blue;
-      }
-      #content > * > a:hover{
-        color: hotpink;
-      }
+.cube__face--front  { background: hsla(  0, 100%, 50%, 0.7); }
+.cube__face--right  { background: hsla( 80, 100%, 50%, 0.7); }
+.cube__face--back   { background: hsla(120, 100%, 50%, 0.7); }
+.cube__face--left   { background: hsla(180, 100%, 50%, 0.7); }
+.cube__face--top    { background: hsla(240, 100%, 50%, 0.7); }
+.cube__face--bottom { background: hsla(300, 100%, 50%, 0.7); }
 
-      #sidebar{
-        margin-right:20px;
-        position:absolute;
-        /* right:0px; */
-        left:1000px;
-        top:0px;
-        padding-top:20px;
-        width:230px;
-        min-height:1350px;
-        max-height: 1350px;
-        background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
-        background-size: 400% 400%;
-        animation: AnimationName 4s linear infinite;
-        overflow: scroll;
-        height:90%;
-        scroll-behavior: auto;
-      }
-      #sidebar > a >img{
-        /* margin:auto; */
-        /* margin-bottom:0px; */
-        transition: box-shadow ease 1s;
-        box-shadow: 0px 0px 0px 0px black;
-      }
-      #sidebar > a > img:hover{
-        box-shadow: 3px 3px 3px 3px blue;
+.cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(300px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(400px); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
 
-      }
+.radio-group{
+  background-color: rgba(255,255,255,0.5);
+  padding:20px;
+  position: absolute;
+  z-index: 100;
+  border-radius: 25px;
+  letter-spacing: 4px;
 
-      .blocky{
-        background-color: red;
-      }
-      img, .blocky{
-        width:200px;
-        height:200px;
-        display:block;
-      }
-      a > img,.blocky{
-        margin:auto;
-      }
-      .head{
-        margin-top:10px;
-        font-family: sans-serif;
-        font-size:120px;
-        color:red;
-        text-decoration:underline;
-        line-height: 20px;
-        display: block;
-      }
-      .entercont{
-        background-color: white;
-        margin-bottom:10px;
-        background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
-        background-size: 400% 400%;
-        animation: AnimationName 4s linear infinite;
-
-      }
-      .enter{
-        font-size: 20px;
-        line-height: 22px;
-        padding-left: 27px;
-        width:80%;
-
-
-      }
-      .enter > *{
-        transition: all 0.2s ease-in;
-        border-radius: 20px;
-        padding:2px;
-        /* font-family: sans-serif; */
-        background-color: white;
-      }
-      #vids{
-        margin-top: 20px;
-      }
-      #vids div{
-        background-color: black;
-        color:white;
-
-        font-size: 60px;
-        font-family: sans-serif;
-      }
-      #back{
-        height:100vh;
-        width:100vw;
-        position: fixed;
-        z-index: -1;
-        background-image:url("images/blue3.png");
-        /* background-image:url("images/21t5.jpg"); */
-        /* background-image:url("images/question.png"); */
-        /* background-size: cover; */
-        /* background-attachment: fixed; */
-        /* background-repeat: no-repeat; */
-      }
-      @keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:133% 50%}}
-      #back-grad{
-        height:100vh;
-        width:100vw;
-        position: fixed;
-        background: linear-gradient(90deg, #ffffff, #002cff,#000000 80%);
-        background-size: 400% 400%;
-        animation: AnimationName 40s linear infinite;
-        z-index: -2;
-      }
-      #space{
-        height:200vh;
-        width:100vw;
-      }
-      #lower-portals{
-        text-align:right;
-      }
-      #lower-portals > a >img{
-        display:inline;
-        margin:20px;
-        height:100px;
-        width:auto;
-        border-radius: 100%;
-      }
-      p{
-        line-height: 30px;;
-
-      }
-      p::before{
-        content:"•";
-        color:black;
-        float: left;
-        position: relative;
-        left:-10px;
-      }
+}
+label { margin-right: 10px; }
     </style>
   </head>
   <body>
-
-      <div id="back"></div>
-      <div id="back-grad"></div>
-
-
-
-      </div>
-      <div id="cont">
-        <a id="go" href="navi.html">click here to enter ilai.link</a>
-      </div><br>
-      <div class="entercont">
-        <div class="enter">
-          <span>enter ilai.link by clicking above ⬆︎</span><br>
-          <span>more music, software, and art inside</span> <span>:)</span>
-        </div>
-      </div>
-      <!-- <div style="font-size:100px;color:white;font-family:sans-serif;background-color:red;">front page:</div> -->
-      <div id="vids">
-        <div>new music videos:</div>
-        <iframe width="500" height="300" src="https://www.youtube.com/embed/H3Y7pmYTmRs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div>_</div>
-      </div>
-      <div class="head">news</div>
-      <div id="content">
-
-        <p><a target="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">new youtube channel!!</a> like and subscribe :D</p>
-        <p><a target="_blank" href="https://11ai.bandcamp.com">Qtime vol. 1-4 is complete.</a> new tracks every night is over for now</p>
-        <p><a target="_blank" href="/ds2.html">data synth 2</a> v1.0 is completed, have fun :)</p>
-        <p>Qtime 2 is now finished, <a target="_blank" href="https://11ai.bandcamp.com">click here</a> for free download!</p>
-        <p>Qtime 2 is now also available to stream on <a target="_blank" style="color:#0fba00;"href="https://open.spotify.com/album/5BXWKLhAqoHljetum1PDRS?si=V3Mt4hfhT8OnuM3INLf_-w">spotify</a></p>
-        <p>check out 11ai's latest <a target="_blank" href="https://www.twitch.tv/videos/601403882">live show</a>, <a style="text-decoration: none; "target="_blank" href="https://www.twitch.tv/videos/601403882"> <span class="colors"><span>streamed </span><span>online </span><span>april </span><span>23rd </span><span>2020</span></span></a></p>
-      </div>
-      <div id="sidebar">
-        <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
-        <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
-        <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
-        <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
-        <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
-        <a target ="_blank" href="/11AI02"><img src="images/inwater.jpg"></a><br>
-        <a target ="_blank" href="/11AI01"><img src="images/resim.png"></a><br>
-      </div>
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="rotate-cube-side" value="www.ilai.link" checked /> www.ilai.link
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="right" /> chillout zone
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="right-2" /> soundware/games
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="back" /> latest vid
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="left" /> music
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="top" /> dive
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="bottom" /> info
+      </label>
       <br>
-      <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:6VzKRf1Q5Ur33XueBwcpi3&size=detail&theme=dark&show-count=0" width="300" height="56" scrolling="no" frameborder="0" style="border:10px white solid; border-radius:20px; padding:5px;overflow:hidden;background:#00BFFF;" allowtransparency="true"></iframe>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home of 11ai</div>
     </div>
-    <div id="space"></div>
-    <div id="lower-portals">
-      <a href="index07232019.html"><img src="images/dotscreen0.jpg"></a>
-      <!-- <a href="index07232019.html"><img src="images/voltascreen0.jpg"></a> -->
-      <!-- <a href="index07232019.html"><img src="images/cubescreen0.jpg"></a> -->
-    </div>
-    <script>
-      let output=document.querySelector(".colors");
-      let output2=document.querySelector(".enter");
-      function randomColors(){
-      output.querySelectorAll('*').forEach((e)=>{
-        seed=Math.random()*(256*256*256-1);
-        seed2=16777216-seed;
-        e.style.color='#'+Math.floor(seed).toString(16);
+    <div class="scene">
+  <div class="cube">
+    <div class="cube__face cube__face--front"><a href="/">www.ilai.link</a></div>
+    <div class="cube__face cube__face--back"><iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html">soundware</a></div>
+    <div class="cube__face cube__face--left"><div id="sidebar">
+      <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
 
-        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
-      })
-      }
-      function randomColors2(){
-      output2.querySelectorAll('*').forEach((e)=>{
-        seed=Math.random()*(156*06*256-1);
-        seed2=16777216-seed;
-        e.style.backgroundColor='#'+Math.floor(seed).toString(16)
-        // e.style.backgroundColor='#'+Math.floor(seed/10).toString(16)
-      })
-      }
-      setInterval(randomColors,50);
-      setInterval(randomColors2,1000);
-    </script>
+<a target ="_blank" href="/11AI02"><img src="images/inwater.jpg"></a><br>
+      <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
+
+      <a target ="_blank" href="/11AI01"><img src="images/resim.png"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime"><img src="images/qtime.jpg"></a><br>
+      <div class="mlinks">11ai on <a target ="_blank" href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=QFLKKpRLSpef2dm9FUnp-Q">spotify</a>, <a target ="_blank" href="https://music.apple.com/us/artist/11ai/1490080647">apple music</a>, <a target ="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">youtube</a>, bandcamp <a target="_blank"href="https://ilai.bandcamp.com">(main)</a> <a target="_blank" href="https://11ai.bandcamp.com">(quarantine)</a></div>
+    </div></div>
+    <div class="cube__face cube__face--top"><a href="/indexaugust132019.html">DIVE IN</a></div>
+    <div class="cube__face cube__face--bottom"><a href="/info.html">info</a></div>
+  </div>
+</div>
+
+  <script>
+  var cube = document.querySelector('.cube');
+var radioGroup = document.querySelector('.radio-group');
+var currentClass = '';
+
+function changeSide() {
+  var checkedRadio = radioGroup.querySelector(':checked');
+  var showClass = 'show-' + checkedRadio.value;
+  if ( currentClass ) {
+    cube.classList.remove( currentClass );
+  }
+  cube.classList.add( showClass );
+  currentClass = showClass;
+}
+// set initial side
+changeSide();
+
+radioGroup.addEventListener( 'change', changeSide );
+  </script>
   </body>
 </html>
