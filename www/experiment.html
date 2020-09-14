@@ -4,10 +4,43 @@
     <meta charset="utf-8">
     <title>ilai.link</title>
     <style>
-      * { box-sizing: border-box; }
+      /* * { box-sizing: border-box; } */
 
 body { font-family: sans-serif; }
+img {
+  width:300px;
+  display: inline;
+}
+a, a:visited{
+  color:white;
+}
+a:hover{
+  color:pink;
+}
+@keyframes AnimationName {0%{background-position:0% 50%}100%{background-position:133% 50%}}
+#sidebar{
+padding:20px;
+background-color: grey;
+border: 2px solid black;
+background: linear-gradient(90deg, #aad4ff, #002cff,#aad4ff);
+background-size: 400% 400%;
+animation: AnimationName 4s linear infinite;
+/* background-image: url("images/flatearth.png") */
+}
+#sidebar > a > img{
+  display: inline;
+}
+#sidebar > a > img:hover{
+  box-shadow: 3px 3px 3px 3px blue;
 
+}
+.mlinks{
+  margin-top: 70px;
+  margin-bottom:30px;
+  font-size:14px;
+  font-weight: normal;
+  line-height: normal;
+}
 .scene {
   width: 300px;
   height: 200px;
@@ -27,7 +60,8 @@ body { font-family: sans-serif; }
 }
 
 .cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
-.cube.show-right  { transform: translateZ(-100px) rotateY( -90deg); }
+.cube.show-right  { transform: translateZ(-100px) translateY(100px) rotateY( -90deg); }
+.cube.show-right-2  { transform: translateZ(-100px) translateY(-100px) rotateY( -90deg); }
 .cube.show-back   { transform: translateZ(-100px) translateX(200px) translateY(100px)rotateY(-180deg); }
 .cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
 .cube.show-top    { transform: translateZ(-100px) translateY(200px) rotateX( -90deg); }
@@ -46,7 +80,7 @@ body { font-family: sans-serif; }
 }
 
 .cube__face--front  { background: hsla(  0, 100%, 50%, 0.7); }
-.cube__face--right  { background: hsla( 60, 100%, 50%, 0.7); }
+.cube__face--right  { background: hsla( 80, 100%, 50%, 0.7); }
 .cube__face--back   { background: hsla(120, 100%, 50%, 0.7); }
 .cube__face--left   { background: hsla(180, 100%, 50%, 0.7); }
 .cube__face--top    { background: hsla(240, 100%, 50%, 0.7); }
@@ -55,14 +89,17 @@ body { font-family: sans-serif; }
 .cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
 .cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
 .cube__face--back   { transform: rotateY(180deg) translateZ(300px); }
-.cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(400px); }
 .cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
 .cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
 .radio-group{
   background-color: rgba(255,255,255,0.5);
   padding:20px;
   position: absolute;
   z-index: 100;
+  border-radius: 25px;
+  letter-spacing: 4px;
 
 }
 label { margin-right: 10px; }
@@ -74,13 +111,16 @@ label { margin-right: 10px; }
         <input type="radio" name="rotate-cube-side" value="www.ilai.link" checked /> www.ilai.link
       </label>
       <label>
-        <input type="radio" name="rotate-cube-side" value="right" /> soundware
+        <input type="radio" name="rotate-cube-side" value="right" /> chillout zone
       </label>
       <label>
-        <input type="radio" name="rotate-cube-side" value="back" /> back
+        <input type="radio" name="rotate-cube-side" value="right-2" /> soundware/games
       </label>
       <label>
-        <input type="radio" name="rotate-cube-side" value="left" /> chatroom
+        <input type="radio" name="rotate-cube-side" value="back" /> latest vid
+      </label>
+      <label>
+        <input type="radio" name="rotate-cube-side" value="left" /> music
       </label>
       <label>
         <input type="radio" name="rotate-cube-side" value="top" /> dive
@@ -88,14 +128,27 @@ label { margin-right: 10px; }
       <label>
         <input type="radio" name="rotate-cube-side" value="bottom" /> info
       </label>
+      <br>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home of 11ai</div>
     </div>
     <div class="scene">
   <div class="cube">
     <div class="cube__face cube__face--front"><a href="/experiment.html">www.ilai.link</a></div>
     <div class="cube__face cube__face--back"><iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    <div class="cube__face cube__face--right"><div><br></div>soundware</div>
-    <div class="cube__face cube__face--left">chatroom</div>
-    <div class="cube__face cube__face--top">DIVE IN</div>
+    <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html">soundware</a></div>
+    <div class="cube__face cube__face--left"><div id="sidebar">
+      <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
+
+      <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
+      <a target ="_blank" href="/11AI02"><img src="images/inwater.jpg"></a><br>
+      <a target ="_blank" href="/11AI01"><img src="images/resim.png"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime"><img src="images/qtime.jpg"></a><br>
+      <div class="mlinks">11ai on <a target ="_blank" href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=QFLKKpRLSpef2dm9FUnp-Q">spotify</a>, <a target ="_blank" href="https://music.apple.com/us/artist/11ai/1490080647">apple music</a>, <a target ="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">youtube</a>, bandcamp <a target="_blank"href="https://ilai.bandcamp.com">(main)</a> <a target="_blank" href="https://11ai.bandcamp.com">(quarantine)</a></div>
+    </div></div>
+    <div class="cube__face cube__face--top"><a href="/indexaugust132019.html">DIVE IN</a></div>
     <div class="cube__face cube__face--bottom"><a href="/info.html">info</a></div>
   </div>
 </div>
