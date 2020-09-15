@@ -62,13 +62,13 @@ animation: AnimationName 4s linear infinite;
   height: 200px;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-100px);
+  transform: translateZ(-100px)translateY(0px) rotateY(-00deg);
   transition: transform 1.5s;
 }
 
 .cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
-.cube.show-right  { transform: translateZ(-100px) translateY(100px) rotateY( -90deg); }
-.cube.show-right-2  { transform: translateZ(-100px) translateY(-100px) rotateY( -90deg); }
+.cube.show-right  { transform: translateZ(-100px) translateY(100px) rotateY( -80deg); }
+.cube.show-right-2  { transform: translateZ(-00px) translateY(-100px) rotateY( -99deg); }
 .cube.show-back   { transform: translateZ(-100px) translateX(200px) translateY(100px)rotateY(-180deg); }
 .cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
 .cube.show-top    { transform: translateZ(-100px) translateY(200px) rotateX( -90deg); }
@@ -112,7 +112,7 @@ animation: AnimationName 4s linear infinite;
 }
 .dontbreak{
  display:inline-block;
- font-size: 1em;
+ /* font-size: 1em; */
 }
 label { margin-right: 10px;
 /* display: inline-block; */
@@ -151,7 +151,7 @@ label { margin-right: 10px;
   <div class="cube">
     <div class="cube__face cube__face--front"><a href="/">www.ilai.link</a></div>
     <div class="cube__face cube__face--back"><iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html">soundware</a></div>
+    <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html" style="font-size:20px;">soundware + games</a><br></div>
     <div class="cube__face cube__face--left"><div id="sidebar">
       <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
 
