@@ -86,6 +86,7 @@ animation: AnimationName 4s linear infinite;
   text-align: center;
 }
 
+
 .cube__face--front  { background: hsla(  0, 100%, 50%, 0.7); }
 .cube__face--right  { background: hsla( 80, 100%, 50%, 0.7); }
 .cube__face--back   { background: hsla(120, 100%, 50%, 0.7); }
@@ -104,6 +105,7 @@ animation: AnimationName 4s linear infinite;
   margin:auto;
   background-color: rgba(255,255,255,0.5);
   padding:20px;
+  padding-top:15px;
   position: absolute;
   z-index: 100;
   border-radius: 25px;
@@ -111,39 +113,75 @@ animation: AnimationName 4s linear infinite;
   font-size: 16px;
 }
 .dontbreak{
- display:inline-block;
- /* font-size: 1em; */
+   display:inline-block;
+    /* font-size: 1em; */
+  background-color:rgba(200,200,200,0.4);
+  border-radius: 25px;
+  margin-top:4px;
+}
+.dontbreak:hover{
+  background-color:rgba(100,100,200,0.4);
 }
 label { margin-right: 10px;
 /* display: inline-block; */
+}
+@keyframes pulse {
+  0%{ transform: scale(1);}
+  50%{ transform: scale(1.5);}
+  100%{ transform: scale(1);}
+}
+.new{
+  color:hotpink;
+  text-decoration: none;
+  position:relative;
+  z-index: 2;
+  font-family:  sans-serif;
+  animation: pulse 1s infinite;
+  rotate:20deg;
+  position: relative;
+  top:-420px;
+  right:-185px;
+  font-size:30px;
 }
     </style>
   </head>
   <body>
     <div class="radio-group">
+      <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="www.ilai.link" checked /> www.ilai.link
       </label>
+    </span>
+    <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="right" /> chillout zone
       </label>
+    </span>
+    <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="right-2" /> soundware/games
       </label>
-      <span class="dontbreak">
-        <label>
-          <input type="radio" name="rotate-cube-side" value="back" /> latest vid
-        </label>
-      </span>
+    </span>
+    <span class="dontbreak">
+      <label>
+        <input type="radio" name="rotate-cube-side" value="back" /> latest vid
+      </label>
+    </span>
+    <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="left" /> music
       </label>
+    </span>
+    <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="top" /> dive
       </label>
+    </span>
+    <span class="dontbreak">
       <label>
         <input type="radio" name="rotate-cube-side" value="bottom" /> info
       </label>
+    </span>
       <br>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;home of 11ai</div>
     </div>
@@ -152,18 +190,20 @@ label { margin-right: 10px;
     <div class="cube__face cube__face--front"><a href="/">www.ilai.link</a></div>
     <div class="cube__face cube__face--back"><iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html" style="font-size:20px;">soundware + games</a><br></div>
-    <div class="cube__face cube__face--left"><div id="sidebar">
+    <div class="cube__face cube__face--left music-face"><div id="sidebar">
       <!-- <a class="blocky"target ="_blank" href="http://ilai.link/navi.html">continue to site</a> -->
-
-<a target ="_blank" href="/11AI02"><img src="images/inwater.jpg"></a><br>
-      <a target ="_blank" href="http://ilai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
-
+      <div style="margin-top:32px;"></div>
+      <a target ="_blank" href="https://11ai.bandcamp.com/album/color-coordinates"><img src="images/colorcoordinates.jpg"></a>
+      <!-- <div class="new">New!</div> -->
+      <!-- <iframe style="border: 0; width: 400px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2743678423/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://11ai.bandcamp.com/album/color-coordinates">color coordinates by 11ai</a></iframe><br> -->
+      <a target ="_blank" href="/11AI02"><img src="images/inwater.jpg"></a><br>
+      <a target ="_blank" href="http://11ai.bandcamp.com/album/fly1"><img src="images/fly1.jpg"></a><br>
       <a target ="_blank" href="/11AI01"><img src="images/resim.png"></a><br>
-      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
-      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
-      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
-      <a target ="_blank" href="http://11ai.bandcamp.com/album/qtime"><img src="images/qtime.jpg"></a><br>
-      <div class="mlinks">11ai on <a target ="_blank" href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=QFLKKpRLSpef2dm9FUnp-Q">spotify</a>, <a target ="_blank" href="https://music.apple.com/us/artist/11ai/1490080647">apple music</a>, <a target ="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">youtube</a>, bandcamp <a target="_blank"href="https://ilai.bandcamp.com">(main)</a> <a target="_blank" href="https://11ai.bandcamp.com">(quarantine)</a></div>
+      <a target ="_blank" href="http://qtime.bandcamp.com/album/qtime-4"><img src="images/qtime4.jpg"></a><br>
+      <a target ="_blank" href="http://qtime.bandcamp.com/album/qtime-3"><img src="images/qtime3.jpg"></a><br>
+      <a target ="_blank" href="http://qtime.bandcamp.com/album/qtime-2"><img src="images/qtime2.jpg"></a><br>
+      <a target ="_blank" href="http://qtime.bandcamp.com/album/qtime"><img src="images/qtime.jpg"></a><br>
+      <div class="mlinks">11ai on <a target ="_blank" href="https://open.spotify.com/artist/6VzKRf1Q5Ur33XueBwcpi3?si=QFLKKpRLSpef2dm9FUnp-Q">spotify</a>, <a target ="_blank" href="https://music.apple.com/us/artist/11ai/1490080647">apple music</a>, <a target ="_blank" href="https://www.youtube.com/channel/UC21Rwi2tMZp7gnMrUbGG1zg/featured">youtube</a>, bandcamp <a target="_blank"href="https://11ai.bandcamp.com">(main)</a> <a target="_blank" href="https://qtime.bandcamp.com">(quarantine)</a></div>
     </div></div>
     <div class="cube__face cube__face--top"><a href="/indexaugust132019.html">DIVE IN</a></div>
     <div class="cube__face cube__face--bottom"><a href="/info.html">info</a></div>
@@ -180,6 +220,9 @@ function changeSide() {
   var showClass = 'show-' + checkedRadio.value;
   if ( currentClass ) {
     cube.classList.remove( currentClass );
+  //   if(currentClass == "show-right-2"){
+  //     document.querySelector('.scene').style.perspective="0px";
+  //   } else {document.querySelector('.scene').style.perspective="400px";}
   }
   cube.classList.add( showClass );
   currentClass = showClass;
