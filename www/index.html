@@ -143,6 +143,15 @@ label { margin-right: 10px;
   right:-185px;
   font-size:30px;
 }
+.set{
+  overflow: visible;
+  display: block;
+}
+.set > a{
+  background-color:rgba(50,50,50,0.4);
+  border-radius: 20px;
+  padding:10px;
+}
     </style>
   </head>
   <body>
@@ -187,7 +196,7 @@ label { margin-right: 10px;
     </div>
     <div class="scene">
   <div class="cube">
-    <div class="cube__face cube__face--front"><a href="/">www.ilai.link</a></div>
+    <div class="cube__face cube__face--front"><a href="/">www.ilai.link</a><div class="set" style="margin-left:-100px; margin-top:-50px;"><a href="https://www.youtube.com/watch?v=gHyaOyC02wQ" class ="random-color" style="font-size:20px; text-decoration:underline;">LIVE SET STREAMING NOW</a></div></div>
     <div class="cube__face cube__face--back"><iframe width="500" height="300" src="https://www.youtube.com/embed/C9Jrw2l8Ju0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html" style="font-size:20px;">soundware + games</a><br></div>
     <div class="cube__face cube__face--left music-face"><div id="sidebar">
@@ -209,7 +218,10 @@ label { margin-right: 10px;
     <div class="cube__face cube__face--bottom"><a href="/info.html">info</a></div>
   </div>
 </div>
-
+  <script>
+  // document.querySelectorAll('.random-color').forEach((e)=>{e.style= "transition: all 0.2s ease-in;"});
+  setInterval(()=>document.querySelectorAll('.random-color').forEach((e)=>{e.style.color='#'+Math.floor(Math.random()*134567).toString(16)}),100);
+  </script>
   <script>
   var cube = document.querySelector('.cube');
 var radioGroup = document.querySelector('.radio-group');
