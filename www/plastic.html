@@ -7,11 +7,17 @@
       body{
         background-color: #1151ff;
         font-family: sans-serif;
+        /* padding-left:20vw; */
+
       }
       .expo{
         font-style: italic;
         font-family: sans-serif;
         color:white;
+        /* box-shadow: 0px 0px 12px #002cff; */
+
+        display: inline-block;
+        width:560px;
       }
       a, a:visited{
         color:lime;
@@ -21,14 +27,38 @@
         position:relative;
         margin-bottom: 5px;
       }
+      .tide {
+        background: linear-gradient(0deg, #1151ff, #1151ff, #002cff,#1151ff,#1151ff);
+        background-size: 100% 400%;
+
+        -webkit-animation: wave1 5s ease infinite;
+        -moz-animation: wave1 5s ease infinite;
+        animation: wave1 5s ease infinite;
+      }
+
+      @-webkit-keyframes wave1 {
+          0%{background-position:50% 50%}
+          40%{background-position:50% 100%}
+          100%{background-position:50% 50%}
+      }
+      @-moz-keyframes wave1 {
+          0%{background-position:50% 50%}
+          40%{background-position:50% 100%}
+          100%{background-position:50% 50%}
+      }
+      @keyframes wave1 {
+          0%{background-position:50% 50%}
+          40%{background-position:50% 100%}
+          100%{background-position:50% 50%}
+      }
     </style>
   </head>
-  <body>
+  <body >
     <div class="title">plastic city</div>
     <img class="mySlides" src="images/plastic-city/plastic city render 1.jpg">
     <img class="mySlides" src="images/plastic-city/plastic city render 2.jpg">
     <img class="mySlides" src="images/plastic-city/plastic city render 3.jpg">
-    <div class="expo">
+    <div class="expo tide">
       IN A DISTANT FUTURE...<br>
       A PLASTIC CITY<br>
       POWERED BY MUSIC<br>
@@ -38,7 +68,7 @@
       FOR ITS SELF-CONTAINED<br>
       SYSTEMS...........
     </div>
-    <br>
+    <br><br>
     <div>2019-...</div>
     <br>
     <div>
