@@ -16,11 +16,18 @@
       a, a:visited{
         color:lime;
       }
+      .mySlides{
+        width:560px;
+        position:relative;
+        margin-bottom: 5px;
+      }
     </style>
   </head>
   <body>
     <div class="title">plastic city</div>
-    <img width="500px"src="images/plastic-city/plastic city render 1.jpg">
+    <img class="mySlides" src="images/plastic-city/plastic city render 1.jpg">
+    <img class="mySlides" src="images/plastic-city/plastic city render 2.jpg">
+    <img class="mySlides" src="images/plastic-city/plastic city render 3.jpg">
     <div class="expo">
       IN A DISTANT FUTURE...<br>
       A PLASTIC CITY<br>
@@ -43,5 +50,21 @@
       <br><br>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/H3Y7pmYTmRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    <script>
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 7000);
+      }
+    </script>
   </body>
 </html>
