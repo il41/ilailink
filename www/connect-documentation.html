@@ -23,9 +23,18 @@
         font-size:14px;
         user-select: none;
         z-index: 1;
-        letter-spacing: 1px;
+        letter-spacing: 3px;
         /* color:black; */
         cursor:crosshair;
+        background-color: rgba(200,200,200,0.4);
+        border-radius: 25px;
+        margin-top: 4px;
+        margin-bottom:4px;
+        padding-right:3px;
+        transition:all 1s;
+      }
+      .ilink:hover{
+        background-color: rgba(100,200,250,0.8);
       }
       iframe{
         /* margin:auto; */
@@ -82,7 +91,7 @@
     </style>
   </head>
   <body >
-    <a href="index.html"><div class="ilink">www.ilai.link</div></a>
+    <a href="index.html"><div class="ilink"><input checked style="margin-right:7px;"type="radio">www.ilai.link</div></a>
   <div class="cont">
     <div class="title">connect</div><br>
     <!-- <a href="connect-documentation.html">
