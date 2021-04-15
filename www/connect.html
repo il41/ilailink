@@ -93,6 +93,9 @@
         letter-spacing:1px;
         color:black;"
       }
+      .gallery{
+        user-select: none;
+      }
     </style>
   </head>
   <body >
@@ -100,6 +103,7 @@
   <div class="cont">
     <div class="title">connect</div><br>
     <!-- <a href="connect-documentation.html"> -->
+    <div class="gallery" onclick="display()">
       <img class="mySlides1" src="images/plastic-city/connect/connect-photo-1.jpeg">
       <img class="mySlides1" src="images/plastic-city/connect/connect-photo-2.jpeg">
       <img class="mySlides1" src="images/plastic-city/connect/connect-photo-3.jpeg">
@@ -111,6 +115,7 @@
       <img class="mySlides1" src="images/plastic-city/connect/connect-photo-9.jpeg">
       <img class="mySlides1" src="images/plastic-city/connect/connect-photo-10.jpeg">
     <!-- </a> -->
+    </div>
     <br>
     <div class="expo tide">
       interactive art software/soundware<br>
@@ -143,19 +148,22 @@
       <br><br><br>
 
     <script>
-      var slideIndex = 0;
+      let slideIndex = 0;
+      let slides = document.getElementsByClassName("mySlides1");
       showSlides();
 
       function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides1");
-        for (i = 0; i < slides.length; i++) {
+        display();
+        setTimeout(showSlides, 7000);
+      }
+
+      function display(){
+        for (let i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
         }
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
         slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 7000);
       }
     </script>
   </div>
