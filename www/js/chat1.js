@@ -4,6 +4,8 @@ const userField = document.querySelector('#user');
 const messageField = document.querySelector('#message');
 const button = document.querySelector('#enterbutton');
 
+const month = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+
 let chatWindow = document.getElementById("chat");
 let focus = document.createElement('div');
 focus.id="focus";
@@ -14,7 +16,7 @@ button.addEventListener('click',()=>{
   data.username=userField.value;
   data.message=messageField.value;
   data.time=t.getHours()+":"+t.getMinutes();
-  data.date=t.getDate()+"/"+t.getMonth()+"/"+t.getFullYear();
+  data.date=t.getDate()+"/"+(t.getMonth()+1)+"/"+t.getFullYear();
   socket.emit('client chat',data);
   messageField.value="";
   let focus = document.getElementById("focus");
