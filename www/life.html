@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+      canvas{
+        margin:auto;
+        margin-top:25px;
+        display:block;
+      }
+      button{
+        margin:auto;
+        margin-top:25px;
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const WIDTH = 100;
+const HEIGHT = 50;
+
+const CELL_SIZE = 10;
+
+// Create the grid
+let grid = new Array(WIDTH);
+
+for (let i = 0; i < WIDTH; i++) {
+  grid[i] = new Array(HEIGHT);
+  for (let j = 0; j < HEIGHT; j++) {
+    grid[i][j] = Math.round(Math.random());
+  }
+}
+
+// Create the canvas
+const canvas = document.createElement('canvas');
+canvas.width = WIDTH * CELL_SIZE;
+canvas.height = HEIGHT * CELL_SIZE;
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext('2d');
+
+// Flag to track whether the mouse is down
+let mouseDown = false;
+
+// Add event listeners to track mouse down and up events
+canvas.addEventListener('mousedown', () => {
+  mouseDown = true;
+});
+canvas.addEventListener('mouseup', () => {
+  mouseDown = false;
+});
+
+// Draw the grid
+function draw() {
+  for (let i = 0; i < WIDTH; i++) {
+    for (let j = 0; j < HEIGHT; j++) {
+      ctx.fillStyle = grid[i][j] ? 'grey' : 'lightblue';
+      ctx.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+    }
+  }
+}
+
+// Update the grid
+function update() {
+  const nextGrid = new Array(WIDTH);
+  for (let i = 0; i < WIDTH; i++) {
+    nextGrid[i] = new Array(HEIGHT);
+    for (let j = 0; j < HEIGHT; j++) {
+      const neighbors = getNeighbors(i, j);
+      if (grid[i][j]) {
+        // Cell is alive
+        if (neighbors === 2 || neighbors === 3) {
+          nextGrid[i][j] = 1;
+        } else {
+          nextGrid[i][j] = 0;
+        }
+      } else {
+        // Cell is dead
+        if (neighbors === 3) {
+          nextGrid[i][j] = 1;
+        } else {
+          nextGrid[i][j] = 0;
+        }
+      }
+    }
+  }
+  grid = nextGrid;
+}
+
+// Get the number of live neighbors for a given cell
+function getNeighbors(x, y) {
+  let count = 0;
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
+      if (i === 0 && j === 0) continue;
+      if (grid[(x + i + WIDTH) % WIDTH][(y + j + HEIGHT) % HEIGHT]) count++;
+    }
+  }
+  return count;
+}
+
+// Add a living cell to the clicked location
+canvas.addEventListener('click', (event) => {
+  const x = Math.floor(event.offsetX / CELL_SIZE);
+  const y = Math.floor(event.offsetY / CELL_SIZE);
+  grid[x][y] = 1;
+});
+
+// Add a living cell at the current mouse position if the mouse is down
+canvas.addEventListener('mousemove', (event) => {
+  if (mouseDown) {
+    const x = Math.floor(event.offsetX / CELL_SIZE);
+    const y = Math.floor(event.offsetY / CELL_SIZE);
+    grid[x][y] = 1;
+  }
+});
+
+// Function to reset the grid with a given density of live cells
+function resetGrid(density) {
+  grid = new Array(WIDTH);
+  for (let i = 0; i < WIDTH; i++) {
+    grid[i] = new Array(HEIGHT);
+    for (let j = 0; j < HEIGHT; j++) {
+      grid[i][j] = Math.random() < density ? 1 : 0;
+    }
+  }
+}
+
+// Create the reset buttons
+// const reset10Button = document.createElement('button');
+// reset10Button.textContent = 'Reset 10%';
+// reset10Button.addEventListener('click', () => {
+//   resetGrid(0.1);
+// });
+// document.body.appendChild(reset10Button);
+
+const reset50Button = document.createElement('button');
+reset50Button.textContent = ' '+' !  ! '+' ';
+reset50Button.addEventListener('click', () => {
+  resetGrid(0.5);
+});
+document.body.appendChild(reset50Button);
+
+// const reset90Button = document.createElement('button');
+// reset90Button.textContent = 'Reset 90%';
+// reset90Button.addEventListener('click', () => {
+//   resetGrid(0.7);
+// });
+// document.body.appendChild(reset90Button);
+
+// Main game loop
+function gameLoop() {
+  draw();
+  update();
+  requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);
+    </script>
+  </body>
+</html>
