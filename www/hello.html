@@ -42,6 +42,7 @@
 
       }
       #chat{
+        font-size:20px;
         background-color: grey;
         width: 40vw;
         padding: 5px;
@@ -98,7 +99,7 @@
         from{opacity: 0;}
           to{opacity: 1;}
       }
-
+      
       .chat-frame{
         padding:2px;
         margin:2px;
@@ -111,17 +112,61 @@
         /* display:inline; */
         opacity:1;
       }
-      .chat-user{
+      .chat-user-div, .chat-user{
         padding:2px;
         background-color: white;
         font-family: sans-serif;
-        text-shadow: 1px 1px #000000;
+        -webkit-text-stroke: 0.7px black;
+        text-stroke: 0.7px black;
+        /* text-shadow: 0px 0px 1px black, 0px 0px 1px black, 0px 0px 1px black; */
+        /* text-shadow: 1px 1px #000000; */
+        /* text-shadow: -1px -1px 0 #000, 0   -1px 0 #000, 1px -1px 0 #000, 1px  0   0 #000, 1px  1px 0 #000, 0    1px 0 #000, -1px  1px 0 #000, -1px  0   0 #000; */
+      
       }
+      .chat-user-11ai{
+        /* letter-spacing: 0.1em; */
+        font-family:rez;
+        /* font-family:monospace; */
+        --bg-size: 400%;
+        --color-one: hsl(301, 100%, 50%);
+        --color-two: hsl(235, 100%, 50%);
+        background: linear-gradient(90deg,
+                var(--color-one),
+                var(--color-one),
+                var(--color-one),
+                var(--color-two),
+                var(--color-two),
+                var(--color-one)) 0 0 / var(--bg-size) 100%;
+        color: transparent !important;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: move-bg 5s infinite linear;
+        /* text-shadow: none; */
+      }
+
+
+      @keyframes move-bg {
+        to {
+            background-position: var(--bg-size) 0;
+        }
+      }
+      @font-face {
+        font-family: rez;
+        src: url('fonts/Rez.ttf') format('truetype');
+        /* font-weight: normal;
+        font-style: normal; */
+       }
       .chat-message{
+        font-family:sans-serif;
         /* display: inline-block; */
         width: 40vw;
         /* overflow: scroll; */
       }
+
+      .chat-msg-11ai{
+        font-family:rez;
+      }
+
       .time{
         float: right;
         transition: all 0.3s linear;
@@ -131,12 +176,6 @@
         color:blue;
         font-size: 10px;
         font-family: sans-serif;
-      }
-      .chat-t{
-
-      }
-      .chat-d{
-        /* float:right; */
       }
 
       .box{
