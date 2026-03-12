@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Matrix Sequencer</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #DCDCDC;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .voice {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            border-radius: 50%;
+            background-color: #0000ff;
+            transition: all ease 0.15s;
+            margin: 0;
+            font-size: 9px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .voice.active {
+            background-color: #00ff00;
+            box-shadow: 0 0 8px #00ff00;
+            color: black;
+        }
+
+        .voice.playing {
+            border: 2px solid #ff6600;
+            box-shadow: 0 0 15px #ff6600;
+            transform: scale(1.2);
+        }
+
+        .text-input-container {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .text-input-container label {
+            font-size: 12px;
+            color: #333;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #textInput {
+            width: 450px;
+            padding: 10px 14px;
+            border-radius: 18px;
+            border: 2px solid #888;
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #textInput:focus {
+            outline: none;
+            border-color: #ff00ff;
+        }
+
+        #matrix {
+            width: auto;
+            min-width: 420px;
+            margin: 10px;
+            line-height: 0px;
+            padding: 0px;
+            position: relative;
+        }
+
+        .playhead-overlay {
+            position: absolute;
+            top: 5px;
+            width: 22px;
+            height: 100%;
+            background: rgba(255, 102, 0, 0.25);
+            /* border: 2px solid #ff6600; */
+            border-radius: 6px;
+            pointer-events: none;
+            transition: left 0.05s linear;
+            z-index: 10;
+        }
+
+        .btn {
+            background-color: #a0a0af;
+            display: inline-block;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 22px;
+            cursor: pointer;
+            border: none;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 3px;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+
+        .btn:hover {
+            background-color: #b0b0bf;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            background-color: white;
+            border-radius: 20px;
+            height: 12px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #666;
+            cursor: pointer;
+        }
+
+        .slider:focus {
+            outline: none;
+            box-shadow: 1px 1px 1px black;
+        }
+
+        select {
+            background-color: #a0a0af;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+        }
+
+        .row-label {
+            display: inline-block;
+            width: 20px;
+            font-size: 10px;
+            color: #333;
+            margin-right: 4px;
+            text-align: right;
+            vertical-align: middle;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .controls {
+            margin: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .control-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #c0c0cf;
+            padding: 8px 14px;
+            border-radius: 18px;
+        }
+
+        .control-group label {
+            font-size: 12px;
+            color: #333;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .wave-btns {
+            display: flex;
+            gap: 2px;
+        }
+
+        .wave-btn {
+            padding: 6px 12px;
+            font-size: 11px;
+            background: #888899;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .wave-btn.active {
+            background: #00ff00;
+            color: black;
+        }
+
+        .title {
+            margin: 10px;
+            font-size: 24px;
+            color: #ff00ff;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .step-labels {
+            margin-left: 24px;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 0px;
+        }
+
+        .step-label {
+            width: 22px;
+            min-width: 22px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .matrix-row {
+            display: flex;
+            align-items: center;
+            gap: 0px;
+        }
+
+        #playBtn.playing {
+            background: #00ff00;
+            color: black;
+        }
+
+        #playBtn {
+            background: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Alphabet Matrix Sequencer</div>
+
+    <div class="text-input-container">
+        <label>Text:</label>
+        <input type="text" id="textInput" value="hello">
+        <label style="margin-left: 10px;">Beats:</label>
+        <input type="number" id="beatCount" value="16" min="1" style="width: 60px; padding: 6px 10px; border-radius: 12px; border: 1px solid #888; font-size: 14px;">
+        <label style="margin-left: 10px; font-size: 13px; cursor: pointer;">
+            <input type="checkbox" id="dynamicBeats" style="width: 16px; height: 16px;"> Dynamic
+        </label>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <label>Root:</label>
+            <select id="rootNote">
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+                <option value="D">D</option>
+                <option value="D#">D#</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="G">G</option>
+                <option value="G#">G#</option>
+                <option value="A" selected>A</option>
+                <option value="A#">A#</option>
+                <option value="B">B</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Key:</label>
+            <select id="keyType">
+                <option value="major">Major</option>
+                <option value="minor">Minor</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Oct:</label>
+            <input type="number" id="startOctave" value="2" min="1" max="6" style="width: 35px;">
+        </div>
+        <button class="btn" id="playBtn">Play</button>
+        <button class="btn" id="stopBtn">Stop</button>
+        <button class="btn" id="clearBtn">Clear</button>
+        <div class="control-group" style="background: #c8c8dc;">
+            <button class="btn" id="randomBtn" style="background: #9988cc;">Randomize!</button>
+            <label style="font-size: 12px; color: #333; font-family: 'Courier New', Courier, monospace;">Density</label>
+            <input class="slider" type="range" id="randomDensity" min="1" max="100" value="10" step="1" style="width: 100px;">
+            <span id="densityValue" style="font-size: 11px; min-width: 35px;">10%</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <label>Wave:</label>
+            <div class="wave-btns">
+                <button class="wave-btn active" data-wave="sine">SIN</button>
+                <button class="wave-btn" data-wave="triangle">TRI</button>
+                <button class="wave-btn" data-wave="sawtooth">SAW</button>
+                <button class="wave-btn" data-wave="square">SQR</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>BPM</label>
+            <input class="slider" type="range" id="tempo" min="40" max="1000" value="120" style="width: 200px;">
+            <span id="tempoValue" style="font-size: 11px; min-width: 30px;">120</span>
+        </div>
+        <div class="control-group">
+            <label>Attack</label>
+            <input class="slider" type="range" id="attack" min="0.001" max="0.75" value="0.05" step="0.001" style="width: 90px;">
+            <span id="attackValue" style="font-size: 11px; min-width: 40px;">0.05</span>
+        </div>
+        <div class="control-group">
+            <label>Release</label>
+            <input class="slider" type="range" id="release" min="0.05" max="10" value="0.5" step="0.01" style="width: 90px;">
+            <span id="releaseValue" style="font-size: 11px; min-width: 40px;">0.5</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <label>Echo Vol</label>
+            <input class="slider" type="range" id="delayAmount" min="0" max="0.7" value="0.2" step="0.01" style="width: 90px;">
+            <span id="delayAmountValue" style="font-size: 11px; min-width: 40px;">0.2</span>
+        </div>
+        <div class="control-group">
+            <label>Echo Time</label>
+            <input class="slider" type="range" id="delayTime" min="0.05" max="1" value="0.33" step="0.01" style="width: 90px;">
+            <span id="delayTimeValue" style="font-size: 11px; min-width: 40px;">0.33</span>
+        </div>
+        <div class="control-group">
+            <label>Reverb</label>
+            <input class="slider" type="range" id="reverbAmount" min="0" max="1" value="0.15" step="0.01" style="width: 90px;">
+            <span id="reverbValue" style="font-size: 11px; min-width: 40px;">0.15</span>
+        </div>
+    </div>
+
+    <div id="matrix">
+        <div class="step-labels" id="stepLabels"></div>
+        <div class="playhead-overlay" id="playhead" style="display: none;"></div>
+        <div id="rows"></div>
+    </div>
+
+    <div class="controls" style="margin-top: 10px;">
+        <button class="btn" id="shareBtn">Share</button>
+        <input type="text" id="shareUrl" readonly placeholder="Share link will appear here..." style="width: 400px; padding: 8px 12px; border-radius: 15px; border: 2px solid #888; font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #eee;">
+    </div>
+    <br>
+    <div style="margin-left:20px;">
+        <a href="/" style="color:black; text-decoration: none;"><p>www.ilai.link™ 2026</p></a>
+    </div>
+
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script>
+        const ROWS = 26;
+        const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+        class PolySynthMatrix {
+            constructor() {
+                this.matrix = [];
+                this.cols = 16;
+                this.currentStep = 0;
+                this.isPlaying = false;
+                this.interval = null;
+                this.voices = [];
+                this.noteMapping = {};
+                this.currentWave = 'sine';
+
+                this.initAudio();
+                this.initMatrix();
+                this.bindEvents();
+                this.updateNoteMapping();
+                this.handleTextInput(document.getElementById('textInput').value);
+            }
+
+            getBeatCount() {
+                const isDynamic = document.getElementById('dynamicBeats').checked;
+                if (isDynamic) {
+                    const text = document.getElementById('textInput').value;
+                    const letters = text.replace(/[a-zA-Z]/g, '');
+                    return text.length || 1;
+                }
+                return parseInt(document.getElementById('beatCount').value) || 16;
+            }
+
+            async initAudio() {
+                this.voices = [];
+                
+                for (let i = 0; i < ROWS; i++) {
+                    const synth = new Tone.Synth({
+                        oscillator: { type: 'sine' },
+                        envelope: { attack: 0.05, decay: 0.1, sustain: 0.3, release: 0.5 }
+                    }).toDestination();
+                    synth.volume.value = -12;
+                    this.voices.push(synth);
+                }
+
+                this.masterGain = new Tone.Gain(0.6).toDestination();
+
+                this.delay = new Tone.FeedbackDelay('8n', 0.2);
+                this.delay.wet.value = 0.2;
+                this.delay.connect(this.masterGain);
+                
+                this.reverb = new Tone.Reverb({ decay: 2.5, wet: 0.15 });
+                await this.reverb.generate();
+                this.reverb.connect(this.masterGain);
+
+                for (const voice of this.voices) {
+                    voice.connect(this.delay);
+                    voice.connect(this.reverb);
+                }
+
+                this.applyAllSettings();
+            }
+
+            initMatrix() {
+                const rowsEl = document.getElementById('rows');
+                const stepLabelsEl = document.getElementById('stepLabels');
+                this.reversedLetters = LETTERS.slice().reverse();
+                this.cols = this.getBeatCount();
+                this.cells = [];
+
+                for (let c = 0; c < this.cols; c++) {
+                    const label = document.createElement('div');
+                    label.className = 'step-label';
+                    label.textContent = c + 1;
+                    stepLabelsEl.appendChild(label);
+                }
+                
+                for (let r = 0; r < ROWS; r++) {
+                    const rowEl = document.createElement('div');
+                    rowEl.className = 'matrix-row';
+
+                    const label = document.createElement('div');
+                    label.className = 'row-label';
+                    label.textContent = this.reversedLetters[r];
+                    rowEl.appendChild(label);
+
+                    const row = [];
+                    for (let c = 0; c < this.cols; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'voice';
+                        cell.dataset.row = r;
+                        cell.dataset.col = c;
+                        cell.textContent = this.reversedLetters[r];
+                        cell.addEventListener('click', () => this.toggleCell(r, c, cell));
+                        rowEl.appendChild(cell);
+                        row.push({ active: false, element: cell });
+                    }
+                    this.matrix.push(row);
+                    rowsEl.appendChild(rowEl);
+                }
+            }
+
+            updateColumnCount(beatCount) {
+                if (beatCount === this.cols) return;
+                this.cols = beatCount;
+                
+                const rowsEl = document.getElementById('rows');
+                const stepLabelsEl = document.getElementById('stepLabels');
+                
+                stepLabelsEl.innerHTML = '';
+                for (let c = 0; c < this.cols; c++) {
+                    const label = document.createElement('div');
+                    label.className = 'step-label';
+                    label.textContent = c + 1;
+                    stepLabelsEl.appendChild(label);
+                }
+
+                for (let r = 0; r < ROWS; r++) {
+                    const rowEl = rowsEl.children[r];
+                    rowEl.innerHTML = '';
+                    
+                    const label = document.createElement('div');
+                    label.className = 'row-label';
+                    label.textContent = this.reversedLetters[r];
+                    rowEl.appendChild(label);
+                    
+                    const row = [];
+                    for (let c = 0; c < this.cols; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'voice';
+                        cell.dataset.row = r;
+                        cell.dataset.col = c;
+                        cell.textContent = this.reversedLetters[r];
+                        cell.addEventListener('click', () => this.toggleCell(r, c, cell));
+                        rowEl.appendChild(cell);
+                        row.push({ active: false, element: cell });
+                    }
+                    this.matrix[r] = row;
+                }
+
+                if (this.currentStep >= this.cols) {
+                    this.currentStep = 0;
+                }
+            }
+
+            toggleCell(row, col, cell) {
+                this.matrix[row][col].active = !this.matrix[row][col].active;
+                cell.classList.toggle('active', this.matrix[row][col].active);
+                
+                if (this.matrix[row][col].active) {
+                    const letter = this.reversedLetters[row];
+                    const note = this.noteMapping[letter];
+                    if (note) {
+                        this.playNote(row, note);
+                    }
+                }
+            }
+
+            playNote(row, note) {
+                if (Tone.context.state === 'suspended') {
+                    Tone.start();
+                }
+                this.voices[row].triggerAttackRelease(note, '16n');
+            }
+
+            bindEvents() {
+                document.getElementById('playBtn').addEventListener('click', () => this.togglePlay());
+                document.getElementById('stopBtn').addEventListener('click', () => this.stop());
+                document.getElementById('clearBtn').addEventListener('click', () => this.clear());
+                document.getElementById('randomBtn').addEventListener('click', () => this.random());
+                
+                document.getElementById('randomDensity').addEventListener('input', (e) => {
+                    document.getElementById('densityValue').textContent = e.target.value + '%';
+                });
+                
+                document.getElementById('rootNote').addEventListener('change', () => this.updateNoteMapping());
+                document.getElementById('keyType').addEventListener('change', () => this.updateNoteMapping());
+                document.getElementById('startOctave').addEventListener('change', () => this.updateNoteMapping());
+                
+                document.getElementById('tempo').addEventListener('input', (e) => {
+                    document.getElementById('tempoValue').textContent = e.target.value;
+                    if (this.isPlaying) {
+                        this.stopInterval();
+                        this.startInterval();
+                    }
+                });
+
+                document.querySelectorAll('.wave-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.wave-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.currentWave = btn.dataset.wave;
+                        for (const voice of this.voices) {
+                            voice.set({ oscillator: { type: this.currentWave } });
+                        }
+                    });
+                });
+
+                document.getElementById('delayAmount').addEventListener('input', (e) => {
+                    document.getElementById('delayAmountValue').textContent = e.target.value;
+                    if (this.delay) this.delay.wet.value = e.target.value;
+                });
+
+                document.getElementById('delayTime').addEventListener('input', (e) => {
+                    document.getElementById('delayTimeValue').textContent = e.target.value;
+                    if (this.delay) this.delay.delayTime.value = e.target.value;
+                });
+
+                document.getElementById('reverbAmount').addEventListener('input', (e) => {
+                    document.getElementById('reverbValue').textContent = e.target.value;
+                    if (this.reverb) {
+                        const val = parseFloat(e.target.value);
+                        this.reverb.wet.value = val;
+                        this.reverb.decay = 1 + val * 8;
+                    }
+                });
+
+                document.getElementById('attack').addEventListener('input', (e) => {
+                    document.getElementById('attackValue').textContent = e.target.value;
+                    for (const voice of this.voices) {
+                        voice.set({ envelope: { attack: parseFloat(e.target.value) } });
+                    }
+                });
+
+                document.getElementById('release').addEventListener('input', (e) => {
+                    document.getElementById('releaseValue').textContent = e.target.value;
+                    for (const voice of this.voices) {
+                        voice.set({ envelope: { release: parseFloat(e.target.value) } });
+                    }
+                });
+
+                document.getElementById('textInput').addEventListener('input', (e) => {
+                    this.handleTextInput(e.target.value);
+                });
+
+                document.getElementById('beatCount').addEventListener('input', (e) => {
+                    if (!document.getElementById('dynamicBeats').checked) {
+                        this.handleTextInput(document.getElementById('textInput').value);
+                    }
+                });
+
+                document.getElementById('dynamicBeats').addEventListener('change', (e) => {
+                    const beatInput = document.getElementById('beatCount');
+                    beatInput.style.opacity = e.target.checked ? '0.4' : '1';
+                    this.handleTextInput(document.getElementById('textInput').value);
+                });
+
+                document.getElementById('shareBtn').addEventListener('click', () => {
+                    this.exportSettings();
+                });
+            }
+
+            async init() {
+                await this.initAudio();
+                this.loadFromURL();
+            }
+
+            exportSettings() {
+                const params = new URLSearchParams();
+                params.set('text', document.getElementById('textInput').value);
+                params.set('beats', document.getElementById('beatCount').value);
+                params.set('dynamic', document.getElementById('dynamicBeats').checked ? '1' : '0');
+                params.set('root', document.getElementById('rootNote').value);
+                params.set('key', document.getElementById('keyType').value);
+                params.set('octave', document.getElementById('startOctave').value);
+                params.set('wave', this.currentWave);
+                params.set('bpm', document.getElementById('tempo').value);
+                params.set('attack', document.getElementById('attack').value);
+                params.set('release', document.getElementById('release').value);
+                params.set('delayVol', document.getElementById('delayAmount').value);
+                params.set('delayTime', document.getElementById('delayTime').value);
+                params.set('reverb', document.getElementById('reverbAmount').value);
+
+                const url = window.location.origin + window.location.pathname + '?' + params.toString();
+                document.getElementById('shareUrl').value = url;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Link copied to clipboard!');
+                }).catch(() => {
+                    // Already shown in textbox
+                });
+            }
+
+            loadFromURL() {
+                const params = new URLSearchParams(window.location.search);
+                if (!params.has('text') && !params.has('beats')) return;
+
+                if (params.has('text')) {
+                    document.getElementById('textInput').value = params.get('text');
+                }
+                if (params.has('beats')) {
+                    document.getElementById('beatCount').value = params.get('beats');
+                }
+                if (params.has('dynamic')) {
+                    document.getElementById('dynamicBeats').checked = params.get('dynamic') === '1';
+                    const beatInput = document.getElementById('beatCount');
+                    beatInput.disabled = params.get('dynamic') === '1';
+                    beatInput.style.opacity = params.get('dynamic') === '1' ? '0.4' : '1';
+                }
+                if (params.has('root')) {
+                    document.getElementById('rootNote').value = params.get('root');
+                }
+                if (params.has('key')) {
+                    document.getElementById('keyType').value = params.get('key');
+                }
+                if (params.has('octave')) {
+                    document.getElementById('startOctave').value = params.get('octave');
+                }
+                if (params.has('wave')) {
+                    this.currentWave = params.get('wave');
+                    document.querySelectorAll('.wave-btn').forEach(b => {
+                        b.classList.toggle('active', b.dataset.wave === this.currentWave);
+                    });
+                }
+                if (params.has('bpm')) {
+                    document.getElementById('tempo').value = params.get('bpm');
+                    document.getElementById('tempoValue').textContent = params.get('bpm');
+                }
+                if (params.has('attack')) {
+                    document.getElementById('attack').value = params.get('attack');
+                }
+                if (params.has('release')) {
+                    document.getElementById('release').value = params.get('release');
+                }
+                if (params.has('delayVol')) {
+                    document.getElementById('delayAmount').value = params.get('delayVol');
+                }
+                if (params.has('delayTime')) {
+                    document.getElementById('delayTime').value = params.get('delayTime');
+                }
+                if (params.has('reverb')) {
+                    document.getElementById('reverbAmount').value = params.get('reverb');
+                }
+
+                this.updateNoteMapping();
+                this.applyAllSettings();
+                this.handleTextInput(document.getElementById('textInput').value);
+            }
+
+            applyAllSettings() {
+                if (!this.voices.length) return;
+                
+                for (const voice of this.voices) {
+                    voice.set({ oscillator: { type: this.currentWave } });
+                    voice.set({ envelope: { 
+                        attack: parseFloat(document.getElementById('attack').value),
+                        release: parseFloat(document.getElementById('release').value)
+                    }});
+                }
+
+                if (this.delay) {
+                    this.delay.wet.value = parseFloat(document.getElementById('delayAmount').value);
+                    this.delay.delayTime.value = parseFloat(document.getElementById('delayTime').value);
+                }
+                if (this.reverb) {
+                    this.reverb.wet.value = parseFloat(document.getElementById('reverbAmount').value);
+                }
+            }
+
+            handleTextInput(text) {
+                const beatCount = this.getBeatCount();
+                if (beatCount !== this.cols) {
+                    this.updateColumnCount(beatCount);
+                }
+                this.clear();
+                
+                const upperText = text.toUpperCase();
+                let col = 0;
+                
+                for (let i = 0; i < upperText.length; i++) {
+                    const char = upperText[i];
+                    
+                    if (char >= 'A' && char <= 'Z') {
+                        const row = this.reversedLetters.indexOf(char);
+                        if (row !== -1 && col < this.cols) {
+                            this.matrix[row][col].active = true;
+                            this.matrix[row][col].element.classList.add('active');
+                        }
+                    }
+                    col = (col + 1) % this.cols;
+                }
+            }
+
+            updateNoteMapping() {
+                const rootNote = document.getElementById('rootNote').value;
+                const keyType = document.getElementById('keyType').value;
+                const startOctave = parseInt(document.getElementById('startOctave').value);
+                
+                const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+                const majorIntervals = [0, 2, 4, 5, 7, 9, 11];
+                const minorIntervals = [0, 2, 3, 5, 7, 8, 10];
+                const intervals = keyType === 'major' ? majorIntervals : minorIntervals;
+
+                const rootIndex = noteNames.indexOf(rootNote);
+                const transpose = rootIndex - noteNames.indexOf('A');
+
+                this.noteMapping = {};
+
+                for (let i = 0; i < ROWS; i++) {
+                    const scaleDegree = i % 7;
+                    const cycles = Math.floor(i / 7);
+                    const semitones = intervals[scaleDegree] + (cycles * 12) + transpose;
+                    const midiNote = (startOctave + 1) * 12 + semitones;
+                    const octave = Math.floor(midiNote / 12);
+                    const noteIndex = midiNote % 12;
+                    
+                    this.noteMapping[LETTERS[i]] = `${noteNames[noteIndex]}${octave}`;
+                }
+            }
+
+            async togglePlay() {
+                if (this.isPlaying) {
+                    this.stop();
+                } else {
+                    if (Tone.context.state === 'suspended') {
+                        await Tone.start();
+                    }
+                    this.isPlaying = true;
+                    document.getElementById('playBtn').classList.add('playing');
+                    document.getElementById('playBtn').textContent = 'Playing';
+                    document.getElementById('playhead').style.display = 'block';
+                    this.startInterval();
+                }
+            }
+
+            stop() {
+                this.isPlaying = false;
+                this.currentStep = 0;
+                this.stopInterval();
+                document.getElementById('playBtn').classList.remove('playing');
+                document.getElementById('playBtn').textContent = 'Play';
+                document.getElementById('playhead').style.display = 'none';
+                
+                document.querySelectorAll('.voice.playing').forEach(cell => {
+                    cell.classList.remove('playing');
+                });
+            }
+
+            startInterval() {
+                const bpm = parseInt(document.getElementById('tempo').value);
+                const intervalMs = (60 / bpm ) * 1000;
+                this.interval = setInterval(() => this.playStep(), intervalMs);
+            }
+
+            stopInterval() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+            }
+
+            playStep() {
+                document.querySelectorAll('.voice.playing').forEach(cell => {
+                    cell.classList.remove('playing');
+                });
+
+                const playhead = document.getElementById('playhead');
+                
+                if (this.currentStep < this.cols && this.matrix[0] && this.matrix[0][this.currentStep]) {
+                    const firstRow = this.matrix[0];
+                    const cell = firstRow[this.currentStep].element;
+                    const matrixEl = document.getElementById('matrix');
+                    const matrixRect = matrixEl.getBoundingClientRect();
+                    const cellRect = cell.getBoundingClientRect();
+                    const playheadLeft = cellRect.left - matrixRect.left;
+                    
+                    playhead.style.display = 'block';
+                    playhead.style.width = '22px';
+                    playhead.style.left = playheadLeft + 'px';
+                }
+
+                for (let r = 0; r < ROWS; r++) {
+                    if (this.matrix[r] && this.matrix[r][this.currentStep] && this.matrix[r][this.currentStep].active) {
+                        const letter = this.reversedLetters[r];
+                        const note = this.noteMapping[letter];
+                        if (note) {
+                            this.playNote(r, note);
+                            this.matrix[r][this.currentStep].element.classList.add('playing');
+                        }
+                    }
+                }
+
+                this.currentStep = (this.currentStep + 1) % this.cols;
+            }
+
+            clear() {
+                for (let r = 0; r < ROWS; r++) {
+                    if (!this.matrix[r]) continue;
+                    for (let c = 0; c < this.matrix[r].length; c++) {
+                        this.matrix[r][c].active = false;
+                        this.matrix[r][c].element.classList.remove('active', 'playing');
+                    }
+                }
+            }
+
+            random() {
+                const density = parseFloat(document.getElementById('randomDensity').value);
+                const beatCount = this.getBeatCount();
+                this.updateColumnCount(beatCount);
+                this.clear();
+                
+                const totalCells = ROWS * this.cols;
+                const targetActive = Math.round(totalCells * density / 100);
+                
+                const allCells = [];
+                for (let r = 0; r < ROWS; r++) {
+                    for (let c = 0; c < this.cols; c++) {
+                        allCells.push({ r, c });
+                    }
+                }
+                
+                for (let i = allCells.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [allCells[i], allCells[j]] = [allCells[j], allCells[i]];
+                }
+                
+                for (let i = 0; i < targetActive; i++) {
+                    const { r, c } = allCells[i];
+                    this.matrix[r][c].active = true;
+                    this.matrix[r][c].element.classList.add('active');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const app = new PolySynthMatrix();
+            await app.init();
+        });
+    </script>
+</body>
+</html>
