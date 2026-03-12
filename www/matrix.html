@@ -11,6 +11,10 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
+        :root {
+            --inactive-color: #0000ff;
+        }
+
         .voice {
             width: 22px;
             height: 22px;
@@ -20,7 +24,7 @@
             justify-content: center;
             border: 1px solid white;
             border-radius: 50%;
-            background-color: #0000ff;
+            background-color: var(--inactive-color);
             transition: all ease 0.15s;
             margin: 0;
             font-size: 9px;
@@ -278,6 +282,8 @@
             <select id="keyType">
                 <option value="major">Major</option>
                 <option value="minor">Minor</option>
+                <option value="dorian">Dorian</option>
+                <option value="lydian">Lydian</option>
             </select>
         </div>
         <div class="control-group">
@@ -745,7 +751,22 @@
                 const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
                 const majorIntervals = [0, 2, 4, 5, 7, 9, 11];
                 const minorIntervals = [0, 2, 3, 5, 7, 8, 10];
-                const intervals = keyType === 'major' ? majorIntervals : minorIntervals;
+                const dorianIntervals = [0, 2, 3, 5, 7, 9, 10];
+                const lydianIntervals = [0, 2, 4, 6, 7, 9, 11];
+                
+                let intervals;
+                if (keyType === 'major') intervals = majorIntervals;
+                else if (keyType === 'minor') intervals = minorIntervals;
+                else if (keyType === 'dorian') intervals = dorianIntervals;
+                else if (keyType === 'lydian') intervals = lydianIntervals;
+                
+                const scaleColors = {
+                    major: '#0000ff',
+                    minor: '#ff00ff',
+                    dorian: '#0cc0c0',
+                    lydian: '#f0dfdf'
+                };
+                document.documentElement.style.setProperty('--inactive-color', scaleColors[keyType] || '#0000ff');
 
                 const rootIndex = noteNames.indexOf(rootNote);
                 const transpose = rootIndex - noteNames.indexOf('A');
