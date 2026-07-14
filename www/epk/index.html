@@ -43,7 +43,7 @@
                 margin-top: 40px;
             }
             .epk-section h4 {
-                font-size: 16px;
+                font-size: 20px;
                 margin: 16px 0 8px;
             }
             .epk-list {
@@ -89,9 +89,10 @@
             }
 
             h1, h2{
-                font-size: 50px;
-                font-weight: 100;
-                /* line-height: 1; */
+                /* font-size: 4vw 10rem; */
+                /* font-weight: 100; */
+                line-height: 1;
+                margin:10px;
             }
             h3 {
                 font-size: 30px;
@@ -257,7 +258,7 @@
                 align-items: baseline;
                 gap: 3px;
             }
-            .ft2 .wa-time { text-shadow: 0 0 6px rgba(0,255,136,0.4); }
+            /* .ft2 .wa-time { text-shadow: 0 0 6px rgba(0,255,136,0.4); } */
             .wa-time-elapsed { font-size: 18px; }
             .wa-time-sep { font-size: 12px; color: var(--p-dim); margin: 0 1px; }
             .wa-time-remain { font-size: 11px; color: var(--p-faint); }
@@ -468,6 +469,133 @@
                 color: var(--p-faint);
                 letter-spacing: 1px;
             }
+
+            /* ===== TRACKLIST ===== */
+            .tl-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+            .tl-row {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+                gap: 6px;
+                padding: 8px 4px;
+                border-bottom: 1px solid #e0e0e0;
+                cursor: pointer;
+                transition: background 0.15s;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tl-row:hover {
+                background: #f0f2f8;
+            }
+            .tl-row.active {
+                background: #e8ecf4;
+            }
+            .tl-row:last-child {
+                border-bottom: none;
+            }
+            .tl-num {
+                font-family: 'ShreeDevanagari714', sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                color: #999;
+                flex-shrink: 0;
+            }
+            .tl-row.active .tl-num {
+                color: #2a6adb;
+            }
+            .tl-title {
+                font-family: 'ShreeDevanagari714', sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                color: #1a1a2e;
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+            .tl-row.active .tl-title {
+                color: #2a6adb;
+            }
+            .tl-pill {
+                display: inline-flex;
+                align-items: center;
+                font-family: 'ShreeDevanagari714', sans-serif;
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 0.3px;
+                padding: 2px 7px;
+                border-radius: 3px;
+                white-space: nowrap;
+                flex-shrink: 0;
+                background: #e8ecf4;
+                border: 1px solid #c8d0e0;
+                color: #2a3a6a;
+                user-select: text;
+            }
+            .tl-row.active .tl-pill {
+                background: #2a6adb;
+                border-color: #2a6adb;
+                color: #fff;
+            }
+            .tl-genre {
+                font-weight: normal;
+                font-size: 11px;
+                background: transparent;
+                border-color: #d0d8e8;
+                color: #6a7a9a;
+            }
+            .tl-row.active .tl-genre {
+                background: rgba(42,106,219,0.12);
+                border-color: #2a6adb;
+                color: #2a3a6a;
+            }
+            @media (max-width: 480px) {
+                .tl-row { gap: 4px; padding: 6px 2px; }
+                .tl-pill { font-size: 11px; padding: 2px 5px; }
+                .tl-title { font-size: 15px; }
+            }
+
+            /* ===== ALBUM INFO / CONTACT ===== */
+            .info-grid {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 4px 16px;
+                font-size: 17px;
+            }
+            .info-label {
+                font-weight: 600;
+                color: #1a1a2e;
+                white-space: nowrap;
+            }
+            .info-value {
+                color: #3a3a5c;
+            }
+            .info-value a {
+                color: #2a6adb;
+                text-decoration: none;
+            }
+            .info-value a:hover {
+                text-decoration: underline;
+            }
+            .epk-contact {
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 1px solid #e0e0e0;
+                font-size: 16px;
+                color: #6a7a9a;
+            }
+            .epk-contact p {
+                margin: 4px 0;
+            }
+            .epk-contact a {
+                color: #2a6adb;
+                text-decoration: none;
+            }
+            .epk-contact a:hover {
+                text-decoration: underline;
+            }
         </style>
     </head>
     <body>
@@ -550,14 +678,140 @@
                         <span class="wa-pl-duration" id="wa-pl-duration">0:00</span>
                     </div>
                 </div>
-            </div>
+            </div><br>
+
             
             <div>
-                <p>11ai's first self-released album in 4 years draws inspiration from the ethos of 1990s and early-2000s electronica while embracing contemporary club sounds. The record features a diverse range styles, combining house, IDM, ambient, drum n’ bass, and pop-informed songwriting.</p>
-                <p>Ilai Gilbert (they/them) is vinyl DJ, jazz musician, and new media artist from Los Angeles. Their accessible, bubbly, and groovy dance music contains their futuristic ethic that pays homage to the golden era of 90s and 2000s electronic music aesthetics and artistry.</p>
+                <p>Leapyear Register, 11ai's first self-released album in four years, pays homage to the ethos of 1990s and early-2000s electronica while embracing contemporary club sounds. The record moves fluidly between genres as diverse as house, IDM, ambient, drum & bass, and electro-pop, unified by 11ai's distinctive production style and melodic songwriting.</p>
+                <p>Ilai Gilbert (they/them) is a vinyl DJ, jazz musician, and new media artist based in Los Angeles. Their accessible, bubbly, and groovy dance music embodies a futuristic ethic while paying homage to the aesthetics of 1990s and early-2000s electronic music.</p>
             </div>
 
             <img src="./11ai-1.jpg" style="margin:auto; display:block; width:300px;">
+
+            <!-- ALBUM INFO -->
+            <div class="epk-section">
+                <h3>Album Info</h3>
+                <div class="info-grid">
+                    <span class="info-label">Artist</span>
+                    <span class="info-value">11ai</span>
+
+                    <span class="info-label">Album</span>
+                    <span class="info-value">Leapyear Register</span>
+
+                    <span class="info-label">Digital</span>
+                    <span class="info-value">July 30, 2026</span>
+
+                    <span class="info-label">CD</span>
+                    <span class="info-value">August 15, 2026</span>
+
+                    <span class="info-label">Genre</span>
+                    <span class="info-value">Electronica / IDM / House</span>
+
+                    <span class="info-label">Runtime</span>
+                    <span class="info-value">35 minutes</span>
+
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Los Angeles, California</span>
+
+                    <span class="info-label">Credits</span>
+                    <span class="info-value">Written, mixed, mastered, and designed by Ilai Gilbert</span>
+                </div>
+            </div>
+
+            <!-- TRACKLIST -->
+            <div class="epk-section">
+                <h3>Tracklist</h3>
+                <div class="tl-list" id="tl-list">
+                    <div class="tl-row" data-track="0">
+                        <span class="tl-num">#01</span>
+                        <span class="tl-title">No Time to Wait</span>
+                        <span class="tl-pill tl-time">2:45</span>
+                        <span class="tl-pill tl-bpm">127.5 bpm</span>
+                        <span class="tl-pill tl-genre">Electro</span>
+                        <span class="tl-pill tl-genre">Futuristic</span>
+                    </div>
+                    <div class="tl-row" data-track="1">
+                        <span class="tl-num">#02</span>
+                        <span class="tl-title">Contrate</span>
+                        <span class="tl-pill tl-time">4:05</span>
+                        <span class="tl-pill tl-bpm">137 bpm</span>
+                        <span class="tl-pill tl-genre">Garage</span>
+                        <span class="tl-pill tl-genre">IDM</span>
+                    </div>
+                    <div class="tl-row" data-track="2">
+                        <span class="tl-num">#03</span>
+                        <span class="tl-title">Moon</span>
+                        <span class="tl-pill tl-time">3:26</span>
+                        <span class="tl-pill tl-bpm">128 bpm</span>
+                        <span class="tl-pill tl-genre">Electro</span>
+                        <span class="tl-pill tl-genre">Cinematic</span>
+                    </div>
+                    <div class="tl-row" data-track="3">
+                        <span class="tl-num">#04</span>
+                        <span class="tl-title">Flat</span>
+                        <span class="tl-pill tl-time">1:16</span>
+                        <span class="tl-pill tl-bpm">120 bpm</span>
+                        <span class="tl-pill tl-genre">Ambient</span>
+                        <span class="tl-pill tl-genre">Emotional</span>
+                    </div>
+                    <div class="tl-row" data-track="4">
+                        <span class="tl-num">#05</span>
+                        <span class="tl-title">That Song</span>
+                        <span class="tl-pill tl-time">3:10</span>
+                        <span class="tl-pill tl-bpm">131 bpm</span>
+                        <span class="tl-pill tl-genre">Electro-pop</span>
+                        <span class="tl-pill tl-genre">House</span>
+                    </div>
+                    <div class="tl-row" data-track="5">
+                        <span class="tl-num">#06</span>
+                        <span class="tl-title">Are You Love?</span>
+                        <span class="tl-pill tl-time">4:23</span>
+                        <span class="tl-pill tl-bpm">122 bpm</span>
+                        <span class="tl-pill tl-genre">House</span>
+                        <span class="tl-pill tl-genre">Swinging</span>
+                    </div>
+                    <div class="tl-row" data-track="6">
+                        <span class="tl-num">#07</span>
+                        <span class="tl-title">Daylight Funk</span>
+                        <span class="tl-pill tl-time">1:21</span>
+                        <span class="tl-pill tl-bpm">127 bpm</span>
+                        <span class="tl-pill tl-genre">Atmospheric</span>
+                        <span class="tl-pill tl-genre">Sunny</span>
+                    </div>
+                    <div class="tl-row" data-track="7">
+                        <span class="tl-num">#08</span>
+                        <span class="tl-title">Link Step</span>
+                        <span class="tl-pill tl-time">5:35</span>
+                        <span class="tl-pill tl-bpm">141 bpm</span>
+                        <span class="tl-pill tl-genre">House</span>
+                        <span class="tl-pill tl-genre">Tech-Disco</span>
+                    </div>
+                    <div class="tl-row" data-track="8">
+                        <span class="tl-num">#09</span>
+                        <span class="tl-title">Daylight</span>
+                        <span class="tl-pill tl-time">3:21</span>
+                        <span class="tl-pill tl-bpm">155 bpm</span>
+                        <span class="tl-pill tl-genre">Drum N' Bass</span>
+                        <span class="tl-pill tl-genre">Cathartic</span>
+                    </div>
+                    <div class="tl-row" data-track="9">
+                        <span class="tl-num">#10</span>
+                        <span class="tl-title">Take Off</span>
+                        <span class="tl-pill tl-time">2:11</span>
+                        <span class="tl-pill tl-bpm">130 bpm</span>
+                        <span class="tl-pill tl-genre">House</span>
+                        <span class="tl-pill tl-genre">Playful</span>
+                    </div>
+                    <div class="tl-row" data-track="10">
+                        <span class="tl-num">#11</span>
+                        <span class="tl-title">Leapyear</span>
+                        <span class="tl-pill tl-time">3:45</span>
+                        <span class="tl-pill tl-bpm">144 bpm</span>
+                        <span class="tl-pill tl-genre">IDM</span>
+                        <span class="tl-pill tl-genre">Melodic</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- MUSICAL INFLUENCES -->
             <div class="epk-section">
@@ -577,22 +831,46 @@
 
             <!-- SELECTED TRACKS -->
             <div class="epk-section">
-                <h3>Selected Tracks</h3>
+                <h3>Singles / Music Videos</h3>
 
                 <div class="epk-track">
                     <h4>Moon</h4>
-                    <p>Envisioned as a sequel of sorts to their most enduringly popular track "galaxi," 11ai provides a catchy original vocal sample to create a futuristic electro tune, filling the space that sampling the classic Tom's Diner vocals would have. Synthesizers and sound design contrast the processed human-ness of their vocals as glitched-out cyberpunk sound design brings an cinematically emotional weight to the playful and harmonically rich bass lines.</p>
-                    <p>Features a 3D music video, inspired by the graphics and colorway of the single's album cover: <a href="https://www.youtube.com/watch?v=fUcbYUQY2f0" target="_blank" rel="noopener">Watch on YouTube</a></p>
                     <div class="epk-embed"><iframe src="https://www.youtube.com/embed/fUcbYUQY2f0" frameborder="0" allowfullscreen></iframe></div>
+                    <p>Envisioned as a sequel of sorts to their most enduringly popular track <a target="_blank" href=https://open.spotify.com/track/6txZ9hAEiL3E5hDlziqGGc">galaxi,</a> 11ai provides a catchy original vocal sample to create a futuristic electro tune, filling the space that sampling the classic Tom's Diner vocals would have. Synthesizers and sound design contrast the processed human-ness of their vocals as glitched-out cyberpunk sound design brings an cinematically emotional weight to the playful and harmonically rich bass lines.</p>
+                    <p>Features a 3D music video, inspired by the graphics and colorway of the single's album cover: <a href="https://www.youtube.com/watch?v=fUcbYUQY2f0" target="_blank" rel="noopener">Watch on YouTube</a></p>
+
                 </div>
+                <br><br>
 
                 <div class="epk-track">
                     <h4>That Song</h4>
-                    <p>Inspired by Daft Punk and the melodic dance-pop and mechanical house sound of early-2000s Japanese music (Capsule, Perfume), it combines cold, melancholy vocals with bright synth hooks and upbeat dancefloor energy.</p>
-                    <p>The MTV-style music video inserts 11ai into a retro-futuristic 3D audio-reactive cityscape where they play the role of a pop-star singing on a skyscraper in a videogame-like world. Leaning into the Y2K inspiration from videos like Kylie Minogue's "Love at First Sight," and the later 2000's famous iTunes silhouettes, the music video frames 11ai as a digital pop star, who has otherwise normally always presented themselves (or hidden themselves) as an elusive net artist and IDM dance musician.</p>
-                    <p>The genuine but plastic dance-pop writing combined with a playful tongue-in-cheek approach to embodying the strong aesthetics of a previous decade echoes DMX Krew’s classic endeavors into anachronistically making 80s pop in the late 90s. Rather than the 1980s, 11ai’s adaptation ventures more into honoring the 2000s pop productions of Yasutaka Nakata and his groups Capsule and Perfume, inspired by their catchy electro pop songs and futuristic videos.</p>
                     <div class="epk-embed"><iframe src="https://www.youtube.com/embed/nc9-b52R65g" frameborder="0" allowfullscreen></iframe></div>
+                    <p>Inspired by Daft Punk and the melodic dance-pop and mechanical house sound of early-2000s Japanese music (Capsule, Perfume), "That Song" combines cold, melancholy vocals with bright synth hooks and upbeat dancefloor energy.</p>
+                    <p>The MTV-style music video inserts 11ai into a retro-futuristic 3D audio-reactive cityscape where they play the role of a pop-star singing on a skyscraper in a videogame-like world. Leaning into the Y2K inspiration from videos like Kylie Minogue's "Love at First Sight," and the later 2000's famous iTunes silhouettes, the music video frames 11ai as a digital pop star, who has otherwise normally always presented themselves (or hidden themselves) as an elusive net artist and IDM dance musician.</p>
+                    <p>The genuine but plastic dance-pop writing combined with a playful tongue-in-cheek approach to embodying the strong aesthetics of a previous decade echoes DMX Krew’s classic endeavors into anachronistically making 80s pop in the late 90s. Rather than the 1980s, 11ai’s adaptation ventures more into honoring the 2000s pop productions of Yasutaka Nakata and his groups Capsule and Perfume, inspired by their catchy electro pop songs and futuristic videos.
+                    <br><a href="https://www.youtube.com/watch?v=fUcbYUQY2f0" target="_blank" rel="noopener">Watch on YouTube</a></p>
+
                 </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="epk-contact">
+                <p><strong>Contact</strong></p>
+                <p>Email: <a href="mailto:ilai.gilbert@gmail.com">ilai.gilbert@gmail.com</a></p>
+                <p>Instagram: <a href="https://instagram.com/11ai.link" target="_blank" rel="noopener">@11ai.link</a></p>
+                <p>Press: <a href="mailto:felix@silent-shout-communications.com">felix@silent-shout-communications.com</a></p>
+            </div>
+            
+            <img style="max-width:80%; margin:auto; display:block;"src="lyrcd4.1.png">
+            <br>
+            <!-- <img src="lyrcdback v1.png"> -->
+            <img src="cd-photo.jpg">
+
+                        <!-- MORE MUSIC -->
+            <div class="epk-section" style="text-align:center; margin-top:48px;">
+                <div>For more music + sound software + web design,</div>
+                <h3 style="margin-bottom:12px; margin-top:0px">visit the 11ai website:</h3>
+                <a href="http://ilai.link" target="_blank" rel="noopener" style="display:inline-block; font-size:28px; font-family:'ShreeDevanagari714',sans-serif; color:#2a6adb; text-decoration:none; padding:14px 32px; border:2px solid #2a6adb; border-radius:6px; transition:background 0.15s, color 0.15s;" onmouseover="this.style.background='#2a6adb'; this.style.color='#fff';" onmouseout="this.style.background=''; this.style.color='#2a6adb';">ilai.link</a>
             </div>
 
 
@@ -790,7 +1068,7 @@
                     if (!analyser || !isPlaying) {
                         // idle: gentle pulse on a few bars
                         for (var i = 0; i < barCount; i++) {
-                            var idle = 0.1 + 0.05 * Math.sin(Date.now() / 1200 + i * 0.5);
+                            var idle = 0.22 + 0.08 * Math.sin(Date.now() / 1200 + i * 0.5);
                             var bw = maxW * idle;
                             var y = i * (barH + barGap);
                             vizCtx.fillStyle = '#1a3a1a';
@@ -945,6 +1223,7 @@
 
                 // ===== PLAYLIST =====
                 function renderPlaylist() {
+                    var scrollY = window.scrollY;
                     els.plList.innerHTML = '';
                     var totalDuration = 0;
                     TRACKS.forEach(function(t, i) {
@@ -962,7 +1241,7 @@
                         div.appendChild(num);
                         div.appendChild(title);
                         div.appendChild(dur);
-                        div.addEventListener('click', function() { loadAndPlay(i); });
+                        div.addEventListener('click', function(e) { e.preventDefault(); loadAndPlay(i); });
                         els.plList.appendChild(div);
                         if (t.duration) totalDuration += t.duration;
                     });
@@ -970,6 +1249,8 @@
                     var tm = Math.floor(totalDuration / 60);
                     var ts = Math.floor(totalDuration % 60);
                     els.plDuration.textContent = tm + ':' + (ts < 10 ? '0' : '') + ts;
+                    updateTracklistHighlight();
+                    window.scrollTo(0, scrollY);
                 }
 
                 // ===== PLAY / PAUSE TOGGLE =====
@@ -1022,6 +1303,7 @@
                     });
                     var titleText = (track.displayArtist ? track.displayArtist + ' - ' : '') + (track.displayTitle || fallbackTitle(track.file, track));
                     startScroll(titleText);
+                    updateTracklistHighlight();
                 }
 
                 // ===== CONTROLS =====
@@ -1149,10 +1431,28 @@
                         case 'ArrowRight': if (audio.duration) audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); break;
                         case 'ArrowUp': e.preventDefault(); if (volumeLevel < 10) { volumeLevel++; updateVolumeUI(); } break;
                         case 'ArrowDown': e.preventDefault(); if (volumeLevel > 0) { volumeLevel--; updateVolumeUI(); } break;
-                        case 'KeyN': loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0); break;
-                        case 'KeyP': loadAndPlay(current > 0 ? current - 1 : TRACKS.length - 1); break;
+                        case 'KeyN': case 'Period': loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0); break;
+                        case 'KeyP': case 'Comma': loadAndPlay(current > 0 ? current - 1 : TRACKS.length - 1); break;
                     }
                 });
+
+                // ===== TRACKLIST INTEGRATION =====
+                function updateTracklistHighlight() {
+                    var rows = document.querySelectorAll('#tl-list .tl-row');
+                    rows.forEach(function(row, i) {
+                        row.classList.toggle('active', i === current);
+                    });
+                }
+
+                document.querySelectorAll('#tl-list .tl-row').forEach(function(row) {
+                    row.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var idx = parseInt(row.getAttribute('data-track'), 10);
+                        if (!isNaN(idx)) loadAndPlay(idx);
+                    });
+                });
+
+                updateTracklistHighlight();
             })();
             </script>
 
