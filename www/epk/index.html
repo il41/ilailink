@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>11ai Electronic Press Kit</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @font-face {
+                font-family: 'VeliqueSans';
+                src: url('Velique-Sans-Regular.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'CendrickNodeDemo';
+                src: url('cendrick-node-demo.extended.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'ShreeDevanagari714';
+                src: url('Shree-Devanagari-714.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Amiga';
+                src: url('amiga4ever-pro2.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            .epk-content{
+                font-size:20px;
+                max-width:800px;
+                font-family: 'ShreeDevanagari714', sans-serif;
+                /* line-height: 1; */
+                margin:auto;
+                padding:20px;
+            }
+            .epk-section {
+                margin-top: 40px;
+            }
+            .epk-section h4 {
+                font-size: 16px;
+                margin: 16px 0 8px;
+            }
+            .epk-list {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px 16px;
+            }
+            .epk-list li {
+                font-size: 18px;
+            }
+            .epk-list li::before {
+                content: '\2022\00a0';
+            }
+            .epk-track {
+                margin-bottom: 28px;
+            }
+            .epk-track p {
+                margin: 8px 0;
+                font-size: 18px;
+            }
+            .epk-track a {
+                color: #2a6adb;
+            }
+            .epk-embed {
+                position: relative;
+                padding-bottom: 56.25%;
+                margin-top: 12px;
+                height: 0;
+                overflow: hidden;
+            }
+            .epk-embed iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            img{
+                max-width: 100%;
+                
+            }
+
+            h1, h2{
+                font-size: 50px;
+                font-weight: 100;
+                /* line-height: 1; */
+            }
+            h3 {
+                font-size: 30px;
+                font-weight: 100;
+                margin-bottom: 8px;
+            }
+            h4 {
+                font-weight: 600;
+            }
+
+            /* ===== PLAYER — MODERN (default) ===== */
+            /* ---- Color palette — edit these 14 vars to theme the whole player ---- */
+            .wa-container {
+                /* surfaces */
+                --p-bg:           #f0f2f8;
+                --p-surface:      #e8ecf4;
+                --p-inset:        #ffffff;
+                /* borders */
+                --p-border:       #c8d0e0;
+                /* text */
+                --p-fg:           #1a1a2e;
+                --p-brand:        #2a3a6a;   /* titles, brand, active text */
+                --p-accent:       #2a6adb;   /* accents, active bg, seek bar */
+                --p-time:         #2a6adb;   /* time display, play button */
+                --p-muted:        #6a7a9a;   /* muted text, buttons */
+                --p-dim:          #b0b8c8;   /* dim numbers, borders */
+                /* hot zone */
+                --p-hot:          #e84040;
+                /* shape & shadow */
+                --p-radius:       8px;
+                --p-radius-sm:    4px;
+                --p-notch-h:      1px;       /* volume notch height */
+                --p-shadow:       0 4px 16px rgba(0,40,120,0.10), 0 1px 3px rgba(0,0,0,0.06);
+
+                /* ---- derived (auto — change parents above) ---- */
+                --p-border-light: color-mix(in srgb, var(--p-border) 60%, transparent);
+                --p-surface-hover: color-mix(in srgb, var(--p-brand) 15%, var(--p-bg));
+                --p-scroll-track: var(--p-bg);
+                --p-scroll-thumb: var(--p-border);
+                --p-grip:         var(--p-dim);
+                --p-faint:        var(--p-accent);
+            }
+            .wa-container.ft2 {
+                --p-bg:           #0d0d1a;
+                --p-surface:      #1a1a30;
+                --p-inset:        #000000;
+                --p-border:       #3a3a5c;
+                --p-fg:           #e8e8e8;
+                --p-brand:        #ff8800;
+                --p-accent:       #ff8800;
+                --p-time:         #00ff88;
+                --p-muted:        #8a8aaa;
+                --p-dim:          #3a3a5c;
+                --p-hot:          #ff4400;
+                --p-radius:       0;
+                --p-radius-sm:    0;
+                --p-notch-h:      16px;
+                --p-shadow:       none;
+                --p-border-light: #1a2a1a;
+                --p-surface-hover: #1a1a30;
+                --p-scroll-track: #0a0a14;
+                --p-grip:         #6a6a8a;
+                --p-faint:        #3a5a3a;
+            }
+
+            #winamp {
+                margin: 40px auto 0;
+                width: 370px;
+                max-width: 100%;
+                user-select: none;
+            }
+            .wa-container {
+                font-family: 'ShreeDevanagari714', 'VeliqueSans', sans-serif;
+                color: var(--p-fg);
+            }
+            .ft2 .wa-container,
+            .wa-container.ft2 {
+                font-family: 'Amiga', 'Courier New', monospace;
+            }
+            .wa-main {
+                background: var(--p-bg);
+                border: 1px solid var(--p-border);
+                border-radius: var(--p-radius) var(--p-radius) 0 0;
+                overflow: hidden;
+                box-shadow: var(--p-shadow);
+            }
+            .ft2 .wa-main {
+                border-width: 2px;
+            }
+            .wa-titlebar {
+                display: flex;
+                align-items: center;
+                background: linear-gradient(180deg, var(--p-surface) 0%, var(--p-bg) 100%);
+                padding: 5px 8px;
+                border-bottom: 1px solid var(--p-border);
+            }
+            .wa-titlebar-grip {
+                width: 8px;
+                height: 12px;
+                margin-right: 6px;
+                flex-shrink: 0;
+                background: repeating-linear-gradient(
+                    0deg, var(--p-grip), var(--p-grip) 1px, transparent 1px, transparent 3px
+                );
+            }
+            .wa-titlebar-text {
+                flex: 1;
+                color: var(--p-brand);
+                font-size: 11px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .wa-style-btn {
+                width: auto;
+                height: 18px;
+                padding: 0 6px;
+                background: var(--p-bg);
+                border: 1px solid var(--p-border);
+                color: var(--p-muted);
+                font-size: 8px;
+                font-family: inherit;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                cursor: pointer;
+                flex-shrink: 0;
+                margin-left: 6px;
+                border-radius: var(--p-radius-sm);
+            }
+            .wa-style-btn:hover { background: var(--p-border); color: var(--p-brand); }
+            .wa-body {
+                display: flex;
+                flex-direction: column;
+                padding: 8px;
+                gap: 6px;
+            }
+            .wa-display {
+                background: var(--p-inset);
+                border: 1px solid var(--p-border);
+                border-radius: var(--p-radius-sm);
+                padding: 6px 8px;
+                min-height: 80px;
+                overflow: hidden;
+                box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+            }
+            .ft2 .wa-display { box-shadow: none; }
+            .wa-display-inner {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                height: 100%;
+            }
+            .wa-time {
+                font-size: 18px;
+                font-weight: bold;
+                color: var(--p-time);
+                letter-spacing: 1px;
+                font-variant-numeric: tabular-nums;
+                display: flex;
+                align-items: baseline;
+                gap: 3px;
+            }
+            .ft2 .wa-time { text-shadow: 0 0 6px rgba(0,255,136,0.4); }
+            .wa-time-elapsed { font-size: 18px; }
+            .wa-time-sep { font-size: 12px; color: var(--p-dim); margin: 0 1px; }
+            .wa-time-remain { font-size: 11px; color: var(--p-faint); }
+            .wa-viz {
+                display: block;
+                width: 100%;
+                height: 40px;
+                background: var(--p-inset);
+                border: 1px solid var(--p-border-light);
+                border-radius: var(--p-radius-sm);
+            }
+            .ft2 .wa-viz { image-rendering: pixelated; }
+            .wa-scroll-wrap {
+                overflow: hidden;
+                height: 20px;
+            }
+            .wa-scroll-text {
+                white-space: nowrap;
+                font-size: 11px;
+                color: var(--p-brand);
+                letter-spacing: 1px;
+                display: inline-block;
+                will-change: transform;
+            }
+            .ft2 .wa-scroll-text { text-shadow: 0 0 4px rgba(255,170,0,0.3); }
+
+            /* Volume */
+            .wa-volume-section {
+                padding: 0 10px 4px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .wa-vol-btn {
+                width: 20px;
+                height: 20px;
+                background: var(--p-surface);
+                border: 1px solid var(--p-border);
+                color: var(--p-muted);
+                font-size: 14px;
+                font-family: inherit;
+                font-weight: bold;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                flex-shrink: 0;
+                line-height: 1;
+                border-radius: var(--p-radius-sm);
+            }
+            .wa-vol-btn:hover { background: var(--p-border); color: var(--p-brand); }
+            .wa-vol-btn:active { background: var(--p-surface); }
+            .wa-vol-notches {
+                display: flex;
+                gap: 3px;
+                flex: 1;
+            }
+            .wa-vol-notch {
+                flex: 1;
+                height: var(--p-notch-h);
+                background: var(--p-surface);
+                border: 1px solid var(--p-border);
+                border-radius: var(--p-radius-sm);
+                transition: background 0.1s, border-color 0.1s, box-shadow 0.1s;
+            }
+            .wa-vol-notch.on {
+                background: var(--p-accent);
+                border-color: var(--p-accent);
+                box-shadow: 0 0 4px color-mix(in srgb, var(--p-accent) 30%, transparent);
+            }
+            .wa-vol-notch.on.hot {
+                background: var(--p-hot);
+                border-color: var(--p-hot);
+                box-shadow: 0 0 4px color-mix(in srgb, var(--p-hot) 30%, transparent);
+            }
+
+            /* Seek */
+            .wa-seekbar-wrap { padding: 0 10px 6px; }
+            .wa-seekbar {
+                position: relative;
+                width: 100%;
+                height: 8px;
+                background: var(--p-surface);
+                border: 1px solid var(--p-border);
+                border-radius: var(--p-radius-sm);
+                cursor: pointer;
+            }
+            .wa-seekbar-fill {
+                position: absolute;
+                top: 0; left: 0;
+                height: 100%;
+                background: var(--p-accent);
+                border-radius: var(--p-radius-sm);
+                pointer-events: none;
+                width: 0%;
+            }
+            .wa-seekbar-thumb {
+                position: absolute;
+                top: 50%; left: 0%;
+                width: 12px; height: 12px;
+                background: var(--p-inset);
+                border: 2px solid var(--p-accent);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                cursor: grab;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+            }
+            .ft2 .wa-seekbar-thumb { border-radius: 0; width: 4px; height: 12px; }
+            .wa-seekbar-thumb:active { cursor: grabbing; }
+
+            /* Transport */
+            .wa-controls {
+                display: flex;
+                justify-content: center;
+                gap: 4px;
+                padding: 2px 10px 8px;
+            }
+            .wa-transport {
+                width: 40px;
+                height: 28px;
+                background: var(--p-inset);
+                border: 1px solid var(--p-border);
+                color: var(--p-muted);
+                font-size: 12px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.1s, color 0.1s;
+                padding: 0;
+                border-radius: var(--p-radius-sm);
+            }
+            .wa-transport:hover { background: var(--p-surface); color: var(--p-brand); }
+            .wa-transport:active { background: var(--p-bg); }
+            .wa-transport.wa-play-active { color: var(--p-time); }
+
+            /* Playlist */
+            .wa-playlist {
+                background: var(--p-bg);
+                border: 1px solid var(--p-border);
+                border-top: none;
+                border-radius: 0 0 var(--p-radius) var(--p-radius);
+                overflow: hidden;
+                box-shadow: var(--p-shadow);
+            }
+            .ft2 .wa-playlist { border-width: 2px; border-top: none; }
+            .wa-pl-titlebar {
+                background: linear-gradient(180deg, var(--p-surface), var(--p-bg));
+                padding: 3px 8px;
+                border-bottom: 1px solid var(--p-border);
+            }
+            .wa-pl-titlebar-text {
+                color: var(--p-brand);
+                font-size: 10px;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+            .wa-pl-list {
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--p-scroll-thumb) var(--p-scroll-track);
+            }
+            .wa-pl-list::-webkit-scrollbar { width: 8px; }
+            .wa-pl-list::-webkit-scrollbar-track { background: var(--p-scroll-track); }
+            .wa-pl-list::-webkit-scrollbar-thumb { background: var(--p-scroll-thumb); border-radius: var(--p-radius-sm); }
+            .wa-pl-item {
+                display: flex;
+                align-items: center;
+                padding: 5px 8px;
+                cursor: pointer;
+                font-size: 11px;
+                color: var(--p-muted);
+                border-bottom: 1px solid var(--p-border-light);
+                transition: background 0.1s;
+                gap: 8px;
+            }
+            .wa-pl-item:hover { background: var(--p-surface); color: var(--p-brand); }
+            .wa-pl-item.active { background: var(--p-surface-hover); color: var(--p-accent); }
+            .wa-pl-num {
+                color: var(--p-dim);
+                font-size: 9px;
+                width: 18px;
+                text-align: right;
+                flex-shrink: 0;
+            }
+            .wa-pl-item.active .wa-pl-num { color: var(--p-accent); }
+            .wa-pl-title {
+                flex: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .wa-pl-dur {
+                color: var(--p-dim);
+                font-size: 9px;
+                font-variant-numeric: tabular-nums;
+                flex-shrink: 0;
+            }
+            .wa-pl-item.active .wa-pl-dur { color: var(--p-muted); }
+            .wa-pl-footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 3px 8px;
+                background: var(--p-surface);
+                border-top: 1px solid var(--p-border);
+                font-size: 9px;
+                color: var(--p-faint);
+                letter-spacing: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="epk-content">
+            <H1>11ai - Leapyear Register</H1>
+            <h2>Electronic Press Kit</h2>
+            <img src="./lyr-jun6v2.png">
+            <!-- <img src="./11ai-1.jpg"> -->
+
+                        <!-- PLAYER -->
+            <div id="winamp" class="wa-container modern">
+                <!-- Main window -->
+                <div class="wa-main">
+                    <!-- Title bar -->
+                    <div class="wa-titlebar">
+                        <div class="wa-titlebar-grip"></div>
+                        <span class="wa-titlebar-text">11ai - Leapyear Register</span>
+                        <button class="wa-style-btn" id="wa-style-toggle" title="Toggle style">STYLE</button>
+                    </div>
+
+                    <div class="wa-body">
+                        <!-- Display: time + viz + scroll -->
+                        <div class="wa-display">
+                            <div class="wa-display-inner">
+                                <div class="wa-time">
+                                    <span class="wa-time-elapsed" id="wa-time-elapsed">00:00</span>
+                                    <span class="wa-time-sep">/</span>
+                                    <span class="wa-time-remain" id="wa-time-remain">-00:00</span>
+                                </div>
+                                <canvas class="wa-viz" id="wa-viz-canvas" height="40"></canvas>
+                                <div class="wa-scroll-wrap">
+                                    <div class="wa-scroll-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seek bar -->
+                    <div class="wa-seekbar-wrap">
+                        <div class="wa-seekbar" id="wa-seekbar">
+                            <div class="wa-seekbar-fill" id="wa-seekbar-fill"></div>
+                            <div class="wa-seekbar-thumb" id="wa-seekbar-thumb"></div>
+                        </div>
+                    </div>
+
+                    <!-- Volume: 10 notches with +/- buttons -->
+                    <div class="wa-volume-section">
+                        <button class="wa-vol-btn" id="wa-vol-down" title="Volume Down">-</button>
+                        <div class="wa-vol-notches" id="wa-vol-notches">
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch on"></div>
+                            <div class="wa-vol-notch"></div>
+                            <div class="wa-vol-notch"></div>
+                        </div>
+                        <button class="wa-vol-btn" id="wa-vol-up" title="Volume Up">+</button>
+                    </div>
+
+                    <!-- Transport: prev, play/pause toggle, next -->
+                    <div class="wa-controls">
+                        <button class="wa-transport" id="wa-prev" title="Previous">&#9664;&#9664;</button>
+                        <button class="wa-transport wa-play-active" id="wa-play" title="Play / Pause">&#9654; / &#9646;&#9646;</button>
+                        <button class="wa-transport" id="wa-next" title="Next">&#9654;&#9654;</button>
+                    </div>
+                </div>
+
+                <!-- Playlist window -->
+                <div class="wa-playlist">
+                    <div class="wa-pl-titlebar">
+                        <span class="wa-pl-titlebar-text">LEAPYEAR REGISTER</span>
+                    </div>
+                    <div class="wa-pl-list" id="wa-pl-list"></div>
+                    <div class="wa-pl-footer">
+                        <span class="wa-pl-count" id="wa-pl-count">0 tracks</span>
+                        <span class="wa-pl-duration" id="wa-pl-duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <p>11ai's first self-released album in 4 years draws inspiration from the ethos of 1990s and early-2000s electronica while embracing contemporary club sounds. The record features a diverse range styles, combining house, IDM, ambient, drum n’ bass, and pop-informed songwriting.</p>
+                <p>Ilai Gilbert (they/them) is vinyl DJ, jazz musician, and new media artist from Los Angeles. Their accessible, bubbly, and groovy dance music contains their futuristic ethic that pays homage to the golden era of 90s and 2000s electronic music aesthetics and artistry.</p>
+            </div>
+
+            <img src="./11ai-1.jpg" style="margin:auto; display:block; width:300px;">
+
+            <!-- MUSICAL INFLUENCES -->
+            <div class="epk-section">
+                <h3>Musical Influences</h3>
+                <h4>RIYL (Recommended If You Like)</h4>
+                <ul class="epk-list">
+                    <li>Rei Harakami</li>
+                    <li>SFV Acid</li>
+                    <li>Squarepusher</li>
+                    <li>Drexciya</li>
+                    <li>Capsule</li>
+                    <li>Morgan Geist</li>
+                    <li>Soichi Terada</li>
+                    <li>Ken Ishii</li>
+                </ul>
+            </div>
+
+            <!-- SELECTED TRACKS -->
+            <div class="epk-section">
+                <h3>Selected Tracks</h3>
+
+                <div class="epk-track">
+                    <h4>Moon</h4>
+                    <p>Envisioned as a sequel of sorts to their most enduringly popular track "galaxi," 11ai provides a catchy original vocal sample to create a futuristic electro tune, filling the space that sampling the classic Tom's Diner vocals would have. Synthesizers and sound design contrast the processed human-ness of their vocals as glitched-out cyberpunk sound design brings an cinematically emotional weight to the playful and harmonically rich bass lines.</p>
+                    <p>Features a 3D music video, inspired by the graphics and colorway of the single's album cover: <a href="https://www.youtube.com/watch?v=fUcbYUQY2f0" target="_blank" rel="noopener">Watch on YouTube</a></p>
+                    <div class="epk-embed"><iframe src="https://www.youtube.com/embed/fUcbYUQY2f0" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+
+                <div class="epk-track">
+                    <h4>That Song</h4>
+                    <p>Inspired by Daft Punk and the melodic dance-pop and mechanical house sound of early-2000s Japanese music (Capsule, Perfume), it combines cold, melancholy vocals with bright synth hooks and upbeat dancefloor energy.</p>
+                    <p>The MTV-style music video inserts 11ai into a retro-futuristic 3D audio-reactive cityscape where they play the role of a pop-star singing on a skyscraper in a videogame-like world. Leaning into the Y2K inspiration from videos like Kylie Minogue's "Love at First Sight," and the later 2000's famous iTunes silhouettes, the music video frames 11ai as a digital pop star, who has otherwise normally always presented themselves (or hidden themselves) as an elusive net artist and IDM dance musician.</p>
+                    <p>The genuine but plastic dance-pop writing combined with a playful tongue-in-cheek approach to embodying the strong aesthetics of a previous decade echoes DMX Krew’s classic endeavors into anachronistically making 80s pop in the late 90s. Rather than the 1980s, 11ai’s adaptation ventures more into honoring the 2000s pop productions of Yasutaka Nakata and his groups Capsule and Perfume, inspired by their catchy electro pop songs and futuristic videos.</p>
+                    <div class="epk-embed"><iframe src="https://www.youtube.com/embed/nc9-b52R65g" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+            </div>
+
+
+            <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+            <script>
+            (function() {
+                var TRACKS = [
+                    { file: 'mp3/11ai - Leapyear Register - 01 No Time to Wait.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 02 Contrate.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 03 Moon.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 04 Flat.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 05 That Song.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 06 Are You Love-.mp3', titleOverride: 'Are You Love?' },
+                    { file: 'mp3/11ai - Leapyear Register - 07 Daylight Funk.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 08 Link Step.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 09 Daylight.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 10 Take Off.mp3' },
+                    { file: 'mp3/11ai - Leapyear Register - 11 Leapyear.mp3' }
+                ];
+
+                // ===== ID3 PARSER =====
+                function sanitizeText(s) {
+                    var out = '';
+                    for (var i = 0; i < s.length; i++) {
+                        var cp = s.charCodeAt(i);
+                        if (cp === 0) break;
+                        // allow printable ASCII, tab, newline
+                        if (cp >= 32 && cp < 127) { out += s[i]; continue; }
+                        // allow Latin-1 supplement printable range
+                        if (cp >= 0x00A0 && cp <= 0x00FF) { out += s[i]; continue; }
+                        // allow common punctuation from extended ranges
+                        if (cp === 0x2018 || cp === 0x2019 || cp === 0x201C || cp === 0x201D) { out += s[i]; continue; }
+                        // skip everything else (CJK, garbled, etc.)
+                    }
+                    return out.trim();
+                }
+
+                function parseID3v1(buffer) {
+                    var view = new DataView(buffer);
+                    if (buffer.byteLength < 128) return null;
+                    var offset = buffer.byteLength - 128;
+                    var tag = String.fromCharCode(view.getUint8(offset), view.getUint8(offset+1), view.getUint8(offset+2));
+                    if (tag !== 'TAG') return null;
+                    function readStr(off, len) {
+                        var s = '';
+                        for (var i = 0; i < len; i++) {
+                            var c = view.getUint8(off + i);
+                            if (c === 0) break;
+                            s += String.fromCharCode(c);
+                        }
+                        return sanitizeText(s);
+                    }
+                    return {
+                        title: readStr(offset + 3, 30),
+                        artist: readStr(offset + 33, 30),
+                        album: readStr(offset + 63, 30),
+                        year: readStr(offset + 93, 4)
+                    };
+                }
+
+                function parseID3v2(buffer) {
+                    var view = new DataView(buffer);
+                    if (buffer.byteLength < 10) return null;
+                    var header = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2));
+                    if (header !== 'ID3') return null;
+                    var version = view.getUint8(3);
+                    var size = (view.getUint8(6) << 21) | (view.getUint8(7) << 14) | (view.getUint8(8) << 7) | view.getUint8(9);
+                    var offset = 10;
+                    var flags = view.getUint8(5);
+                    if (flags & 0x40) {
+                        var extSize = (view.getUint8(10) << 24) | (view.getUint8(11) << 16) | (view.getUint8(12) << 8) | view.getUint8(13);
+                        offset += extSize;
+                    }
+                    var end = Math.min(10 + size, buffer.byteLength);
+                    var result = {};
+                    while (offset < end - 10) {
+                        var frameId = String.fromCharCode(view.getUint8(offset), view.getUint8(offset+1), view.getUint8(offset+2), view.getUint8(offset+3));
+                        var frameSize;
+                        if (version >= 4) {
+                            frameSize = (view.getUint8(offset+4) << 21) | (view.getUint8(offset+5) << 14) | (view.getUint8(offset+6) << 7) | view.getUint8(offset+7);
+                        } else {
+                            frameSize = (view.getUint8(offset+4) << 24) | (view.getUint8(offset+5) << 16) | (view.getUint8(offset+6) << 8) | view.getUint8(offset+7);
+                        }
+                        if (frameSize <= 0 || offset + 10 + frameSize > end) break;
+                        var frameData = new Uint8Array(buffer, offset + 10, frameSize);
+                        var encoding = frameData[0];
+                        var text = '';
+                        if (encoding === 1) {
+                            // UTF-16 with BOM
+                            var bom = (frameData[1] << 8) | frameData[2];
+                            var le = bom === 0xFEFF;
+                            for (var i = 3; i < frameData.length - 1; i += 2) {
+                                var cp = le ? ((frameData[i+1] << 8) | frameData[i]) : ((frameData[i] << 8) | frameData[i+1]);
+                                if (cp === 0) break;
+                                text += String.fromCharCode(cp);
+                            }
+                        } else {
+                            // ISO-8859-1 or UTF-8
+                            for (var i = 1; i < frameData.length; i++) {
+                                if (frameData[i] === 0) break;
+                                text += String.fromCharCode(frameData[i]);
+                            }
+                        }
+                        text = sanitizeText(text);
+                        if (frameId === 'TIT2') result.title = text;
+                        else if (frameId === 'TPE1') result.artist = text;
+                        else if (frameId === 'TALB') result.album = text;
+                        offset += 10 + frameSize;
+                    }
+                    return (result.title || result.artist || result.album) ? result : null;
+                }
+
+                function parseID3(buffer) {
+                    var id3v2 = parseID3v2(buffer);
+                    if (id3v2 && (id3v2.title || id3v2.artist)) return id3v2;
+                    var id3v1 = parseID3v1(buffer);
+                    return id3v1 || id3v2 || null;
+                }
+
+                function fallbackTitle(filepath, track) {
+                    if (track && track.titleOverride) return track.titleOverride;
+                    var name = filepath.split('/').pop().replace('.mp3', '');
+                    var parts = name.split(' - ');
+                    if (parts.length >= 3) return parts[2].replace(/^\d+\s*/, '');
+                    if (parts.length >= 2) return parts[1];
+                    return name;
+                }
+
+                function fallbackArtist(filepath) {
+                    var name = filepath.split('/').pop().replace('.mp3', '');
+                    var parts = name.split(' - ');
+                    return parts.length >= 1 ? parts[0] : 'Unknown';
+                }
+
+                // ===== ELEMENTS =====
+                var audio = new Audio();
+                var audioCtx, analyser, sourceNode, dataArray;
+                var current = 0, isPlaying = false, isSeeking = false;
+                var scrollPos = 0, scrollTimer = null, vizRAF = null;
+
+                var els = {
+                    timeElapsed: document.getElementById('wa-time-elapsed'),
+                    timeRemain: document.getElementById('wa-time-remain'),
+                    scrollText: document.querySelector('.wa-scroll-text'),
+                    scrollWrap: document.querySelector('.wa-scroll-wrap'),
+                    viz: document.getElementById('wa-viz-canvas'),
+                    seekFill: document.getElementById('wa-seekbar-fill'),
+                    seekThumb: document.getElementById('wa-seekbar-thumb'),
+                    seekbar: document.getElementById('wa-seekbar'),
+                    playBtn: document.getElementById('wa-play'),
+                    prevBtn: document.getElementById('wa-prev'),
+                    nextBtn: document.getElementById('wa-next'),
+                    volDown: document.getElementById('wa-vol-down'),
+                    volUp: document.getElementById('wa-vol-up'),
+                    volNotches: document.getElementById('wa-vol-notches'),
+                    plList: document.getElementById('wa-pl-list'),
+                    plCount: document.getElementById('wa-pl-count'),
+                    plDuration: document.getElementById('wa-pl-duration')
+                };
+
+                // ===== AUDIO CONTEXT / ANALYSER =====
+                function initAudioContext() {
+                    if (audioCtx) return;
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioCtx.createAnalyser();
+                    analyser.fftSize = 256;
+                    sourceNode = audioCtx.createMediaElementSource(audio);
+                    sourceNode.connect(analyser);
+                    analyser.connect(audioCtx.destination);
+                    dataArray = new Uint8Array(analyser.frequencyBinCount);
+                }
+
+                // ===== VISUALIZER (FT2-style horizontal bars) =====
+                function sizeVizCanvas() {
+                    els.viz.width = els.viz.offsetWidth * (window.devicePixelRatio || 1);
+                    els.viz.height = els.viz.offsetHeight * (window.devicePixelRatio || 1);
+                }
+                sizeVizCanvas();
+                window.addEventListener('resize', sizeVizCanvas);
+                var vizCtx = els.viz.getContext('2d');
+
+                function drawViz() {
+                    vizRAF = requestAnimationFrame(drawViz);
+                    var W = els.viz.width, H = els.viz.height;
+                    vizCtx.clearRect(0, 0, W, H);
+
+                    var barCount = 16;
+                    var barGap = 2;
+                    var barH = Math.floor((H - barGap * (barCount - 1)) / barCount);
+                    var maxW = W - 20;
+
+                    if (!analyser || !isPlaying) {
+                        // idle: gentle pulse on a few bars
+                        for (var i = 0; i < barCount; i++) {
+                            var idle = 0.1 + 0.05 * Math.sin(Date.now() / 1200 + i * 0.5);
+                            var bw = maxW * idle;
+                            var y = i * (barH + barGap);
+                            vizCtx.fillStyle = '#1a3a1a';
+                            vizCtx.fillRect(0, y, maxW, barH);
+                            vizCtx.fillStyle = '#00aa44';
+                            vizCtx.fillRect(0, y, bw, barH);
+                        }
+                        return;
+                    }
+
+                    analyser.getByteFrequencyData(dataArray);
+                    var nyquist = audioCtx.sampleRate / 2;
+                    var binCount = analyser.frequencyBinCount;
+                    var minFreq = audioCtx.sampleRate / analyser.fftSize;
+                    var logMin = Math.log(minFreq);
+                    var logMax = Math.log(nyquist);
+                    for (var i = 0; i < barCount; i++) {
+                        var lowFreq = Math.exp(logMin + (logMax - logMin) * i / barCount);
+                        var highFreq = Math.exp(logMin + (logMax - logMin) * (i + 1) / barCount);
+                        var lo = Math.max(1, Math.floor(lowFreq / minFreq));
+                        var hi = Math.min(binCount - 1, Math.ceil(highFreq / minFreq));
+                        var sum = 0, count = 0;
+                        for (var j = lo; j <= hi; j++) {
+                            sum += dataArray[j];
+                            count++;
+                        }
+                        var val = count > 0 ? sum / count : 0;
+                        var pct = val / 255;
+                        var bw = maxW * pct;
+                        var y = i * (barH + barGap);
+
+                        // background
+                        vizCtx.fillStyle = '#0a1a0a';
+                        vizCtx.fillRect(0, y, maxW, barH);
+
+                        // bar: green -> orange -> red
+                        if (pct < 0.6) {
+                            vizCtx.fillStyle = '#00cc55';
+                        } else if (pct < 0.85) {
+                            vizCtx.fillStyle = '#ffaa00';
+                        } else {
+                            vizCtx.fillStyle = '#ff3300';
+                        }
+                        vizCtx.fillRect(0, y, bw, barH);
+                    }
+                }
+
+                // ===== VOLUME (10 discrete notches) =====
+                var volumeLevel = 7; // 0-10
+                var notchEls = els.volNotches.querySelectorAll('.wa-vol-notch');
+
+                function updateVolumeUI() {
+                    for (var i = 0; i < 10; i++) {
+                        notchEls[i].className = 'wa-vol-notch';
+                        if (i < volumeLevel) {
+                            notchEls[i].classList.add('on');
+                            if (i >= 8) notchEls[i].classList.add('hot');
+                        }
+                    }
+                    audio.volume = volumeLevel / 10;
+                }
+
+                els.volDown.addEventListener('click', function() {
+                    if (volumeLevel > 0) { volumeLevel--; updateVolumeUI(); }
+                });
+                els.volUp.addEventListener('click', function() {
+                    if (volumeLevel < 10) { volumeLevel++; updateVolumeUI(); }
+                });
+                updateVolumeUI();
+
+                // ===== SEEK BAR =====
+                function setupSeek() {
+                    var dragging = false;
+                    function getPos(e) {
+                        var rect = els.seekbar.getBoundingClientRect();
+                        var x = (e.touches ? e.touches[0] : e).clientX - rect.left;
+                        return Math.max(0, Math.min(1, x / rect.width));
+                    }
+                    function onDown(e) {
+                        dragging = true;
+                        isSeeking = true;
+                        var pct = getPos(e);
+                        if (audio.duration) audio.currentTime = pct * audio.duration;
+                        els.seekFill.style.width = (pct * 100) + '%';
+                        els.seekThumb.style.left = (pct * 100) + '%';
+                        e.preventDefault();
+                    }
+                    function onMove(e) {
+                        if (!dragging) return;
+                        var pct = getPos(e);
+                        if (audio.duration) audio.currentTime = pct * audio.duration;
+                        els.seekFill.style.width = (pct * 100) + '%';
+                        els.seekThumb.style.left = (pct * 100) + '%';
+                    }
+                    function onUp() { dragging = false; isSeeking = false; }
+                    els.seekbar.addEventListener('mousedown', onDown);
+                    els.seekbar.addEventListener('touchstart', onDown, { passive: false });
+                    document.addEventListener('mousemove', onMove);
+                    document.addEventListener('touchmove', onMove, { passive: false });
+                    document.addEventListener('mouseup', onUp);
+                    document.addEventListener('touchend', onUp);
+                }
+                setupSeek();
+
+                // ===== TIME UPDATE =====
+                function fmtTime(sec) {
+                    var m = Math.floor(sec / 60);
+                    var s = Math.floor(sec % 60);
+                    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+                }
+
+                audio.addEventListener('timeupdate', function() {
+                    if (isSeeking || !audio.duration) return;
+                    var pct = audio.currentTime / audio.duration;
+                    els.seekFill.style.width = (pct * 100) + '%';
+                    els.seekThumb.style.left = (pct * 100) + '%';
+                    els.timeElapsed.textContent = fmtTime(audio.currentTime);
+                    els.timeRemain.textContent = '-' + fmtTime(audio.duration - audio.currentTime);
+                });
+
+                audio.addEventListener('ended', function() {
+                    if (current < TRACKS.length - 1) {
+                        loadAndPlay(current + 1);
+                    } else {
+                        resetDisplay();
+                    }
+                });
+
+                // ===== SCROLLING TEXT =====
+                function startScroll(text) {
+                    stopScroll();
+                    els.scrollText.textContent = text;
+                    scrollPos = 0;
+                    els.scrollText.style.transform = 'translateX(0)';
+                    var wrapW = els.scrollWrap.offsetWidth;
+                    var textW = els.scrollText.scrollWidth;
+                    if (textW <= wrapW) return;
+                    els.scrollText.textContent = text + '   ***   ' + text + '   ***   ';
+                    scrollTimer = setInterval(function() {
+                        scrollPos -= 1;
+                        var half = els.scrollText.scrollWidth / 2;
+                        if (Math.abs(scrollPos) >= half) scrollPos = 0;
+                        els.scrollText.style.transform = 'translateX(' + scrollPos + 'px)';
+                    }, 30);
+                }
+
+                function stopScroll() {
+                    if (scrollTimer) clearInterval(scrollTimer);
+                    scrollTimer = null;
+                    scrollPos = 0;
+                }
+
+                // ===== PLAYLIST =====
+                function renderPlaylist() {
+                    els.plList.innerHTML = '';
+                    var totalDuration = 0;
+                    TRACKS.forEach(function(t, i) {
+                        var div = document.createElement('div');
+                        div.className = 'wa-pl-item' + (i === current ? ' active' : '');
+                        var num = document.createElement('span');
+                        num.className = 'wa-pl-num';
+                        num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+                        var title = document.createElement('span');
+                        title.className = 'wa-pl-title';
+                        title.textContent = t.displayTitle || fallbackTitle(t.file, t);
+                        var dur = document.createElement('span');
+                        dur.className = 'wa-pl-dur';
+                        dur.textContent = t.durationStr || '--:--';
+                        div.appendChild(num);
+                        div.appendChild(title);
+                        div.appendChild(dur);
+                        div.addEventListener('click', function() { loadAndPlay(i); });
+                        els.plList.appendChild(div);
+                        if (t.duration) totalDuration += t.duration;
+                    });
+                    els.plCount.textContent = TRACKS.length + ' tracks';
+                    var tm = Math.floor(totalDuration / 60);
+                    var ts = Math.floor(totalDuration % 60);
+                    els.plDuration.textContent = tm + ':' + (ts < 10 ? '0' : '') + ts;
+                }
+
+                // ===== PLAY / PAUSE TOGGLE =====
+                function togglePlay() {
+                    if (isPlaying) {
+                        audio.pause();
+                        isPlaying = false;
+                        updatePlayBtn();
+                    } else if (audio.src) {
+                        initAudioContext();
+                        audio.play();
+                        isPlaying = true;
+                        updatePlayBtn();
+                    } else {
+                        loadAndPlay(current);
+                    }
+                }
+
+                function updatePlayBtn() {
+                    els.playBtn.innerHTML = isPlaying ? '&#9654; / &#9646;&#9646;' : '&#9654; / &#9646;&#9646;';
+                    els.playBtn.classList.toggle('wa-play-active', isPlaying);
+                }
+
+                function resetDisplay() {
+                    isPlaying = false;
+                    updatePlayBtn();
+                    els.timeElapsed.textContent = '00:00';
+                    els.timeRemain.textContent = '-00:00';
+                    els.seekFill.style.width = '0%';
+                    els.seekThumb.style.left = '0%';
+                    stopScroll();
+                    els.scrollText.textContent = '11ai - Leapyear Register';
+                    renderPlaylist();
+                }
+
+                // ===== LOAD & PLAY =====
+                function loadAndPlay(idx) {
+                    if (idx < 0 || idx >= TRACKS.length) return;
+                    current = idx;
+                    var track = TRACKS[current];
+                    audio.src = track.file;
+                    audio.load();
+                    audio.play().then(function() {
+                        initAudioContext();
+                        isPlaying = true;
+                        updatePlayBtn();
+                        renderPlaylist();
+                    }).catch(function(e) {
+                        console.warn('Playback failed:', e);
+                    });
+                    var titleText = (track.displayArtist ? track.displayArtist + ' - ' : '') + (track.displayTitle || fallbackTitle(track.file, track));
+                    startScroll(titleText);
+                }
+
+                // ===== CONTROLS =====
+                els.playBtn.addEventListener('click', togglePlay);
+
+                els.prevBtn.addEventListener('click', function() {
+                    if (audio.currentTime > 3) {
+                        audio.currentTime = 0;
+                    } else {
+                        loadAndPlay(current > 0 ? current - 1 : TRACKS.length - 1);
+                    }
+                });
+
+                els.nextBtn.addEventListener('click', function() {
+                    loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0);
+                });
+
+                // ===== ID3 LOADING =====
+                function loadID3(track, cb) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', track.file, true);
+                    xhr.responseType = 'arraybuffer';
+                    xhr.onload = function() {
+                        if (xhr.status === 200 || xhr.status === 0) {
+                            var buf = xhr.response;
+                            var head = buf.slice(0, 524288);
+                            var meta = parseID3(head);
+                            if (!meta) {
+                                var tail = buf.slice(Math.max(0, buf.byteLength - 512));
+                                meta = parseID3v1(tail);
+                            }
+                            if (meta && (meta.title || meta.artist)) {
+                                track.displayTitle = meta.title || fallbackTitle(track.file, track);
+                                track.displayArtist = meta.artist || fallbackArtist(track.file);
+                            } else {
+                                track.displayTitle = fallbackTitle(track.file, track);
+                                track.displayArtist = fallbackArtist(track.file);
+                            }
+                        } else {
+                            track.displayTitle = fallbackTitle(track.file, track);
+                            track.displayArtist = fallbackArtist(track.file);
+                        }
+                        cb();
+                    };
+                    xhr.onerror = function() {
+                        track.displayTitle = fallbackTitle(track.file, track);
+                        track.displayArtist = fallbackArtist(track.file);
+                        cb();
+                    };
+                    xhr.send();
+                }
+
+                function loadID3ForAll(cb) {
+                    var loaded = 0;
+                    TRACKS.forEach(function(t) {
+                        loadID3(t, function() {
+                            loaded++;
+                            if (loaded >= TRACKS.length) cb();
+                        });
+                    });
+                }
+
+                function loadDuration(track, cb) {
+                    var a = new Audio();
+                    a.preload = 'metadata';
+                    a.onloadedmetadata = function() {
+                        track.duration = a.duration;
+                        track.durationStr = fmtTime(a.duration);
+                        cb();
+                    };
+                    a.onerror = function() {
+                        track.duration = 0;
+                        track.durationStr = '--:--';
+                        cb();
+                    };
+                    a.src = track.file;
+                }
+
+                function loadDurations(cb) {
+                    var done = 0;
+                    TRACKS.forEach(function(t) {
+                        loadDuration(t, function() {
+                            done++;
+                            if (done >= TRACKS.length) cb();
+                        });
+                    });
+                }
+
+                // ===== INIT =====
+                audio.volume = volumeLevel / 10;
+                renderPlaylist();
+                els.scrollText.textContent = '11ai - Leapyear Register';
+                drawViz();
+
+                loadID3ForAll(function() {
+                    loadDurations(function() {
+                        renderPlaylist();
+                        var t = TRACKS[current];
+                        var titleText = (t.displayArtist ? t.displayArtist + ' - ' : '') + (t.displayTitle || fallbackTitle(t.file, t));
+                        startScroll(titleText);
+                    });
+                });
+
+                // ===== STYLE TOGGLE =====
+                var styleBtn = document.getElementById('wa-style-toggle');
+                var container = document.getElementById('winamp');
+                var isFT2 = false;
+                styleBtn.addEventListener('click', function() {
+                    isFT2 = !isFT2;
+                    if (isFT2) {
+                        container.classList.remove('modern');
+                        container.classList.add('ft2');
+                    } else {
+                        container.classList.remove('ft2');
+                        container.classList.add('modern');
+                    }
+                });
+
+                // ===== KEYBOARD SHORTCUTS =====
+                document.addEventListener('keydown', function(e) {
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                    switch(e.code) {
+                        case 'Space': e.preventDefault(); togglePlay(); break;
+                        case 'ArrowLeft': if (audio.duration) audio.currentTime = Math.max(0, audio.currentTime - 5); break;
+                        case 'ArrowRight': if (audio.duration) audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); break;
+                        case 'ArrowUp': e.preventDefault(); if (volumeLevel < 10) { volumeLevel++; updateVolumeUI(); } break;
+                        case 'ArrowDown': e.preventDefault(); if (volumeLevel > 0) { volumeLevel--; updateVolumeUI(); } break;
+                        case 'KeyN': loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0); break;
+                        case 'KeyP': loadAndPlay(current > 0 ? current - 1 : TRACKS.length - 1); break;
+                    }
+                });
+            })();
+            </script>
+
+        </div>
+    </body>
+</html>
