@@ -39,6 +39,17 @@
                 margin:auto;
                 padding:20px;
             }
+            body{
+                font-size:20px;
+                font-family: 'ShreeDevanagari714', sans-serif;
+                /* line-height: 1; */
+                margin:auto;
+                padding:20px;
+            }
+            .title-span{
+                /* text-wrap-mode: nowrap; */
+                display:inline-block;
+            }
             .epk-section {
                 margin-top: 40px;
             }
@@ -88,6 +99,18 @@
                 
             }
 
+            .album-art {
+                max-width: 80%;
+                margin: auto;
+                display: block;
+            }
+
+            h1{
+                font-size:100px;
+            }
+            h2{
+                font-size:60px;
+            }
             h1, h2{
                 /* font-size: 4vw 10rem; */
                 /* font-weight: 100; */
@@ -543,8 +566,10 @@
                 font-weight: normal;
                 font-size: 11px;
                 background: transparent;
-                border-color: #d0d8e8;
-                color: #6a7a9a;
+                /* border-color: #d0d8e8; */
+                border-color: #707070;
+                /* color: #6a7a9a; */
+                color: #314468;
             }
             .tl-row.active .tl-genre {
                 background: rgba(42,106,219,0.12);
@@ -599,10 +624,11 @@
         </style>
     </head>
     <body>
+        <H1>11ai - <div class="title-span">Leapyear Register</div></H1>
+        <h2>Electronic Press Kit</h2>
         <div class="epk-content">
-            <H1>11ai - Leapyear Register</H1>
-            <h2>Electronic Press Kit</h2>
-            <img src="./lyr-jun6v2.png">
+
+            <img class="album-art" src="./lyr-jun6v2.png">
             <!-- <img src="./11ai-1.jpg"> -->
 
                         <!-- PLAYER -->
@@ -683,7 +709,10 @@
             
             <div>
                 <p>Leapyear Register, 11ai's first self-released album in four years, pays homage to the ethos of 1990s and early-2000s electronica while embracing contemporary club sounds. The record moves fluidly between genres as diverse as house, IDM, ambient, drum & bass, and electro-pop, unified by 11ai's distinctive production style and melodic songwriting.</p>
-                <p>Ilai Gilbert (they/them) is a vinyl DJ, jazz musician, and new media artist based in Los Angeles. Their accessible, bubbly, and groovy dance music embodies a futuristic ethic while paying homage to the aesthetics of 1990s and early-2000s electronic music.</p>
+                <p>
+                    Ilai Gilbert (they/them) is a musician and technologist from Los Angeles. With a background in jazz bass, electronic music, and creative coding, they have been DJing and releasing dance music under the alias 11ai since 2019. As a technologist, they create interactive media art and installations in the form of audiovisual touch screen synthesizers, interactive computer music installations, and net art sound software. 11ai creates bubbly and groovy dance music where emotional depth and harmonic complexity meet accessible and lean genre-spanning electronica productions.
+                </p>
+                <!-- <p>Ilai Gilbert (they/them) is a vinyl DJ, jazz musician, and new media artist based in Los Angeles. Their accessible, bubbly, and groovy dance music embodies a futuristic ethic while paying homage to the aesthetics of 1990s and early-2000s electronic music.</p> -->
             </div>
 
             <img src="./11ai-1.jpg" style="margin:auto; display:block; width:300px;">
@@ -698,14 +727,14 @@
                     <span class="info-label">Album</span>
                     <span class="info-value">Leapyear Register</span>
 
-                    <span class="info-label">Digital</span>
+                    <span class="info-label">Digital Release Date</span>
                     <span class="info-value">July 30, 2026</span>
 
-                    <span class="info-label">CD</span>
+                    <span class="info-label">CD Release Date</span>
                     <span class="info-value">August 15, 2026</span>
 
                     <span class="info-label">Genre</span>
-                    <span class="info-value">Electronica / IDM / House</span>
+                    <span class="info-value">Dance / Electronica</span>
 
                     <span class="info-label">Runtime</span>
                     <span class="info-value">35 minutes</span>
@@ -716,6 +745,7 @@
                     <span class="info-label">Credits</span>
                     <span class="info-value">Written, mixed, mastered, and designed by Ilai Gilbert</span>
                 </div>
+                <img class="album-art" style="max-width:300px; margin-top:30px; margin-left:0px;" src="./lyr-jun6v2.png">
             </div>
 
             <!-- TRACKLIST -->
@@ -782,7 +812,7 @@
                         <span class="tl-num">#08</span>
                         <span class="tl-title">Link Step</span>
                         <span class="tl-pill tl-time">5:35</span>
-                        <span class="tl-pill tl-bpm">141 bpm</span>
+                        <span class="tl-pill tl-bpm">133 bpm</span>
                         <span class="tl-pill tl-genre">House</span>
                         <span class="tl-pill tl-genre">Tech-Disco</span>
                     </div>
@@ -791,7 +821,7 @@
                         <span class="tl-title">Daylight</span>
                         <span class="tl-pill tl-time">3:21</span>
                         <span class="tl-pill tl-bpm">155 bpm</span>
-                        <span class="tl-pill tl-genre">Drum N' Bass</span>
+                        <span class="tl-pill tl-genre">Jungle / Drum N' Bass</span>
                         <span class="tl-pill tl-genre">Cathartic</span>
                     </div>
                     <div class="tl-row" data-track="9">
@@ -808,7 +838,7 @@
                         <span class="tl-pill tl-time">3:45</span>
                         <span class="tl-pill tl-bpm">144 bpm</span>
                         <span class="tl-pill tl-genre">IDM</span>
-                        <span class="tl-pill tl-genre">Melodic</span>
+                        <span class="tl-pill tl-genre">Melancholy</span>
                     </div>
                 </div>
             </div>
@@ -1063,7 +1093,7 @@
                     var barCount = 16;
                     var barGap = 2;
                     var barH = Math.floor((H - barGap * (barCount - 1)) / barCount);
-                    var maxW = W - 20;
+                    var maxW = W;
 
                     if (!analyser || !isPlaying) {
                         // idle: gentle pulse on a few bars

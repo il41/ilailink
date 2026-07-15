@@ -245,12 +245,12 @@ label { margin-right: 10px;
         <div class="set" style="margin-top:-280px; margin-left:-100px; margin-bottom:-74px;">
           <a href="https://www.youtube.com/watch?v=nc9-b52R65g" class ="random-color" style="font-size:20px; text-decoration:underline;">↓NEW MUSIC VIDEO↓</a>
         </div>
-        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nc9-b52R65g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nc9-b52R65g?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
     <div class="cube__face cube__face--back">
-      <iframe width="500" height="300" src="https://www.youtube.com/embed/nc9-b52R65g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe width="500" height="300" src="https://www.youtube.com/embed/fUcbYUQY2f0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="500" height="300" src="https://www.youtube.com/embed/nc9-b52R65g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="500" height="300" src="https://www.youtube.com/embed/fUcbYUQY2f0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="cube__face cube__face--right"><div>&nbsp; &nbsp; <a href="hello.html">chatroom</a><br></div><a href="m.html" style="font-size:20px;">soundware + games</a><br></div>
     <div class="cube__face cube__face--left music-face"><div id="sidebar">
@@ -290,12 +290,13 @@ function changeSide() {
   var showClass = 'show-' + checkedRadio.value;
   if ( currentClass ) {
     cube.classList.remove( currentClass );
-  //   if(currentClass == "show-right-2"){
-  //     document.querySelector('.scene').style.perspective="0px";
-  //   } else {document.querySelector('.scene').style.perspective="400px";}
   }
   cube.classList.add( showClass );
   currentClass = showClass;
+
+  document.querySelectorAll('.cube__face').forEach(function(f) { f.style.zIndex = ''; });
+  var activeFace = document.querySelector('.cube__face--' + checkedRadio.value);
+  if (activeFace) activeFace.style.zIndex = '10';
 }
 // set initial side
 changeSide();
