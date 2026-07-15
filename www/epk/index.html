@@ -45,6 +45,7 @@
                 /* line-height: 1; */
                 margin:auto;
                 padding:20px;
+                padding-bottom: 70px;
             }
             .title-span{
                 /* text-wrap-mode: nowrap; */
@@ -593,7 +594,137 @@
                 .tl-title { font-size: 15px; }
             }
 
+            /* ===== NOW PLAYING BAR ===== */
+            .np-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #f0f2f8;
+                border-top: 1px solid #c8d0e0;
+                display: flex;
+                flex-direction: column;
+                z-index: 1000;
+                box-shadow: 0 -2px 12px rgba(0,40,120,0.08);
+                font-family: 'ShreeDevanagari714', 'VeliqueSans', sans-serif;
+                transition: background 0.2s, border-color 0.2s;
+            }
+            .np-bar.hidden { display: none; }
+            .np-bar.ft2 {
+                background: #0d0d1a;
+                border-top-color: #3a3a5c;
+                box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+            }
+            .np-bar-row {
+                display: flex;
+                align-items: center;
+                padding: 8px 16px;
+                gap: 12px;
+            }
+            .np-bar-info {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+            }
+            .np-bar-title {
+                font-size: 13px;
+                font-weight: 600;
+                color: #1a1a2e;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .np-bar.ft2 .np-bar-title { color: #e8e8e8; }
+            .np-bar-artist {
+                font-size: 11px;
+                color: #6a7a9a;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .np-bar.ft2 .np-bar-artist { color: #8a8aaa; }
+            .np-bar-controls {
+                display: flex;
+                gap: 4px;
+                flex-shrink: 0;
+            }
+            .np-bar-btn {
+                height: 34px;
+                background: #e8ecf4;
+                border: 1px solid #c8d0e0;
+                color: #6a7a9a;
+                font-size: 14px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                transition: background 0.1s, color 0.1s;
+                padding: 0 10px;
+            }
+            .np-bar.ft2 .np-bar-btn {
+                background: #1a1a30;
+                border-color: #3a3a5c;
+                color: #8a8aaa;
+                border-radius: 0;
+            }
+            .np-bar-btn:hover { background: #dce0ec; color: #2a3a6a; }
+            .np-bar.ft2 .np-bar-btn:hover { background: #1a1a30; color: #e8e8e8; }
+            .np-bar-btn:active { background: #c8d0e0; }
+            .np-bar.ft2 .np-bar-btn:active { background: #0d0d1a; }
+            .np-bar-btn.np-play-active { color: #2a6adb; }
+            .np-bar.ft2 .np-bar-btn.np-play-active { color: #00ff88; }
+            /* Seek slider */
+            .np-seek-wrap {
+                padding: 0 16px 6px;
+            }
+            .np-seek {
+                position: relative;
+                width: 100%;
+                height: 5px;
+                background: #e0e4ee;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+            .np-bar.ft2 .np-seek { background: #1a1a30; }
+            .np-seek-fill {
+                position: absolute;
+                top: 0; left: 0;
+                height: 100%;
+                width: 0%;
+                background: #2a6adb;
+                border-radius: 2px;
+                pointer-events: none;
+                transition: background 0.15s;
+            }
+            .np-bar.ft2 .np-seek-fill { background: #00ff88; }
+            .np-seek:hover .np-seek-fill { background: #1a5ac0; }
+            .np-bar.ft2 .np-seek:hover .np-seek-fill { background: #00cc66; }
+            .np-seek-thumb {
+                position: absolute;
+                top: 50%; left: 0%;
+                width: 12px; height: 12px;
+                background: #fff;
+                border: 2px solid #2a6adb;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                cursor: grab;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+                opacity: 0;
+                transition: opacity 0.15s;
+            }
+            .np-seek:hover .np-seek-thumb { opacity: 1; }
+            .np-bar.ft2 .np-seek-thumb { background: #0d0d1a; border-color: #00ff88; }
+            .np-seek-thumb:active { cursor: grabbing; opacity: 1; }
+            @media (max-width: 480px) {
+                .np-bar-row { padding: 6px 10px; gap: 8px; }
+                .np-bar-btn { height: 30px; font-size: 12px; padding: 0 8px; }
+                .np-seek-wrap { padding: 0 10px 4px; }
+            }
+
             /* ===== ALBUM INFO / CONTACT ===== */
+            .no-audio .tl-row { cursor: default; }
+            .no-audio .tl-row:hover { background: none; }
             .info-grid {
                 display: grid;
                 grid-template-columns: auto 1fr;
@@ -719,9 +850,11 @@
 
             
             <div>
-                <p>Leapyear Register, 11ai's first self-released album in four years, pays homage to the ethos of 1990s and early-2000s electronica while embracing contemporary club sounds. The record moves fluidly between genres as diverse as house, IDM, ambient, drum & bass, and electro-pop, unified by 11ai's distinctive production style and melodic songwriting.</p>
+                <p>Leapyear Register, 11ai's first self-released album in four years, pays homage to the adventurous spirit of 1990s and early-2000s electronica through eleven tracks inspired by house, IDM, ambient, drum & bass, and electro-pop. Each piece draws from different electronic traditions while remaining unified by 11ai's melodic songwriting, rich harmonic language, and distinctive production style.</p>
                 <p>
-                    Ilai Gilbert (they/them) is a musician and technologist from Los Angeles. With a background in jazz bass, electronic music, and creative coding, they have been DJing and releasing dance music under the alias 11ai since 2019. As a technologist, they create interactive media art and installations in the form of audiovisual touch screen synthesizers, interactive computer music installations, and net art sound software. 11ai creates bubbly and groovy dance music where emotional depth and harmonic complexity meet accessible and lean genre-spanning electronica productions.
+                    Ilai Gilbert (they/them) is a musician and net artist from Los Angeles. With a background in jazz bass, electronic music, and creative coding, they have been DJing and releasing dance music under the alias 11ai since 2019. As a technologist, they create interactive media art and installations in the form of audiovisual touch screen synthesizers, interactive computer music installations, and web-based sound software. <br><br>
+                    <!-- <i>Los Angeles-based musician and net artist 11ai creates bubbly and accessible genre-spanning dance music that balances emotional depth and rich harmonic complexity.</i> -->
+                    <i>Los Angeles-based musician and net artist 11ai creates bubbly and accessible dance music that balances emotional depth and rich harmonic complexity.</i>
                 </p>
                 <!-- <p>Ilai Gilbert (they/them) is a vinyl DJ, jazz musician, and new media artist based in Los Angeles. Their accessible, bubbly, and groovy dance music embodies a futuristic ethic while paying homage to the aesthetics of 1990s and early-2000s electronic music.</p> -->
             </div>
@@ -892,7 +1025,7 @@
                     <p>Inspired by Daft Punk and the melodic and mechanical house sound of early-2000s J-pop, “That Song” combines cold, melancholy vocals with bright synth hooks and upbeat dancefloor energy.</p>
                     <p>The MTV-style music video inserts 11ai into a retro-futuristic 3D audio-reactive cityscape where they play the role of a pop-star singing on a skyscraper in a videogame-like world. Leaning into the 2000s inspiration from 3D pop music videos like <a href="https://www.youtube.com/watch?v=wf421JsG004"target="_blank">Kylie Minogue's</a> or <a href="https://www.youtube.com/watch?v=8zh0ouiYIZc" target="_blank">Perfume’s</a>, and the famous iTunes silhouettes, the video frames 11ai as a digital pop star, where normally they have historically presented (or hidden) themselves as an elusive net artist and IDM dance musician.
 </p>
-                    <p>The tongue-in-cheek but ultimately genuine approach to channeling strong aesthetics of a previous decade echoes DMX Krew’s endeavors into anachronistically making 80s pop in the late 90s. 11ai’s adaptation honors the plastic-y 2000s pop productions of Yasutaka Nakata and his groups Capsule and Perfume, inspired by their catchy electro pop songs and futuristic videos.
+                    <p>11ai's tongue-in-cheek yet ultimately genuine approach to channeling aesthetics of a previous decade echoes DMX Krew’s endeavors into anachronistically making 80s pop in the late 90s. 11ai’s adaptation honors the plastic-y 2000s pop productions of Yasutaka Nakata and his groups Capsule and Perfume, inspired by their catchy electro pop songs and futuristic videos.
                     <br><a href="https://www.youtube.com/watch?v=fUcbYUQY2f0" target="_blank" rel="noopener">Watch on YouTube</a></p>
 
                 </div>
@@ -928,6 +1061,27 @@
                 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
 
+            <!-- NOW PLAYING BAR -->
+            <div class="np-bar" id="np-bar">
+                <div class="np-bar-row">
+                    <div class="np-bar-info">
+                        <div class="np-bar-title" id="np-bar-title">Leapyear Register</div>
+                        <div class="np-bar-artist" id="np-bar-artist">11ai</div>
+                    </div>
+                    <div class="np-bar-controls">
+                        <button class="np-bar-btn" id="np-prev" title="Previous">&#9664;&#9664;</button>
+                        <button class="np-bar-btn" id="np-play" title="Play / Pause">&#9654; / &#9646;&#9646;</button>
+                        <button class="np-bar-btn" id="np-next" title="Next">&#9654;&#9654;</button>
+                    </div>
+                </div>
+                <div class="np-seek-wrap">
+                    <div class="np-seek" id="np-seek">
+                        <div class="np-seek-fill" id="np-seek-fill"></div>
+                        <div class="np-seek-thumb" id="np-seek-thumb"></div>
+                    </div>
+                </div>
+            </div>
+
             <script>
             (function() {
                 var TRACKS = [
@@ -943,6 +1097,19 @@
                     { file: 'mp3/11ai - Leapyear Register - 10 Take Off.mp3' },
                     { file: 'mp3/11ai - Leapyear Register - 11 Leapyear.mp3' }
                 ];
+
+                // ===== ENABLE / DISABLE AUDIO =====
+                // Set to false to hide player + now-playing bar, disable tracklist clicks, and prevent MP3 loading
+                var ENABLE_AUDIO = true;
+
+                if (!ENABLE_AUDIO) {
+                    var winamp = document.getElementById('winamp');
+                    var npBarEl = document.getElementById('np-bar');
+                    if (winamp) winamp.style.display = 'none';
+                    if (npBarEl) npBarEl.style.display = 'none';
+                    document.body.classList.add('no-audio');
+                    return;
+                }
 
                 // ===== ID3 PARSER =====
                 function sanitizeText(s) {
@@ -1081,7 +1248,16 @@
                     volNotches: document.getElementById('wa-vol-notches'),
                     plList: document.getElementById('wa-pl-list'),
                     plCount: document.getElementById('wa-pl-count'),
-                    plDuration: document.getElementById('wa-pl-duration')
+                    plDuration: document.getElementById('wa-pl-duration'),
+                    npBar: document.getElementById('np-bar'),
+                    npTitle: document.getElementById('np-bar-title'),
+                    npArtist: document.getElementById('np-bar-artist'),
+                    npPlay: document.getElementById('np-play'),
+                    npPrev: document.getElementById('np-prev'),
+                    npNext: document.getElementById('np-next'),
+                    npSeek: document.getElementById('np-seek'),
+                    npSeekFill: document.getElementById('np-seek-fill'),
+                    npSeekThumb: document.getElementById('np-seek-thumb')
                 };
 
                 // ===== AUDIO CONTEXT / ANALYSER =====
@@ -1189,6 +1365,19 @@
                 });
                 updateVolumeUI();
 
+                // ===== NOW PLAYING BAR =====
+                function updateNowPlayingBar() {
+                    var track = TRACKS[current];
+                    var trackNum = (current + 1 < 10 ? '0' : '') + (current + 1);
+                    els.npTitle.textContent = trackNum + ' - ' + (track.displayTitle || fallbackTitle(track.file, track));
+                    els.npArtist.textContent = track.displayArtist || '11ai';
+                    els.npPlay.classList.toggle('np-play-active', isPlaying);
+                    if (!audio.src || !audio.duration) {
+                        els.npSeekFill.style.width = '0%';
+                        els.npSeekThumb.style.left = '0%';
+                    }
+                }
+
                 // ===== SEEK BAR =====
                 function setupSeek() {
                     var dragging = false;
@@ -1237,6 +1426,7 @@
                     els.seekThumb.style.left = (pct * 100) + '%';
                     els.timeElapsed.textContent = fmtTime(audio.currentTime);
                     els.timeRemain.textContent = '-' + fmtTime(audio.duration - audio.currentTime);
+                    if (window._npSeekUpdate) window._npSeekUpdate();
                 });
 
                 audio.addEventListener('ended', function() {
@@ -1309,11 +1499,13 @@
                         audio.pause();
                         isPlaying = false;
                         updatePlayBtn();
+                        updateNowPlayingBar();
                     } else if (audio.src) {
                         initAudioContext();
                         audio.play();
                         isPlaying = true;
                         updatePlayBtn();
+                        updateNowPlayingBar();
                     } else {
                         loadAndPlay(current);
                     }
@@ -1331,9 +1523,12 @@
                     els.timeRemain.textContent = '-00:00';
                     els.seekFill.style.width = '0%';
                     els.seekThumb.style.left = '0%';
+                    els.npSeekFill.style.width = '0%';
+                    els.npSeekThumb.style.left = '0%';
                     stopScroll();
                     els.scrollText.textContent = '11ai - Leapyear Register';
                     renderPlaylist();
+                    updateNowPlayingBar();
                 }
 
                 // ===== LOAD & PLAY =====
@@ -1348,12 +1543,14 @@
                         isPlaying = true;
                         updatePlayBtn();
                         renderPlaylist();
+                        updateNowPlayingBar();
                     }).catch(function(e) {
                         console.warn('Playback failed:', e);
                     });
                     var titleText = (track.displayArtist ? track.displayArtist + ' - ' : '') + (track.displayTitle || fallbackTitle(track.file, track));
                     startScroll(titleText);
                     updateTracklistHighlight();
+                    updateNowPlayingBar();
                 }
 
                 // ===== CONTROLS =====
@@ -1370,6 +1567,62 @@
                 els.nextBtn.addEventListener('click', function() {
                     loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0);
                 });
+
+                // ===== NOW PLAYING BAR CONTROLS =====
+                els.npPrev.addEventListener('click', function() {
+                    if (audio.currentTime > 3) {
+                        audio.currentTime = 0;
+                    } else {
+                        loadAndPlay(current > 0 ? current - 1 : TRACKS.length - 1);
+                    }
+                });
+                els.npPlay.addEventListener('click', togglePlay);
+                els.npNext.addEventListener('click', function() {
+                    loadAndPlay(current < TRACKS.length - 1 ? current + 1 : 0);
+                });
+
+                // ===== NOW PLAYING BAR SEEK =====
+                (function() {
+                    var dragging = false;
+                    var isNPSeeking = false;
+                    function getNPPos(e) {
+                        var rect = els.npSeek.getBoundingClientRect();
+                        var x = (e.touches ? e.touches[0] : e).clientX - rect.left;
+                        return Math.max(0, Math.min(1, x / rect.width));
+                    }
+                    function onNPDown(e) {
+                        dragging = true;
+                        isNPSeeking = true;
+                        var pct = getNPPos(e);
+                        if (audio.duration) audio.currentTime = pct * audio.duration;
+                        updateNPSeek(pct);
+                        e.preventDefault();
+                    }
+                    function onNPMove(e) {
+                        if (!dragging) return;
+                        var pct = getNPPos(e);
+                        if (audio.duration) audio.currentTime = pct * audio.duration;
+                        updateNPSeek(pct);
+                    }
+                    function onNPUp() { dragging = false; isNPSeeking = false; }
+                    els.npSeek.addEventListener('mousedown', onNPDown);
+                    els.npSeek.addEventListener('touchstart', onNPDown, { passive: false });
+                    document.addEventListener('mousemove', onNPMove);
+                    document.addEventListener('touchmove', onNPMove, { passive: false });
+                    document.addEventListener('mouseup', onNPUp);
+                    document.addEventListener('touchend', onNPUp);
+
+                    function updateNPSeek(pct) {
+                        els.npSeekFill.style.width = (pct * 100) + '%';
+                        els.npSeekThumb.style.left = (pct * 100) + '%';
+                    }
+
+                    window._npSeekUpdate = function() {
+                        if (isNPSeeking || !audio.duration) return;
+                        var pct = audio.currentTime / audio.duration;
+                        updateNPSeek(pct);
+                    };
+                })();
 
                 // ===== ID3 LOADING =====
                 function loadID3(track, cb) {
@@ -1460,15 +1713,18 @@
                 // ===== STYLE TOGGLE =====
                 var styleBtn = document.getElementById('wa-style-toggle');
                 var container = document.getElementById('winamp');
+                var npBar = document.getElementById('np-bar');
                 var isFT2 = false;
                 styleBtn.addEventListener('click', function() {
                     isFT2 = !isFT2;
                     if (isFT2) {
                         container.classList.remove('modern');
                         container.classList.add('ft2');
+                        npBar.classList.add('ft2');
                     } else {
                         container.classList.remove('ft2');
                         container.classList.add('modern');
+                        npBar.classList.remove('ft2');
                     }
                 });
 
@@ -1498,7 +1754,9 @@
                     row.addEventListener('click', function(e) {
                         e.preventDefault();
                         var idx = parseInt(row.getAttribute('data-track'), 10);
-                        if (!isNaN(idx)) loadAndPlay(idx);
+                        if (isNaN(idx)) return;
+                        if (idx === current && isPlaying) return;
+                        loadAndPlay(idx);
                     });
                 });
 
